@@ -2,6 +2,7 @@
 // Compile with: g++ search.cpp -o search
 
 #include "search.h"
+#include <list>
 
 typename std::vector<Vertex>::const_iterator Graph::cbegin(Vertex v) const
 {
@@ -58,7 +59,44 @@ Path dfs(const Graph &graph, const Vertex &start, std::function<bool(const Verte
 
 Path bfs(const Graph &graph, const Vertex &start, std::function<bool(const Vertex &vertex)> goalTest)
 {
+	std::list<Path> queue;
+	std::set<Vertex> visited;
+	Path path;
 
+	queue.push_front(path);
+
+	while (!queue.empty()) {
+
+		path = queue.front();
+		queue.pop_front();
+
+		Vertex last;
+
+		if (path.size() == 0)
+		{
+			last = start;
+		}
+		else
+		{
+			last = path.back();
+		}
+
+		if (goalTest(last)) 
+		{
+			return path;
+		}
+
+		if (visited.find(last) == visited.end()) {
+			visited.insert(last);
+			for (auto it = graph.cbegin(last); it != graph.cend(); it++) {
+				Path n = path;
+				n.push_back(*it);
+				queue.push_back(n);
+			}
+		}
+
+	}
+	return Path();
 }
 
 int main() 
