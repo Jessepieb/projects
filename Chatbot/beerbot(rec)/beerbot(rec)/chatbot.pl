@@ -21,7 +21,7 @@ category([
 
 category([
 	pattern([star(_),beer,star(_),random,star(_)]),
-    template([think(randomBeer('random',A,B)),think(recorda('beer',A,Test)),'I can recommend The ',B])
+    template([think(randomBeer('random',A,B)),think(recorda('beer',A)),'I can recommend The ',B])
 ]).
 
 category([
