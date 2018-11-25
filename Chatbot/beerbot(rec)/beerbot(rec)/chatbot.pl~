@@ -21,7 +21,7 @@ category([
 
 category([
 	pattern([star(_),beer,star(_),random,star(_)]),
-    template([think(randomBeer('random',A,B)),think(recorda('beer',A,Test)),'I can recommend The ',B])
+    template([think(randomBeer('random',A,B)),think(recorda('beer',A)),'I can recommend The ',B])
 ]).
 
 category([
@@ -31,7 +31,7 @@ category([
 
 category([
 	pattern([star(_),last,star(_),beer,star(_)]),
-   template([(think(recorded('beer',A))),think(getDetails(A,Name,Desc,Abv,Ibu,Style)),'your last beer was The:',Name])
+   template([think(recorded('beer',A)),think(getDetails(A,Name,Desc,Abv,Ibu,Style)),'your last beer was The:',Name])
 ]).
 
 
@@ -115,7 +115,7 @@ randomBeer(EP,Beer,Name) :-
 
 getDetails(EP,Name,Desc,Abv,Ibu,Style):-
 	Baseurl ='http://sandbox-api.brewerydb.com/v2/beer/',
-	print(EP),
+	%print(EP),
 	Endpoint = EP,
 	Token = '/?key=09efce9fb4c53d25e1d4ea888225fa71',
         atomic_concat(Baseurl,Endpoint,Buffer),
@@ -156,4 +156,5 @@ getDetails(EP,Name,Desc,Abv,Ibu,Style):-
 
 %printName(H):-
 	%member(name=Name,H),
-%	print(H.name).
+%	print(Name).
+
