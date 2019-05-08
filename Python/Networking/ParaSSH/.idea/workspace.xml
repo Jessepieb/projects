@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f778221-cd2a-451c-8f2b-8cb72aae81f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sniffer_ip_header_decoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sniffer_ip_header_decoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/sniffer_ip_header_decoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v15/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v15/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/ConsoleApplication1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/ConsoleApplication1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/ConsoleApplication1.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/ConsoleApplication1.lastbuildstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleA.AC43A763.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.pch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.pch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/pch.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/pch.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/vc141.idb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/vc141.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/vc141.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/vc141.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/mandelbrot.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/mandelbrot.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../concurrent/opd 1-2/ConsoleApplication1/Debug/ConsoleApplication1.pdb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sniffer_ip_header_decoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+            <state relative-caret-position="306">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -37,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/socket.pyi">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9384">
-              <caret line="553" column="62" selection-start-line="553" selection-start-column="62" selection-end-line="553" selection-end-column="62" />
+            <state relative-caret-position="9605">
+              <caret line="566" column="8" selection-start-line="566" selection-start-column="8" selection-end-line="566" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -76,6 +96,7 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -161,6 +182,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.50641024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -223,15 +245,15 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/socket.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9384">
-          <caret line="553" column="62" selection-start-line="553" selection-start-column="62" selection-end-line="553" selection-end-column="62" />
+        <state relative-caret-position="9605">
+          <caret line="566" column="8" selection-start-line="566" selection-start-column="8" selection-end-line="566" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sniffer_ip_header_decoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        <state relative-caret-position="306">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
         </state>
       </provider>
     </entry>
