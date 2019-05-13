@@ -10,9 +10,8 @@
 #include <stack>
 #include <set>
 
-enum class Move { l, r, u, d };
-using State = std::array<std::array<int,3>,3>;
-
+enum class Move { ld, rd, lu, ru, l, r };
+using State = std::array<std::array<int,5>,5>;
 using Vertex = State;
 using Path = std::vector<Vertex>;
 
