@@ -10,6 +10,7 @@ subject = "Testmail"
 msg = """"""
 nmScan.scan(hosts='192.168.192.1/24', arguments='-sS -O')
 for host in nmScan.all_hosts():
+    print(str(host))
     msg += str(host)
     #msg += str(nmScan[host].get())
 email_text= """\
