@@ -2,15 +2,22 @@ import smtplib
 import nmap
 
 file = open("input.txt")
+receive = open("mail.txt")
 
 creds = file.readlines()
 sent_from = creds[0]
 to = [creds[0]]
 nmScan = nmap.PortScanner()
-body = nmScan.scan('127.0.0.1', '21-443')
+subject = "Testmail"
+msg = str(nmScan.scan('127.0.0.1', '21-443'))
+body = 'Hey, This is a test: ' + msg
 email_text= """\
+From: %s
+To: %s
+Subject: %s
+
 %s
-""" % (body)
+""" % (sent_from,", ".join(to), subject, body)
 try:
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
