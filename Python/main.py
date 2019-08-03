@@ -9,10 +9,9 @@ nmScan = nmap.PortScanner()
 subject = "Testmail"
 msg = ""
 nmScan.scan(hosts='192.168.192.1/24', arguments='-sn')
-for hostname in nmScan.hostname():
-    msg += str(hostname) + '\n'
+
 for host in nmScan.all_hosts():
-    msg += str(host) + '\n'
+    msg += str(host) + ': ' + nmScan[host].hostname() + '\n'
 email_text= """\
 From: %s
 To: %s
