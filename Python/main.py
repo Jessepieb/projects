@@ -1,21 +1,23 @@
+import smtplib
 import nmap
 
-# initialize the port scanner
+file = open("input.txt")
+
+creds = file.readlines()
+sent_from = creds[0]
+to = [creds[0]]
 nmScan = nmap.PortScanner()
-ip = '192.168.192.'
-ip += str(input())
-# scan localhost for ports in range 21-443
-nmScan.scan(ip, '21-443')
+body = nmScan.scan('127.0.0.1', '21-443')
+email_text= """\
+%s
+""" % (body)
+try:
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login(creds[0], creds[1])
+    server.sendmail(sent_from, to, email_text)
+    server.close()
+except:
+    print("somthing went wrong")
 
-# run a loop to print all the found result about the ports
-for host in nmScan.all_hosts():
-    print('Host : %s (%s)' % (host, nmScan[host].hostname()))
-    print('State : %s' % nmScan[host].state())
-    for proto in nmScan[host].all_protocols():
-        print('----------')
-        print('Protocol : %s' % proto)
-
-        lport = nmScan[host][proto].keys()
-        lport.sort()
-        for port in lport:
-            print ('port : %s\tstate : %s' % (port, nmScan[host][proto][port]['state']))
+file.close()
