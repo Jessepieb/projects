@@ -4,7 +4,7 @@ import nmap
 nmScan = nmap.PortScanner()
 ip = str(input('enter ip adress: \n'))
 # scan localhost for ports in range 21-443
-nmScan.scan(ip, '21-443')
+nmScan.scan(str(ip), '21-443')
 
 # run a loop to print all the found result about the ports
 for host in nmScan.all_hosts():
