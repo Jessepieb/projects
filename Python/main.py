@@ -11,7 +11,7 @@ msg = """"""
 nmScan.scan(hosts='192.168.192.1/24', arguments='-sS -O')
 for host in nmScan.all_hosts():
     msg += str(host)
-    msg += str(nmScan[host].get())
+    #msg += str(nmScan[host].get())
 email_text= """\
 From: %s
 To: %s
