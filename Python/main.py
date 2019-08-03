@@ -7,15 +7,18 @@ sent_from = creds[0]
 to = [creds[0]]
 nmScan = nmap.PortScanner()
 subject = "Testmail"
-msg = str(nmScan.scan('127.0.0.1', '21-443'))
-body = 'Hey, This is a test: ' + msg
+msg = """"""
+nmScan.scan(hosts='192.168.192.1/24', arguments='-sS -O')
+for host in nmScan.all_hosts():
+    msg += str(host)
+    msg += str(nmScan[host].get())
 email_text= """\
 From: %s
 To: %s
 Subject: %s
 
 %s
-""" % (sent_from,", ".join(to), subject, body)
+""" % (sent_from,", ".join(to), subject, msg)
 try:
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
