@@ -2,8 +2,6 @@ import smtplib
 import nmap
 
 file = open("input.txt")
-receive = open("mail.txt")
-
 creds = file.readlines()
 sent_from = creds[0]
 to = [creds[0]]
