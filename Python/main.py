@@ -2,6 +2,7 @@ import smtplib
 import nmap
 
 file = open("input.txt")
+macs = open("macs.txt", "a+")
 creds = file.readlines()
 sent_from = creds[0]
 to = [creds[0]]
@@ -13,6 +14,8 @@ nmScan.scan(hosts='192.168.192.1/24', arguments='-sn')
 for host in nmScan.all_hosts():
     if 'mac' in nmScan[host]['addresses']:
         msg += str(nmScan[host]['addresses']['ipv4']) + ' : ' + str(nmScan[host]['vendor'])
+        if str(nmScan[host]['vendor']) not in macs:
+            macs.write(str(nmScan[host]['vendor']))
     msg += nmScan[host].hostname() + '\n '
 email_text= """\
 From: %s
@@ -31,3 +34,4 @@ except:
     print("somthing went wrong")
 
 file.close()
+macs.close()
