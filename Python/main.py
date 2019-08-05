@@ -12,7 +12,7 @@ def getMacs(iprange):
         if 'mac' in nmScan[host]['addresses']:
             msg += str(nmScan[host]['addresses']['ipv4']) + ' : ' + str(nmScan[host]['vendor'])
             if str(nmScan[host]['vendor']) not in macs:
-                macs.write(str(nmScan[host]['vendor']))
+                macs.write(str(nmScan[host]['vendor'])) + '\n'
         msg += nmScan[host].hostname() + '\n '
 
     macs.close()
