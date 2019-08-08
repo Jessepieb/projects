@@ -8,7 +8,7 @@ to = [creds[0]]
 nmScan = nmap.PortScanner()
 subject = "Testmail"
 msg = """"""
-nmScan.scan(hosts='192.168.192.1/24', arguments=' -O')
+nmScan.scan(hosts='192.168.192.1/24', arguments=' -O -v')
 print(nmScan.csv())
 for host in nmScan.all_hosts():
     msg += str(host)
