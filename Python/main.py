@@ -11,7 +11,7 @@ print("Portscanner Started...")
 subject = "Testmail"
 msg = """"""
 print("starting scan...")
-nmScan.scan(hosts='192.168.192.1/24', arguments=' -sn -v')
+nmScan.scan(hosts='192.168.192.1/24', arguments=' -O -v')
 print('Results'.center(20, '-'))
 print(nmScan.csv())
 for host in nmScan.all_hosts():
