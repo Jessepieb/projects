@@ -6,6 +6,7 @@
   <component name="ProjectId" id="1SD9yFvMrtsKwaLZ9uPieMKE5G9" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Planner" type="Python.FlaskServer">
@@ -23,5 +24,8 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Planner$Planner.coverage" NAME="Planner Coverage Results" MODIFIED="1571087760818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
