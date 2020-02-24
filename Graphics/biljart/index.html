@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js practice</title>
+</head>
+<body>
+<script src="js/three.js"></script>
+
+<script>
+    var camera, renderer, scene;
+    var geometry, material, texture;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    let amount = 5;
+
+    var radius = 0.5;
+
+    const xDist = 1.15;
+    const yDist = (radius * 2) + 0.1;
+    const yOffset = 0;
+    const xOffset = 0;
+
+    var balls = new THREE.Group();
+    let textureId = 1;
+
+    class Ball{
+        constructor(col,row) {
+            this.col = col;
+            this.row = row;
+            this.CreateBall(this.col,this.row);
+        }
+
+    CreateBall(col,row) {
+        geometry = new THREE.SphereGeometry(radius, 32, 32);
+        texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
+        material = new THREE.MeshBasicMaterial({map: texture});
+        var sphere = new THREE.Mesh(geometry, material);
+        sphere.position.x = (xDist * col) + xOffset;
+        sphere.position.y = (yDist * -row) + yOffset;
+        balls.add(sphere);
+        textureId++;
+
+    }
+    }
+
+    function addBalls() {
+        var dif = 0.5;
+
+        new Ball(0,1);
+        for (let row = 2; row < amount+1; row++) {
+            for(let col = 0; col < row; col++){
+                new Ball((col-dif),row);
+                if(col === row-1){
+                    dif+=0.5;
+                }
+            }
+        }
+        scene.add(balls)
+    }
+
+    function initCamera() {
+        camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 1000);
+        camera.position.z = 10;
+    }
+
+    function initRenderer() {
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function init() {
+        scene = new THREE.Scene();
+
+        initCamera();
+        //createTable();
+        addBalls();
+        initRenderer();
+
+        document.body.appendChild(renderer.domElement);
+    }
+
+    function animate() {
+        for (let ball = 0; ball < 15; ball++) {
+            var test = balls.children[ball];
+            test.rotation.y += 0.05;
+        }
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+
+    }
+
+
+    init();
+    animate()
+</script>
+</body>
+</html>
