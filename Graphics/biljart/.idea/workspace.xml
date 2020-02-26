@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="" />
+    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wjbljrt/WJZwager-digitaalportfolio-4322007c40d4/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wjbljrt/WJZwager-digitaalportfolio-4322007c40d4/.idea/WJZwager-digitaalportfolio-4322007c40d4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wjbljrt/WJZwager-digitaalportfolio-4322007c40d4/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wjbljrt/WJZwager-digitaalportfolio-4322007c40d4/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wjbljrt/WJZwager-digitaalportfolio-4322007c40d4/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsm/OrbitControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/OrbitControls.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,13 +20,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1XQrAnMHrqss43R91zHqw3IHm8M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -25,9 +39,10 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.1" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/models/textures" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -35,22 +50,23 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_interpreter_path" value="$APPLICATION_CONFIG_DIR$/node/node-v12.13.1-win-x64/node" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\jsm" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\projects\Graphics\biljart\js" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -90,6 +106,7 @@
       <workItem from="1582403731923" duration="1268000" />
       <workItem from="1582469751900" duration="2253000" />
       <workItem from="1582480627266" duration="744000" />
+      <workItem from="1582716913013" duration="8233000" />
     </task>
     <servers />
   </component>
@@ -101,10 +118,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582390729005" />
-    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581002454406">
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582723845723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581002454406" />
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582723845723" />
+    <state x="1065" y="118" key="CommitChangelistDialog2" timestamp="1582727127798">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1065" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582727127798" />
     <state width="936" height="347" key="GridCell.Tab.0.bottom" timestamp="1582399083192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -177,5 +199,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1161" y="268" width="540" height="524" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582285121983" />
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1582716930003">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582716930003" />
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582727097773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582727097773" />
   </component>
 </project>
