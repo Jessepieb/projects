@@ -13,51 +13,55 @@
     var geometry, material, texture;
     const width = window.innerWidth;
     const height = window.innerHeight;
-    var restart = 1;
+
+    var table;
+    var balls = new THREE.Group();
+    var walls = new THREE.Group();
 
     let amount = 5;
-    var radius = 0.5;
-    const xDist = 1.15;
-    const yDist = (radius * 2) + 0.1;
-    const yOffset = 0;
-    const xOffset = 0;
-
-    var balls = new THREE.Group();
-    var table = new THREE.Group();
     let textureId = 1;
+    var restart = 1;
 
     class Ball {
         constructor(col, row, txtID) {
+            this.radius = 20*(table.width/1920);
+            this.xDist = this.radius*2.1;
+            this.yDist = (this.radius * 2) + this.radius/5;
+
             this.col = col;
             this.row = row;
             this.txtID = txtID;
             this.CreateBall(this.col, this.row);
         }
 
-        CreateBall(col, row) {
-            geometry = new THREE.SphereGeometry(radius, 32, 32);
+        CreateBall() {
+            geometry = new THREE.SphereGeometry(this.radius, 32, 32);
             texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
             material = new THREE.MeshBasicMaterial({map: texture});
             var sphere = new THREE.Mesh(geometry, material);
-            sphere.position.x = (xDist * col) + xOffset;
-            sphere.position.y = (yDist * -row) + yOffset;
+            sphere.position.x = (this.xDist * this.col);
+            sphere.position.y = (this.yDist * -this.row);
+            sphere.rotation.y = 11;
             balls.add(sphere);
             textureId++;
 
         }
+
     }
 
     class Table {
         constructor() {
             // this.table = new THREE.Group();
-            this.width = (innerWidth/1920)*50;
-            this.height = this.width * 0.5;
-            this.depth = 2;
-            this.createBase();
-            this.createWall(0,this.height/2 + this.depth/2,this.width,2);
-            this.createWall(0,-1*(this.height/2 + this.depth/2),this.width,2);
-            this.createWall(this.width/2 + this.depth/2,0,2,this.height+(this.depth*2));
-            this.createWall(-1*(this.width/2+ this.depth/2),0,2,this.height+(this.depth*2));
+            this.width = (innerWidth/1920)*55;
+            this.height = this.width / 2;
+            this.depth = 1.5;
+        }
+
+        initWalls(){
+            this.createWall(0,this.height/2 + this.depth/2,this.width,this.depth);
+            this.createWall(0,-1*(this.height/2 + this.depth/2),this.width,this.depth);
+            this.createWall(this.height + this.depth/2,0,this.depth,this.height+(this.depth*2));
+            this.createWall(-1*(this.width/2+ this.depth/2),0,this.depth,this.height+(this.depth*2));
         }
 
         createBase() {
@@ -65,7 +69,7 @@
             geometry = new THREE.PlaneGeometry(this.width,this.height);
             texture = new THREE.TextureLoader().load('models/textures/Base.jpg');
             material = new THREE.MeshBasicMaterial({color:0x009900});
-            table.add(new THREE.Mesh(geometry, material));
+            scene.add(new THREE.Mesh(geometry, material));
         }
 
         createWall(xloc, yloc, width, depth) {
@@ -75,11 +79,20 @@
             var wall = new THREE.Mesh(geometry, material);
             wall.position.x = xloc;
             wall.position.y = yloc;
-            table.add(wall);
+            walls.add(wall);
+        }
+
+        initPockets(){
+
         }
 
         createPocket(){
         }
+
+    }
+
+    function allignBalls(){
+        balls.rotation.z = 11;
 
     }
 
@@ -95,12 +108,16 @@
                 }
             }
         }
-        scene.add(balls)
+        scene.add(balls);
+        allignBalls();
     }
 
     function spawnTable() {
-        new Table();
-        scene.add(table);
+        table = new Table();
+        table.createBase();
+        table.initWalls();
+        //table.initPockets();
+        scene.add(walls);
     }
 
     function initCamera() {
@@ -123,23 +140,11 @@
         //initControls();
         spawnTable();
         spawnBalls();
-        //createPlane();
         initRenderer();
         document.body.appendChild(renderer.domElement);
     }
 
     function animate() {
-        if (restart) {
-            for (let ball = 0; ball < balls.children.length; ball++) {
-                var test = balls.children[ball];
-                if (test.rotation.y < 4.6) {
-                    test.rotation.y += 0.05;
-                    if (ball === 15 && test >= 4.6) {
-                        restart = false;
-                    }
-                }
-            }
-        }
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
     }
