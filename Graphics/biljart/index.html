@@ -8,60 +8,104 @@
 <script src="js/three.js"></script>
 <script>
     //to do add orbit control
-    import {OrbitControls} from 'js/OrbitControls';
+
     var camera, renderer, scene, controls;
     var geometry, material, texture;
     const width = window.innerWidth;
     const height = window.innerHeight;
+    var restart = 1;
+
     let amount = 5;
-
     var radius = 0.5;
-
     const xDist = 1.15;
     const yDist = (radius * 2) + 0.1;
     const yOffset = 0;
     const xOffset = 0;
 
     var balls = new THREE.Group();
+    var table = new THREE.Group();
     let textureId = 1;
 
-    class Ball{
-        constructor(col,row) {
+    class Ball {
+        constructor(col, row, txtID) {
             this.col = col;
             this.row = row;
-            this.CreateBall(this.col,this.row);
+            this.txtID = txtID;
+            this.CreateBall(this.col, this.row);
         }
 
-    CreateBall(col,row) {
-        geometry = new THREE.SphereGeometry(radius, 32, 32);
-        texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
-        material = new THREE.MeshBasicMaterial({map: texture});
-        var sphere = new THREE.Mesh(geometry, material);
-        sphere.position.x = (xDist * col) + xOffset;
-        sphere.position.y = (yDist * -row) + yOffset;
-        balls.add(sphere);
-        textureId++;
+        CreateBall(col, row) {
+            geometry = new THREE.SphereGeometry(radius, 32, 32);
+            texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
+            material = new THREE.MeshBasicMaterial({map: texture});
+            var sphere = new THREE.Mesh(geometry, material);
+            sphere.position.x = (xDist * col) + xOffset;
+            sphere.position.y = (yDist * -row) + yOffset;
+            balls.add(sphere);
+            textureId++;
+
+        }
+    }
+
+    class Table {
+        constructor() {
+            // this.table = new THREE.Group();
+            this.width = (innerWidth/1920)*50;
+            this.height = this.width * 0.5;
+            this.depth = 2;
+            this.createBase();
+            this.createWall(0,this.height/2 + this.depth/2,this.width,2);
+            this.createWall(0,-1*(this.height/2 + this.depth/2),this.width,2);
+            this.createWall(this.width/2 + this.depth/2,0,2,this.height+(this.depth*2));
+            this.createWall(-1*(this.width/2+ this.depth/2),0,2,this.height+(this.depth*2));
+        }
+
+        createBase() {
+
+            geometry = new THREE.PlaneGeometry(this.width,this.height);
+            texture = new THREE.TextureLoader().load('models/textures/Base.jpg');
+            material = new THREE.MeshBasicMaterial({color:0x009900});
+            table.add(new THREE.Mesh(geometry, material));
+        }
+
+        createWall(xloc, yloc, width, depth) {
+            geometry = new THREE.BoxGeometry(width,depth,2);
+            texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
+            material = new THREE.MeshBasicMaterial({map:texture});
+            var wall = new THREE.Mesh(geometry, material);
+            wall.position.x = xloc;
+            wall.position.y = yloc;
+            table.add(wall);
+        }
+
+        createPocket(){
+        }
 
     }
-    }
 
-    function addBalls() {
+    function spawnBalls() {
         var dif = 0.5;
-
-        new Ball(0,1);
-        for (let row = 2; row < amount+1; row++) {
-            for(let col = 0; col < row; col++){
-                new Ball((col-dif),row);
-                if(col === row-1){
-                    dif+=0.5;
+        textureId = 1;
+        new Ball(0, 1);
+        for (let row = 2; row < amount + 1; row++) {
+            for (let col = 0; col < row; col++) {
+                new Ball((col - dif), row);
+                if (col === row - 1) {
+                    dif += 0.5;
                 }
             }
         }
         scene.add(balls)
     }
 
+    function spawnTable() {
+        new Table();
+        scene.add(table);
+    }
+
     function initCamera() {
         camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 1000);
+        camera.position.z = 15;
     }
 
     function initRenderer() {
@@ -69,43 +113,36 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    function initControls(){
+    function initControls() {
         controls = new THREE.OrbitControls(camera, renderer.domElement);
     }
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
-
-    scene = new THREE.Scene();
-
-    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-    //controls.update() must be called after any manual changes to the camera's transform
-    camera.position.set( 0, 20, 100 );
-
     function init() {
         scene = new THREE.Scene();
-        //initCamera();
-        //createTable();
+        initCamera();
         //initControls();
-        addBalls();
-        //initRenderer();
+        spawnTable();
+        spawnBalls();
+        //createPlane();
+        initRenderer();
         document.body.appendChild(renderer.domElement);
     }
 
     function animate() {
-        for (let ball = 0; ball < 15; ball++) {
-            var test = balls.children[ball];
-            test.rotation.y += 0.05;
+        if (restart) {
+            for (let ball = 0; ball < balls.children.length; ball++) {
+                var test = balls.children[ball];
+                if (test.rotation.y < 4.6) {
+                    test.rotation.y += 0.05;
+                    if (ball === 15 && test >= 4.6) {
+                        restart = false;
+                    }
+                }
+            }
         }
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
-
     }
-
 
     init();
     animate()
