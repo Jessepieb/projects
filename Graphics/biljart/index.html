@@ -5,6 +5,7 @@
     <title>Three.js practice</title>
 </head>
 <body>
+<div id="angle" style="position: absolute; color: white"></div>
 <script src="js/three.js"></script>
 <script>
     //to do add orbit control
@@ -17,6 +18,7 @@
     var table;
     var balls = new THREE.Group();
     var walls = new THREE.Group();
+    var pockets = new THREE.Group();
 
     let amount = 5;
     let textureId = 1;
@@ -24,9 +26,9 @@
 
     class Ball {
         constructor(col, row, txtID) {
-            this.radius = 20*(table.width/1920);
-            this.xDist = this.radius*2.1;
-            this.yDist = (this.radius * 2) + this.radius/5;
+            this.radius = 20 * (table.width / 1920);
+            this.xDist = this.radius * 2.1;
+            this.yDist = (this.radius * 2) + this.radius / 5;
 
             this.col = col;
             this.row = row;
@@ -41,7 +43,8 @@
             var sphere = new THREE.Mesh(geometry, material);
             sphere.position.x = (this.xDist * this.col);
             sphere.position.y = (this.yDist * -this.row);
-            sphere.rotation.y = 11;
+            sphere.rotation.y += 11;
+            angle.innerHTML= THREE.Math.radToDeg(sphere.rotation.y)%360;
             balls.add(sphere);
             textureId++;
 
@@ -52,48 +55,59 @@
     class Table {
         constructor() {
             // this.table = new THREE.Group();
-            this.width = (innerWidth/1920)*55;
+            this.width = (innerWidth / 1920) * 55;
             this.height = this.width / 2;
             this.depth = 1.5;
+            this.pockRad = 30 * (this.width / 1920);
         }
 
-        initWalls(){
-            this.createWall(0,this.height/2 + this.depth/2,this.width,this.depth);
-            this.createWall(0,-1*(this.height/2 + this.depth/2),this.width,this.depth);
-            this.createWall(this.height + this.depth/2,0,this.depth,this.height+(this.depth*2));
-            this.createWall(-1*(this.width/2+ this.depth/2),0,this.depth,this.height+(this.depth*2));
+        initWalls() {
+            this.createWall(0, this.height / 2 + this.depth / 2, this.width, this.depth);
+            this.createWall(0, -1 * (this.height / 2 + this.depth / 2), this.width, this.depth);
+            this.createWall(this.height + this.depth / 2, 0, this.depth, this.height + (this.depth * 2));
+            this.createWall(-1 * (this.width / 2 + this.depth / 2), 0, this.depth, this.height + (this.depth * 2));
+            scene.add(walls);
         }
 
         createBase() {
 
-            geometry = new THREE.PlaneGeometry(this.width,this.height);
+            geometry = new THREE.PlaneGeometry(this.width, this.height);
             texture = new THREE.TextureLoader().load('models/textures/Base.jpg');
-            material = new THREE.MeshBasicMaterial({color:0x009900});
+            material = new THREE.MeshBasicMaterial({color: 0x009900});
             scene.add(new THREE.Mesh(geometry, material));
         }
 
         createWall(xloc, yloc, width, depth) {
-            geometry = new THREE.BoxGeometry(width,depth,2);
+            geometry = new THREE.BoxGeometry(width, depth, 2);
             texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
-            material = new THREE.MeshBasicMaterial({map:texture});
+            material = new THREE.MeshBasicMaterial({map: texture});
             var wall = new THREE.Mesh(geometry, material);
             wall.position.x = xloc;
             wall.position.y = yloc;
             walls.add(wall);
         }
 
-        initPockets(){
-
+        initPockets() {
+            this.createPocket(0, 0);
+            scene.add(pockets);
         }
 
-        createPocket(){
+        createPocket(xloc, yloc) {
+            geometry = new THREE.CylinderGeometry(this.pockRad, this.pockRad, 2);
+            material = new THREE.MeshBasicMaterial({color: 0x000000});
+            var pocket = new THREE.Mesh(geometry, material);
+            pocket.rotation.x = Math.PI /2;
+            pocket.position.x = xloc;
+            pocket.position.y = yloc;
+            pockets.add(pocket);
         }
 
     }
 
-    function allignBalls(){
+    function allignBalls() {
+        const offset = table.width / 5;
         balls.rotation.z = 11;
-
+        balls.position.x -= offset;
     }
 
     function spawnBalls() {
@@ -116,8 +130,7 @@
         table = new Table();
         table.createBase();
         table.initWalls();
-        //table.initPockets();
-        scene.add(walls);
+        table.initPockets();
     }
 
     function initCamera() {
@@ -130,14 +143,9 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    function initControls() {
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-    }
-
     function init() {
         scene = new THREE.Scene();
         initCamera();
-        //initControls();
         spawnTable();
         spawnBalls();
         initRenderer();
@@ -145,6 +153,7 @@
     }
 
     function animate() {
+
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
     }
