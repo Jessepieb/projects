@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
+    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -106,6 +106,8 @@
       <workItem from="1582985649901" duration="9172000" />
       <workItem from="1583154665041" duration="4079000" />
       <workItem from="1583168666370" duration="5152000" />
+      <workItem from="1583235910433" duration="895000" />
+      <workItem from="1583246087948" duration="2929000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -130,7 +132,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="biljart update" />
     <MESSAGE value="Table added&#10;texture added&#10;//To Do:&#10;// Scaling&#10;// Physics&#10;// add pockets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Table added&#10;texture added&#10;//To Do:&#10;// Scaling&#10;// Physics&#10;// add pockets" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582390729005">
@@ -142,9 +145,10 @@
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581002454406" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582723845723" />
-    <state x="1065" y="118" key="CommitChangelistDialog2" timestamp="1582985824724">
+    <state x="1065" y="108" key="CommitChangelistDialog2" timestamp="1583249017079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1065" y="108" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583249017079" />
     <state x="1065" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582985824724" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583154806878">
       <screen x="0" y="0" width="1920" height="1040" />
