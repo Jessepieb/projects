@@ -31,10 +31,33 @@
             this.width = width;
             this.height = height;
         }
+
+        createWall(){
+            geometry = new THREE.BoxGeometry(this.width, this.height, 2);
+            texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
+            material = new THREE.MeshBasicMaterial({map: texture});
+            var wall = new THREE.Mesh(geometry, material);
+            wall.position.x = this.x;
+            wall.position.y = this.y;
+            return wall;
+        }
     }
 
     class Pocket{
-        constructor() {
+        constructor(xloc,yloc,w) {
+            this.xloc = xloc;
+            this.yloc = yloc;
+            this.pockRad = 60 * (w / 1920);
+        }
+
+        createPocket() {
+            geometry = new THREE.CylinderGeometry(this.pockRad, this.pockRad, 2);
+            material = new THREE.MeshBasicMaterial({color: 0x000000});
+            var pocket = new THREE.Mesh(geometry, material);
+            pocket.rotation.x = Math.PI / 2;
+            pocket.position.x = this.xloc;
+            pocket.position.y = this.yloc;
+            return pocket;
         }
     }
 
@@ -72,7 +95,7 @@
             this.width = (innerWidth / 1920) * 55;
             this.height = this.width / 2;
             this.depth = 1.5;
-            this.pockRad = 60 * (this.width / 1920);
+
         }
 
         initWalls() {
@@ -92,12 +115,7 @@
         }
 
         createWall(xloc, yloc, width, depth) {
-            geometry = new THREE.BoxGeometry(width, depth, 2);
-            texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
-            material = new THREE.MeshBasicMaterial({map: texture});
-            var wall = new THREE.Mesh(geometry, material);
-            wall.position.x = xloc;
-            wall.position.y = yloc;
+            var wall = new Wall(xloc,yloc,width,depth).createWall();
             walls.add(wall);
         }
 
@@ -109,17 +127,11 @@
                 }
                 y+=2;
             }
-           // this.createPocket(this.width/2,this.height/2);
             scene.add(pockets);
         }
 
         createPocket(xloc, yloc) {
-            geometry = new THREE.CylinderGeometry(this.pockRad, this.pockRad, 2);
-            material = new THREE.MeshBasicMaterial({color: 0x000000});
-            var pocket = new THREE.Mesh(geometry, material);
-            pocket.rotation.x = Math.PI /2;
-            pocket.position.x = xloc;
-            pocket.position.y = yloc;
+            var pocket = new Pocket(xloc,yloc,this.width).createPocket();
             pockets.add(pocket);
         }
 
