@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="update">
+    <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/OrbitControls.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,19 +48,19 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\projects\Graphics\biljart\models\textures" />
-      <recent name="D:\Github\projects\Graphics\biljart\js" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\jsm" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\projects\Graphics\biljart\js" />
+      <recent name="D:\Github\projects\Graphics\biljart\models\textures" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -114,7 +113,10 @@
       <workItem from="1583439440156" duration="2868000" />
       <workItem from="1583854747860" duration="2496000" />
       <workItem from="1583874921329" duration="599000" />
-      <workItem from="1584008066210" duration="865000" />
+      <workItem from="1584008066210" duration="1496000" />
+      <workItem from="1584189823901" duration="4942000" />
+      <workItem from="1584215152246" duration="1416000" />
+      <workItem from="1584277770594" duration="4223000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -130,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582985826729</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1584047491352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584047491352</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,11 +161,11 @@
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581002454406" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584047449278" />
-    <state x="1065" y="108" key="CommitChangelistDialog2" timestamp="1583249017079">
+    <state x="1065" y="118" key="CommitChangelistDialog2" timestamp="1584047489750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1065" y="108" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583249017079" />
-    <state x="1065" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582985824724" />
+    <state x="1065" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584047489750" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583154806878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

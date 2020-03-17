@@ -22,7 +22,6 @@
     var pockets = new THREE.Group();
 
     let amount = 5;
-    let textureId = 1;
     var restart = 1;
 
     class Wall{
@@ -64,28 +63,27 @@
 
     class Ball {
         constructor(col, row, txtID) {
-            this.radius = 20 * (table.width / 1920);
-            this.xDist = this.radius * 2.1;
-            this.yDist = (this.radius * 2) + this.radius / 5;
+            if (col !== undefined || row !== undefined || txtID !== undefined) {
+                this.radius = 20 * (table.width / 1920);
+                this.xDist = this.radius * 2.1;
+                this.yDist = (this.radius * 2) + this.radius / 5;
 
-            this.col = col;
-            this.row = row;
-            this.txtID = txtID;
-            this.CreateBall(this.col, this.row);
+                this.col = col;
+                this.row = row;
+                texture = new THREE.TextureLoader().load('models/textures/Ball' + txtID.toString() + '.jpg');
+                this.CreateBall(this.col, this.row, this.txtID);
+            }
         }
 
-        CreateBall() {
+        CreateBall(col,row,txtID) {
             geometry = new THREE.SphereGeometry(this.radius, 32, 32);
-            texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
+            texture = new THREE.TextureLoader().load('models/textures/Ball' + txtID + '.jpg');
             material = new THREE.MeshBasicMaterial({map: texture});
             var sphere = new THREE.Mesh(geometry, material);
             sphere.position.x = (this.xDist * this.col);
             sphere.position.y = (this.yDist * -this.row);
             sphere.rotation.y += 11;
-            angle.innerHTML= THREE.Math.radToDeg(sphere.rotation.y)%360;
             balls.add(sphere);
-            textureId++;
-
         }
 
     }
@@ -146,14 +144,17 @@
 
     function spawnBalls() {
         var dif = 0.5;
-        textureId = 1;
-        new Ball(0, 1);
+        var btxt = [1,9,2,10,8,3,11,4,5,12,6,13,7,14];
+        var index = 0;
+        new Ball(0, 1, btxt[index]);
+        index++;
         for (let row = 2; row < amount + 1; row++) {
             for (let col = 0; col < row; col++) {
-                new Ball((col - dif), row);
+                new Ball((col - dif), row, btxt[index]);
                 if (col === row - 1) {
                     dif += 0.5;
                 }
+                index++;
             }
         }
         scene.add(balls);
