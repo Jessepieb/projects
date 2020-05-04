@@ -65,10 +65,12 @@
 
     class Ball {
         constructor(col, row, txtID) {
-            this.radius = 20 * (table.width / 1920);
+            this.radius = 27 * (table.width / 1920);
             this.xDist = this.radius * 2.1;
             this.yDist = (this.radius * 2) + this.radius / 5;
-
+            this.sphere = null;
+            this.velocity = new THREE.Vector2(0,0);
+            this.dir = new THREE.Vector2(0,0);
             this.col = col;
             this.row = row;
             this.txtID = txtID;
@@ -79,18 +81,46 @@
             geometry = new THREE.SphereGeometry(this.radius, 32, 32);
             texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
             material = new THREE.MeshBasicMaterial({map: texture});
-            var sphere = new THREE.Mesh(geometry, material);
-            sphere.position.x = (this.xDist * this.col);
-            sphere.position.y = (this.yDist * -this.row);
-            sphere.rotation.y += 11;
-            angle.innerHTML= THREE.Math.radToDeg(sphere.rotation.y)%360;
-            balls.add(sphere);
+            this.sphere = new THREE.Mesh(geometry, material);
+            this.sphere.position.x = (this.xDist * this.col);
+            this.sphere.position.y = (this.yDist * -this.row);
+            // this.sphere.rotation.y += 11;
+            balls.add(this.sphere);
             textureId++;
 
         }
 
-        checkCollision(otherball){
-            
+        getPosVec(){
+            return new THREE.Vector2(this.position.x, this.position.y);
+        }
+
+        setVec(newVector){
+            this.velocity = newVector;
+        }
+
+        Move(){
+            this.position.x += this.velocity.x;
+            this.position.y += this.velocity.y;
+        }
+
+        checkCollision(otherObj){
+            var dx = otherObj.position.x - this.position.x;
+            var dy = otherObj.position.y - this.position.y;
+            var minDist = otherObj.radius + this.radius;
+
+            if (otherObj.getVec().distanceTo(this.getPosVec()) < minDist){
+                var ang = Math.atan2(dy,dx);
+                var targetX = this.getPosVec().x + Math.cos(ang) *minDist;
+                var targetY = this.getPosVec().y + Math.sin(ang) *minDist;
+
+                var ax = (targetX - otherObj.getPosVec().x) * 0.05;
+                var ay = (targetY - otherObj.getPosVec().y) * 0.05;
+                this.velocity.x -= ax;
+                this.velocity.y -= ay;
+
+                otherObj.velocity.x += ax;
+                otherObj.velocity.y += ay;
+            }
         }
 
     }
@@ -193,16 +223,34 @@
 
     var x = 0;
 
+
+
     function animate() {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
+        var j = balls.children.length;
+        // var test = new THREE.Vector2(1,2);
+        // angel.innerHTML = test;
+        var ball = balls.children[0];
+        ball.setVec(new THREE.Vector2(-0.1,-0.1));
+        ball.children[0].Move();
+        // angle.innerHTML = balls.children[0].x;
+        for (let i = 0; i < j; i++){
+            ball = balls.children[i];
+            for(let k = 0; k < j; k++){
+                if (ball !== balls.children[k]){
+                    var otherball = balls.children[k];
+                    ball.checkCollision(otherball);
+                }
+            }
+        }
         // if (x > 1){
         //     x = 0;
         // }
     }
 
     init();
-    animate()
+    animate();
 </script>
 </body>
 </html>
