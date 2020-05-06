@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wall.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall.js" beforeDir="false" afterPath="$PROJECT_DIR$/Wall.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +127,7 @@
       <workItem from="1588608551693" duration="10242000" />
       <workItem from="1588621425615" duration="83000" />
       <workItem from="1588621638499" duration="2683000" />
-      <workItem from="1588630811487" duration="8506000" />
+      <workItem from="1588630811487" duration="12886000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
