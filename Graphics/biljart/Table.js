@@ -1,9 +1,10 @@
 class Table {
-    constructor(width, height) {
-        this._width = width;
-        this._height = height;
-        this._location = THREE.Vector2(width/2, height/2);
+    constructor(width, height, scene) {
+        this._width = (width/1920)*52;
+        this._height = (height/1080)*30;
+        this._location = THREE.Vector2(this._width/2, this._height/2);
 
+        this.base = this.createBase();
         this.walls = new THREE.Group();
         this.pockets = new THREE.Group();
 
@@ -12,8 +13,8 @@ class Table {
 
     createBase(){
         const geometry = new THREE.PlaneGeometry(this._width, this._height);
-        const material = new THREE.MeshBasicMaterial({color:0xffffff});
-        return new THREE.Mesh(geometry, material);
+        const material = new THREE.MeshBasicMaterial({color:0x009900});
+        scene.add(new THREE.Mesh(geometry, material));
     }
 
 
@@ -24,12 +25,14 @@ class Table {
 
 
     createPockets(){
-        const pocket = new Pocket(x, y, radius);
-        this.pockets.add(pocket);
+        let xoffset = this._width/3
+        for(let i = -1; i < this._width;) {
+            const pocket = new Pocket(x, y, radius);
+            this.pockets.add(pocket);
+        }
     }
 
     initTable(){
-        this.createBase();
         this.createWalls();
         this.createPockets();
     }

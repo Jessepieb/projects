@@ -7,7 +7,8 @@
 <body>
 <div id="angle" style="position: absolute; color: white"></div>
 <script src="js/three.js"></script>
-<script src="js/OrbitControls.js"></script>
+<script src="Table.js"></script>
+<!--<script src="js/OrbitControls.js"></script>-->
 <script>
     //to do add orbit control
 
@@ -15,192 +16,15 @@
     var geometry, material, texture;
     const width = window.innerWidth;
     const height = window.innerHeight;
-
-    var table;
-    var balls = new THREE.Group();
-    var walls = new THREE.Group();
-    var pockets = new THREE.Group();
-
-    let amount = 5;
-    let textureId = 1;
-    var restart = 1;
-
-
-    class Wall{
-        constructor(x,y, width, height) {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
-
-        createWall(){
-            geometry = new THREE.BoxGeometry(this.width, this.height, 2);
-            texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
-            material = new THREE.MeshBasicMaterial({map: texture});
-            var wall = new THREE.Mesh(geometry, material);
-            wall.position.x = this.x;
-            wall.position.y = this.y;
-            return wall;
-        }
-    }
-
-    class Pocket{
-        constructor(xloc,yloc,w) {
-            this.xloc = xloc;
-            this.yloc = yloc;
-            this.pockRad = 60 * (w / 1920);
-        }
-
-        createPocket() {
-            geometry = new THREE.CylinderGeometry(this.pockRad, this.pockRad, 2);
-            material = new THREE.MeshBasicMaterial({color: 0x000000});
-            var pocket = new THREE.Mesh(geometry, material);
-            pocket.rotation.x = Math.PI / 2;
-            pocket.position.x = this.xloc;
-            pocket.position.y = this.yloc;
-            return pocket;
-        }
-    }
-
-    class Ball {
-        constructor(x, y) {
-            this.radius = 27 * (table.width / 1920);
-            // this.xDist = this.radius * 2.1;
-            // this.yDist = (this.radius * 2) + this.radius / 5;
-            this.sphere = null;
-            this.velocity = new THREE.Vector2(0,0);
-            this.x = x;
-            this.y = y;
-            this.CreateBall(this.x, this.y);
-        }
-
-        CreateBall() {
-            geometry = new THREE.SphereGeometry(this.radius, 32, 32);
-            texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
-            material = new THREE.MeshBasicMaterial({map: texture});
-            this.sphere = new THREE.Mesh(geometry, material);
-            this.sphere.position.x = (this.x);
-            this.sphere.position.y = (this.y);
-            this.sphere.position.z = this.radius;
-            // this.sphere.rotation.y += 11;
-            balls.add(this.sphere);
-            textureId++;
-
-        }
-
-        get getPosVec(){
-            return new THREE.Vector2(this.x, this.y);
-        }
-
-        setVec(newVector){
-            this.velocity = newVector;
-        }
-
-        static Move(){
-           this.x -= 0.2;
-           return null;
-        }
-
-       checkCollision(ball,otherObj){
-           const dx = otherObj.x - this.x;
-           const dy = otherObj.y - this.y;
-           const minDist = otherObj.radius + this.radius;
-
-           if (otherObj.getPosVec().distanceTo(ball.getPosVec()) < minDist){
-               const ang = Math.atan2(dy, dx);
-               const targetX = ball.getPosVec().x + Math.cos(ang) * minDist;
-               const targetY = ball.getPosVec().y + Math.sin(ang) * minDist;
-
-               const ax = (targetX - otherObj.getPosVec().x) * 0.05;
-               const ay = (targetY - otherObj.getPosVec().y) * 0.05;
-               this.velocity.x -= ax;
-               this.velocity.y -= ay;
-
-                otherObj.velocity.x += ax;
-                otherObj.velocity.y += ay;
-            }
-           return null;
-        }
-
-    }
-
-    class Table {
-        constructor() {
-            // this.table = new THREE.Group();
-            this.width = (innerWidth / 1920) * 55;
-            this.height = this.width / 2;
-            this.depth = 1.5;
-
-        }
-
-        initWalls() {
-            this.createWall(0, this.height / 2 + this.depth / 2, this.width, this.depth);
-            this.createWall(0, -1 * (this.height / 2 + this.depth / 2), this.width, this.depth);
-            this.createWall(this.height + this.depth / 2, 0, this.depth, this.height + (this.depth * 2));
-            this.createWall(-1 * (this.width / 2 + this.depth / 2), 0, this.depth, this.height + (this.depth * 2));
-            scene.add(walls);
-        }
-
-        createBase() {
-
-            geometry = new THREE.PlaneGeometry(this.width, this.height);
-            texture = new THREE.TextureLoader().load('models/textures/Base.jpg');
-            material = new THREE.MeshBasicMaterial({color: 0x009900});
-            scene.add(new THREE.Mesh(geometry, material));
-        }
-
-        createWall(xloc, yloc, width, depth) {
-            var wall = new Wall(xloc,yloc,width,depth).createWall();
-            walls.add(wall);
-        }
-
-        initPockets() {
-            for(let y = -1; y < 2;)
-            {
-                for (let x = -1; x < 2; x++){
-                    this.createPocket((this.width/2)*x,(this.height/2)*y);
-                }
-                y+=2;
-            }
-            scene.add(pockets);
-        }
-
-        createPocket(xloc, yloc) {
-            var pocket = new Pocket(xloc,yloc,this.width).createPocket();
-            pockets.add(pocket);
-        }
-
-    }
-
-    function allignBalls() {
-        const offset = table.width / 5;
-        balls.rotation.z = 11;
-        balls.position.x -= offset;
-    }
-
-    function spawnBalls() {
-        var dif = 0.5;
-        textureId = 1;
-        new Ball(0, 1);
-        for (let row = 2; row < amount + 1; row++) {
-            for (let col = 0; col < row; col++) {
-                new Ball((col - dif), row);
-                if (col === row - 1) {
-                    dif += 0.5;
-                }
-            }
-        }
-        scene.add(balls);
-        allignBalls();
-    }
-
-    function spawnTable() {
-        table = new Table();
-        table.createBase();
-        table.initWalls();
-        table.initPockets();
-    }
+    //
+    // var table;
+    // var balls = new THREE.Group();
+    // var walls = new THREE.Group();
+    // var pockets = new THREE.Group();
+    //
+    // let amount = 5;
+    // let textureId = 1;
+    // var restart = 1;
 
     function initCamera() {
         camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 1000);
@@ -215,41 +39,17 @@
     function init() {
         scene = new THREE.Scene();
         initCamera();
-        spawnTable();
-        spawnBalls();
+        scene.add(new Table(width, height, scene));
+        // spawnTable();
+        // spawnBalls();
         initRenderer();
         document.body.appendChild(renderer.domElement);
     }
-
-    var x = 0;
-
 
 
     function animate() {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
-        var j = balls.children.length;
-        // var test = new THREE.Vector2(1,2);
-        // angel.innerHTML = test;
-        var ball;
-        balls.children[0].position.y += 0.01;
-        balls.children[0].prototype.checkCollision(balls.children[0], balls.children[2]);
-        // angle.innerHTML = balls.children[0].x;
-        for (let i = 0; i < j; i++){
-            ball = balls.children[i];
-
-            // ball.Move();
-            for(let k = 0; k < j; k++){
-                if (ball !== balls.children[k]){
-                    var otherball = balls.children[k];
-                    ball.checkCollision(ball,otherball);
-                }
-            }
-        }
-
-        // if (x > 1){
-        //     x = 0;
-        // }
     }
 
     init();

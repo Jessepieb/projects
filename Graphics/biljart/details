@@ -1,0 +1,4 @@
+innerRect { width : 44, height : 22}
+outerRect { width : 52, height : 30}
+UpperLowerWall { width : 4, length : 44}
+sideWalls {width : 4, length : 22}
