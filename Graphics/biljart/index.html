@@ -64,17 +64,15 @@
     }
 
     class Ball {
-        constructor(col, row, txtID) {
+        constructor(x, y) {
             this.radius = 27 * (table.width / 1920);
-            this.xDist = this.radius * 2.1;
-            this.yDist = (this.radius * 2) + this.radius / 5;
+            // this.xDist = this.radius * 2.1;
+            // this.yDist = (this.radius * 2) + this.radius / 5;
             this.sphere = null;
             this.velocity = new THREE.Vector2(0,0);
-            this.dir = new THREE.Vector2(0,0);
-            this.col = col;
-            this.row = row;
-            this.txtID = txtID;
-            this.CreateBall(this.col, this.row);
+            this.x = x;
+            this.y = y;
+            this.CreateBall(this.x, this.y);
         }
 
         CreateBall() {
@@ -82,45 +80,47 @@
             texture = new THREE.TextureLoader().load('models/textures/Ball' + textureId + '.jpg');
             material = new THREE.MeshBasicMaterial({map: texture});
             this.sphere = new THREE.Mesh(geometry, material);
-            this.sphere.position.x = (this.xDist * this.col);
-            this.sphere.position.y = (this.yDist * -this.row);
+            this.sphere.position.x = (this.x);
+            this.sphere.position.y = (this.y);
+            this.sphere.position.z = this.radius;
             // this.sphere.rotation.y += 11;
             balls.add(this.sphere);
             textureId++;
 
         }
 
-        getPosVec(){
-            return new THREE.Vector2(this.position.x, this.position.y);
+        get getPosVec(){
+            return new THREE.Vector2(this.x, this.y);
         }
 
         setVec(newVector){
             this.velocity = newVector;
         }
 
-        Move(){
-            this.position.x += this.velocity.x;
-            this.position.y += this.velocity.y;
+        static Move(){
+           this.x -= 0.2;
+           return null;
         }
 
-        checkCollision(otherObj){
-            var dx = otherObj.position.x - this.position.x;
-            var dy = otherObj.position.y - this.position.y;
-            var minDist = otherObj.radius + this.radius;
+       checkCollision(ball,otherObj){
+           const dx = otherObj.x - this.x;
+           const dy = otherObj.y - this.y;
+           const minDist = otherObj.radius + this.radius;
 
-            if (otherObj.getVec().distanceTo(this.getPosVec()) < minDist){
-                var ang = Math.atan2(dy,dx);
-                var targetX = this.getPosVec().x + Math.cos(ang) *minDist;
-                var targetY = this.getPosVec().y + Math.sin(ang) *minDist;
+           if (otherObj.getPosVec().distanceTo(ball.getPosVec()) < minDist){
+               const ang = Math.atan2(dy, dx);
+               const targetX = ball.getPosVec().x + Math.cos(ang) * minDist;
+               const targetY = ball.getPosVec().y + Math.sin(ang) * minDist;
 
-                var ax = (targetX - otherObj.getPosVec().x) * 0.05;
-                var ay = (targetY - otherObj.getPosVec().y) * 0.05;
-                this.velocity.x -= ax;
-                this.velocity.y -= ay;
+               const ax = (targetX - otherObj.getPosVec().x) * 0.05;
+               const ay = (targetY - otherObj.getPosVec().y) * 0.05;
+               this.velocity.x -= ax;
+               this.velocity.y -= ay;
 
                 otherObj.velocity.x += ax;
                 otherObj.velocity.y += ay;
             }
+           return null;
         }
 
     }
@@ -231,19 +231,22 @@
         var j = balls.children.length;
         // var test = new THREE.Vector2(1,2);
         // angel.innerHTML = test;
-        var ball = balls.children[0];
-        ball.setVec(new THREE.Vector2(-0.1,-0.1));
-        ball.children[0].Move();
+        var ball;
+        balls.children[0].position.y += 0.01;
+        balls.children[0].prototype.checkCollision(balls.children[0], balls.children[2]);
         // angle.innerHTML = balls.children[0].x;
         for (let i = 0; i < j; i++){
             ball = balls.children[i];
+
+            // ball.Move();
             for(let k = 0; k < j; k++){
                 if (ball !== balls.children[k]){
                     var otherball = balls.children[k];
-                    ball.checkCollision(otherball);
+                    ball.checkCollision(ball,otherball);
                 }
             }
         }
+
         // if (x > 1){
         //     x = 0;
         // }
