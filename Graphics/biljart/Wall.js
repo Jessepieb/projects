@@ -8,7 +8,8 @@ class Wall {
         this._material = new THREE.MeshBasicMaterial({map:this._texture});
 
         this.mesh = new THREE.Mesh(this._geometry,this._material);
-        //this.updatePosition();
+
+        this.location = this._location;
     }
 
     get location(){
