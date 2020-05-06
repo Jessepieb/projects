@@ -8,6 +8,7 @@
 <div id="angle" style="position: absolute; color: white"></div>
 <script src="js/three.js"></script>
 <script src="Table.js"></script>
+<script src="Wall.js"></script>
 <!--<script src="js/OrbitControls.js"></script>-->
 <script>
     //to do add orbit control
@@ -39,7 +40,7 @@
     function init() {
         scene = new THREE.Scene();
         initCamera();
-        scene.add(new Table(width, height, scene));
+        const table = new Table(width, height, scene);
         // spawnTable();
         // spawnBalls();
         initRenderer();

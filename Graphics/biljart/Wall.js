@@ -8,6 +8,7 @@ class Wall {
         this._material = new THREE.MeshBasicMaterial({map:this._texture});
 
         this.mesh = new THREE.Mesh(this._geometry,this._material);
+        //this.updatePosition();
     }
 
     get location(){
@@ -16,6 +17,8 @@ class Wall {
 
     set location(newLoc){
         this._location = newLoc;
+        this.mesh.position.x = this._location.x;
+        this.mesh.position.y = this._location.y;
     }
 
     get dimensions(){
