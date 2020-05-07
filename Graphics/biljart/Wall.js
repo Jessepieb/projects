@@ -3,7 +3,7 @@ class Wall {
         this._location = new THREE.Vector2(x,y);
         this._dimensions = {width, depth};
 
-        this._geometry = new THREE.BoxGeometry(this.dimensions.width, this.dimensions.depth,2);
+        this._geometry = new THREE.BoxGeometry(this.dimensions.width, this.dimensions.depth,3);
         this._texture = new THREE.TextureLoader().load('models/textures/wood1.jpg');
         this._material = new THREE.MeshBasicMaterial({map:this._texture});
 
