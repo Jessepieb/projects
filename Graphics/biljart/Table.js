@@ -5,7 +5,7 @@ class Table {
         this._width = width;
         this._height = height;
         this.scene = scene;
-        //this._location = THREE.Vector2(this._width/2, this._height/2);
+        // this._location = THREE.Vector2(this._width/2, this._height/2);
 
         this.walls = new THREE.Group();
         this.pockets = new THREE.Group();
@@ -17,8 +17,11 @@ class Table {
         const h = this._heightScale * 30;
         const geometry = new THREE.PlaneGeometry(w, h);
         const material = new THREE.MeshBasicMaterial({color:'forestgreen'});
-        this.scene.add(new THREE.Mesh(geometry, material));
+        const mesh = new THREE.Mesh(geometry,material);
+        this.scene.add(mesh);
         this.initTable();
+
+        return mesh;
     }
 
 
