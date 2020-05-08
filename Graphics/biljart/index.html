@@ -19,15 +19,7 @@
     var geometry, material, texture;
     const width = window.innerWidth;
     const height = window.innerHeight;
-    //
-    // var table;
-    // var balls = new THREE.Group();
-    // var walls = new THREE.Group();
-    // var pockets = new THREE.Group();
-    //
-    // let amount = 5;
-    // let textureId = 1;
-    // var restart = 1;
+
 
     function initCamera() {
         camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 1000);
@@ -44,8 +36,7 @@
         initCamera();
         scene.background = new THREE.Color('lightgray');
         const table = new Table(width, height, scene);
-        //const ball = new Ball(width/2,width/height,20,"1", scene).mesh;
-        //scene.add(ball);
+        const ball = new Ball(0,0,32,"1", scene);
         initRenderer();
         document.body.appendChild(renderer.domElement);
     }

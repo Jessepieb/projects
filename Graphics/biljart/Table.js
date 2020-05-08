@@ -54,7 +54,6 @@ class Table {
 
     initTable(){
         this.createWalls();
-        scene.add(this.walls);
         this.createPockets();
     }
 }
