@@ -37,11 +37,11 @@
 
         scene.background = new THREE.Color('lightgray');
         const table = new Table(width, height, scene);
-        // const ball = new Ball(0,0,32,"1", scene);
+        const ball = new Ball(0,0,32,"1", scene);
         document.getElementById("label").innerHTML =
-                (table.mesh.position.x) +
-            "-"+(table.mesh.position.y)+
-            "-"+(table.mesh.position.z);
+                (ball.mesh.position.x) +
+            "-"+(ball.mesh.position.y)+
+            "-"+(ball.mesh.position.z);
 
         initCamera();
         initRenderer();
