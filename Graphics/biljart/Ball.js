@@ -1,16 +1,16 @@
 class Ball {
-    constructor(x,y,radius,txtId, scene) {
+    constructor(x, y, radius, txtId, scene) {
         this.scene = scene;
-        this._location = new THREE.Vector2(x,y);
+        this._location = new THREE.Vector2(x, y);
         // this.txtId = txtId;
         this._radius = radius;
 
-        this._velocity = new THREE.Vector2(0,0);
+        this._velocity = new THREE.Vector2(0, 0);
 
         // this.texture = new THREE.TextureLoader().load('models/textures/Ball' + this.txtId + '.jpg');
 
         this.geometry = new THREE.SphereGeometry(this._radius, 32, 32);
-        this.material = new THREE.MeshBasicMaterial({color:"white"});
+        this.material = new THREE.MeshBasicMaterial({color: "white"});
         // this.material = new THREE.MeshBasicMaterial({map:this.texture});
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -21,7 +21,7 @@ class Ball {
         this.scene.add(this.mesh);
     }
 
-    get location(){
+    get location() {
         return this._location;
     }
 
