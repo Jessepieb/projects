@@ -54,7 +54,8 @@
         requestAnimationFrame(animate);
         //balls[0].location = new THREE.Vector2(Math.sin(x),Math.cos(x));
         //x+= 0.1;
-        Wall.Collide(table.)
+        // Wall.Collide(table.)
+        Wall.Collide(table.walls[3], balls[0]);
         balls[0].Move();
         // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
         renderer.render(scene, camera);
