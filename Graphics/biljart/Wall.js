@@ -29,4 +29,11 @@ class Wall {
     set dimensions(newDim){
         this._dimensions = newDim;
     }
+
+    static Collide(wall, ball){
+        if ((ball.location.x + ball.radius) < (wall.location.x - wall.width)){
+            var newVel = new THREE.Vector2((ball.velocity.x*-1),ball.velocity.y);
+            ball.velocity = newVel;
+        }
+    }
 }

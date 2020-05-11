@@ -5,11 +5,11 @@ class Ball {
         this._radius = radius;
         this._velocity = new THREE.Vector2(0.01,0);
 
-        // this.texture = new THREE.TextureLoader().load('models/textures/Ball' + this.txtId + '.jpg');
+        this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
 
         this.geometry = new THREE.SphereBufferGeometry(this._radius, 32, 32);
-        this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
-        // this.material = new THREE.MeshBasicMaterial({map:this.texture});
+        // this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
+        this.material = new THREE.MeshBasicMaterial({map:this.texture});
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         //this.updateLoc();
@@ -27,15 +27,19 @@ class Ball {
         this.mesh.position.x = this._location.x;
         this.mesh.position.y = this._location.y;
     }
-    //
-    // get velocity(){
-    //     return this._velocity;
-    // }
-    //
-    // set velocity(newVel){
-    //     this._velocity = newVel;
-    // }
-    //
+
+    static Collide(otherObj){
+
+    }
+
+    get velocity(){
+        return this._velocity;
+    }
+
+    set velocity(newVel){
+        this._velocity = newVel;
+    }
+
     // get radius(){
     //     return this._radius;
     // }
