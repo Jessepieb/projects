@@ -16,10 +16,11 @@
     //to do add orbit control
 
     var camera, renderer, scene, controls;
-    var geometry, material, texture;
     const width = window.innerWidth;
     const height = window.innerHeight;
 
+    var balls = [];
+    const radius = 1;
 
     function initCamera() {
         camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 1000);
@@ -28,30 +29,32 @@
 
     function initRenderer() {
         renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(width, height);
     }
 
     function init() {
         scene = new THREE.Scene();
-        scene.add( new THREE.AmbientLight( 0x444444 ) );
+        //scene.add(new THREE.AmbientLight(0x444444));
 
         scene.background = new THREE.Color('lightgray');
         const table = new Table(width, height, scene);
-        const ball = new Ball(0,0,32,"1", scene);
-        document.getElementById("label").innerHTML =
-                (ball.mesh.position.x) +
-            "-"+(ball.mesh.position.y)+
-            "-"+(ball.mesh.position.z);
-
+        const ball = new Ball(0,0,radius, scene);
+        balls[0] = (ball);
+        //scene.add(balls);
         initCamera();
         initRenderer();
 
         document.body.appendChild(renderer.domElement);
     }
 
-
+    var x = 0;
     function animate() {
         requestAnimationFrame(animate);
+        //balls[0].location = new THREE.Vector2(Math.sin(x),Math.cos(x));
+        //x+= 0.1;
+
+        balls[0].Move();
+        // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
         renderer.render(scene, camera);
     }
 
