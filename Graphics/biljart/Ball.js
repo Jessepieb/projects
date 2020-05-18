@@ -3,7 +3,7 @@ class Ball {
         this._location = new THREE.Vector2(x, y);
         this.scene = scene;
         this._radius = radius;
-        this._velocity = new THREE.Vector2(0.01,0);
+        this._velocity = new THREE.Vector2(0,0);
 
         this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
 
