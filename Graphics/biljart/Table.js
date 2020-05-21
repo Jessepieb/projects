@@ -27,6 +27,7 @@ class Table {
         const geometry = new THREE.PlaneGeometry(w, h);
         const material = new THREE.MeshBasicMaterial({color:'forestgreen'});
         const mesh = new THREE.Mesh(geometry,material);
+        mesh.name = "Base";
         this.scene.add(mesh);
         this.initTable();
 
@@ -54,6 +55,7 @@ class Table {
         this.wallsMesh.add(wall2.mesh);
         this.wallsMesh.add(wall3.mesh);
         this.wallsMesh.add(wall4.mesh);
+        this.wallsMesh.name = "Walls";
         this.scene.add(this.wallsMesh);
 
     }
@@ -66,6 +68,7 @@ class Table {
             this.pockets[i+1][1] = (new Pocket((this._width/78)*i,(this._height/77)*-1,2));
             this.pocketsMesh.add((this.pockets[i+1][1]).mesh);
         }
+        this.pocketsMesh.name = "Pockets";
         this.scene.add(this.pocketsMesh);
     }
 

@@ -37,12 +37,4 @@ class Wall {
     get pockets(){
         return this.pockets;
     }
-
-    static Collide(wall, ball){
-        if ((ball.location.x + ball.radius) < (wall.location.x - wall.width)){
-            console.log("HIT!");
-            var newVel = new THREE.Vector2((ball.velocity.x*-1),ball.velocity.y);
-            ball.velocity = newVel;
-        }
-    }
 }
