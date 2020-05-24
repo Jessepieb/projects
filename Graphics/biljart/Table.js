@@ -78,21 +78,21 @@ class Table {
     }
 
     Collide(ball){
-        if (ball.location.y > 11){
-            const coll = new THREE.Vector2(1.0,-1.0);
+        if (ball.location.y > 11 && ball.velocity.y > 0){
+            const coll = new THREE.Vector2(1.,-1.);
             ball.velocity.multiply(coll);
         }
-        if (ball.location.y < -11){
-            const coll = new THREE.Vector2(1.0,-1.0);
+        if (ball.location.y < -11 && ball.velocity.y < 0){
+            const coll = new THREE.Vector2(1.,-1.);
             ball.velocity.multiply(coll);
         }
 
-        if (ball.location.x > 24){
-            const coll = new THREE.Vector2(-1.0,1.0);
+        if (ball.location.x > 24 && ball.velocity.x > 0){
+            const coll = new THREE.Vector2(-1.,1.);
             ball.velocity.multiply(coll);
         }
-        if (ball.location.x < -24){
-            const coll = new THREE.Vector2(-1.0,1.0);
+        if (ball.location.x < -23 && ball.velocity.x < 0){
+            const coll = new THREE.Vector2(-1.,1.);
             ball.velocity.multiply(coll);
         }
 

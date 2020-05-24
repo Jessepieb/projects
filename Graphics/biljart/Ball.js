@@ -1,27 +1,33 @@
 class Ball {
     constructor(x, y, radius, isOdd, scene) {
+
+        this.minSpeed = new THREE.Vector2(-0.2,-0.2);
+        this.maxSpeed = new THREE.Vector2(0.2,0.2);
         this.scene = scene;
 
         this._location = new THREE.Vector2(x, y);
         this._radius = radius;
         this._velocity = new THREE.Vector2(0, 0);
 
-        this._isOdd = isOdd;
+        //this._velocity.clamp(0,0.006);
 
-        if (this._isOdd){
+        this.isOdd = isOdd;
+
+        if (this.isOdd){
+            this.material = new THREE.MeshBasicMaterial({color: 0x0000ff});
 
         }
         else{
-            
+            this.material = new THREE.MeshBasicMaterial({color: 0xff0000});
         }
         // this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
+        //this.material = new THREE.MeshBasicMaterial({map: this.texture});
+
 
         this.geometry = new THREE.SphereBufferGeometry(this._radius, 32, 32);
-        this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
-        this.material = new THREE.MeshBasicMaterial({map: this.texture});
-
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        //this.updateLoc();
+
+
         this.location = this._location;
         this.mesh.position.z = 1;
         this.mesh.name = "Ball";
@@ -47,7 +53,8 @@ class Ball {
     }
 
     set velocity(newVel) {
-        this._velocity = newVel;
+        var corrected = newVel.clamp(this.minSpeed, this.maxSpeed);
+        this._velocity = corrected;
     }
 
     get radius() {
@@ -55,14 +62,15 @@ class Ball {
     }
 
     Move() {
+        this.velocity = this._velocity.clamp(this.minSpeed,this.maxSpeed);
         this.location = this._location.add(this._velocity);
-        if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
+        if (this._velocity.x > 0.005 || this._velocity.x < -0.0001) {
             this._velocity.x = this._velocity.x * 0.995;
         } else {
             this._velocity.x = 0;
         }
 
-        if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
+        if (this._velocity.y > 0.005 || this._velocity.y < -0.0001) {
             this._velocity.y = this._velocity.y * 0.995;
         } else {
             this._velocity.y = 0;
@@ -71,13 +79,13 @@ class Ball {
 
     applyForce(force) {
         this._velocity.add(force);
+        this.velocity = this.velocity.clamp(this.minSpeed,this.maxSpeed);
     }
 
     //
     Collide(otherObj) {
-        if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius) * 1.1) {
+        if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius)) {
             var newValue = this._velocity;
-
             this.applyForce(otherObj.velocity);
             otherObj.applyForce(newValue);
             this._velocity.multiply(new THREE.Vector2(-1., -1.));

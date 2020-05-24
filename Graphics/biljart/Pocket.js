@@ -30,8 +30,7 @@ class Pocket {
 
     Collide(ball){
         if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)){
-            //ball.destroy();
-            console.log("Ball sunk");
+            console.log("Ball sunk "+ ball.mesh.id);
         }
     }
 

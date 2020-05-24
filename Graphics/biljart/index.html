@@ -57,20 +57,16 @@
 
     function initBalls() {
         var x, y;
-        var offset = radius*2.1;
-        for (let i = -2; i < 3; i++) {
-            y = 0 - (offset*i);
-            // if (i % 2 != 0) {
-            //     for (let j = 0; j < i + 1; j++) {
-            //
-            //     }
-            // }
-            // else {
-            //
-            // }
-            x = -5;
-            var newBall = new Ball(x,y,radius,false,scene);
-            balls.push(newBall);
+        var offset = radius * 2.1 ;
+        isOdd = true;
+        for (let j = 5; j > 0; j--) {
+            for (let i = j * -0.5; i < j / 2.0; i++) {
+                y = 0 - (offset * (i + 0.5));
+                x = -5 -(offset *j);
+                var newBall = new Ball(x, y, radius, isOdd, scene);
+                balls.push(newBall);
+                isOdd = !isOdd;
+            }
         }
     }
 
@@ -83,7 +79,7 @@
         scene.background = new THREE.Color('lightgray');
 
         initTable();
-        const ball = new Ball(0, 0, radius, true, scene);
+        const ball = new Ball(14, 0, radius, true, scene);
         balls.push(ball);
         initBalls();
         //var que = new Que(ball.location.x,ball.location.y, scene);
@@ -102,17 +98,16 @@
 
     function checkKey(e) {
         e = e || window.event;
-        var currVel = balls[0].velocity;
         if (e.keyCode == '38') {
-            balls[0].applyForce(new THREE.Vector2(0, 0.04));
+            balls[0].applyForce(new THREE.Vector2(0, 0.06));
         } else if (e.keyCode == '40') {
-            balls[0].applyForce(new THREE.Vector2(0, -0.04));
+            balls[0].applyForce(new THREE.Vector2(0, -0.06));
         } else if (e.keyCode == '37') {
             // balls[0].mesh.rotate.x += 1;
-            balls[0].applyForce(new THREE.Vector2(-0.04, 0));
+            balls[0].applyForce(new THREE.Vector2(-0.06, 0));
 
         } else if (e.keyCode == '39') {
-            balls[0].applyForce(new THREE.Vector2(0.04, 0));
+            balls[0].applyForce(new THREE.Vector2(0.06, 0));
         }
 
 
@@ -132,20 +127,32 @@
 
     function checkCollision() {
         for (let i = 0; i < balls.length; i++) {
+            table.Collide(balls[i]);
+
             for (let j = 0; j < balls.length; j++) {
                 if (i != j) {
                     balls[i].Collide(balls[j]);
-                    balls[j].Move();
                 }
+                balls[j].Move();
             }
 
             for (let p = 0; p < 3; p++) {
-                table.pockets[p][0].Collide(balls[i]);
-                table.pockets[p][1].Collide(balls[i]);
+               try{
+                if (table.pockets[p][0].Collide(balls[i])||
+                    table.pockets[p][1].Collide(balls[i])){
+                    //scene.remove(balls[i].mesh.name);
+                    balls[i].mesh.remove();
+                }
             }
+            catch (e) {
+                console.log(e.toString());
+            }
+            }
+        }
+    }
 
-            table.Collide(balls[i]);
-
+    function updateMovement(){
+        for (let i = 0; i < balls.length; i++){
             balls[i].Move();
         }
     }
@@ -156,6 +163,8 @@
         raycaster.setFromCamera(mouse, camera);
 
         checkCollision();
+
+        updateMovement();
         controls.update();
         // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
         renderer.render(scene, camera);
