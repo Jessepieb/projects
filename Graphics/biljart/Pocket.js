@@ -10,6 +10,8 @@ class Pocket {
         this.mesh.rotateX(1.5);
         this.mesh.position.x = this._location.x;
         this.mesh.position.y = this._location.y;
+
+        this.mesh.name="Pocket";
     }
 
     get location(){
