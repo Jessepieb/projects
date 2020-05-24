@@ -1,14 +1,23 @@
 class Ball {
-    constructor(x, y, radius, scene) {
-        this._location = new THREE.Vector2(x, y);
+    constructor(x, y, radius, isOdd, scene) {
         this.scene = scene;
+
+        this._location = new THREE.Vector2(x, y);
         this._radius = radius;
         this._velocity = new THREE.Vector2(0, 0);
 
-        this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
+        this._isOdd = isOdd;
+
+        if (this._isOdd){
+
+        }
+        else{
+            
+        }
+        // this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
 
         this.geometry = new THREE.SphereBufferGeometry(this._radius, 32, 32);
-        // this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
+        this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
         this.material = new THREE.MeshBasicMaterial({map: this.texture});
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -47,7 +56,7 @@ class Ball {
 
     Move() {
         this.location = this._location.add(this._velocity);
-        if (this._velocity.x > 0.002 || this._velocity.x < -0.002) {
+        if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
             this._velocity.x = this._velocity.x * 0.995;
         } else {
             this._velocity.x = 0;
@@ -66,7 +75,7 @@ class Ball {
 
     //
     Collide(otherObj) {
-        if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius)) {
+        if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius) * 1.1) {
             var newValue = this._velocity;
 
             this.applyForce(otherObj.velocity);

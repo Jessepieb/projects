@@ -1,7 +1,0 @@
-class Balls {
-    constructor(props) {
-
-
-    }
-
-}

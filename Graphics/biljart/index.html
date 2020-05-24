@@ -55,24 +55,44 @@
         controls = new THREE.OrbitControls(camera, renderer.domElement);
     }
 
+    function initBalls() {
+        var x, y;
+        var offset = radius*2.1;
+        for (let i = -2; i < 3; i++) {
+            y = 0 - (offset*i);
+            // if (i % 2 != 0) {
+            //     for (let j = 0; j < i + 1; j++) {
+            //
+            //     }
+            // }
+            // else {
+            //
+            // }
+            x = -5;
+            var newBall = new Ball(x,y,radius,false,scene);
+            balls.push(newBall);
+        }
+    }
+
+    function initTable() {
+        table = new Table(width, height, scene);
+    }
+
     function init() {
         scene = new THREE.Scene();
         scene.background = new THREE.Color('lightgray');
 
-        table = new Table(width, height, scene);
-        const ball = new Ball(0, 0, radius, scene);
-        const ball2 = new Ball(-5, 0, radius, scene);
+        initTable();
+        const ball = new Ball(0, 0, radius, true, scene);
+        balls.push(ball);
+        initBalls();
         //var que = new Que(ball.location.x,ball.location.y, scene);
-        ball.mesh.name = "Ball";
-        ball2.mesh.name = "Ball2";
-        balls[0] = ball;
-        balls[1] = ball2;
-        //scene.add(balls);
 
         raycaster = new THREE.Raycaster()
 
         initCamera();
         initRenderer();
+
         initControls();
 
         document.body.appendChild(renderer.domElement);
@@ -142,7 +162,6 @@
     }
 
     init();
-    console.log(scene.children);
     animate();
 </script>
 </body>
