@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Three.js practice</title>
     <style>
-        html,body{
+        html, body {
             margin: 0px;
         }
-        canvas{
+
+        canvas {
             position: absolute;
             overflow: hidden;
         }
@@ -32,7 +33,7 @@
     var balls = [];
     const radius = 1;
 
-    var table,que;
+    var table, que;
 
     let controls;
 
@@ -51,7 +52,7 @@
     }
 
     function initControls() {
-        controls = new THREE.OrbitControls(camera,renderer.domElement);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
     }
 
     function init() {
@@ -59,10 +60,13 @@
         scene.background = new THREE.Color('lightgray');
 
         table = new Table(width, height, scene);
-        const ball = new Ball(0,0,radius, scene);
-        var que = new Que(ball.location.x,ball.location.y, scene);
+        const ball = new Ball(0, 0, radius, scene);
+        const ball2 = new Ball(-5, 0, radius, scene);
+        //var que = new Que(ball.location.x,ball.location.y, scene);
         ball.mesh.name = "Ball";
-        balls[0] = (ball);
+        ball2.mesh.name = "Ball2";
+        balls[0] = ball;
+        balls[1] = ball2;
         //scene.add(balls);
 
         raycaster = new THREE.Raycaster()
@@ -80,43 +84,58 @@
         e = e || window.event;
         var currVel = balls[0].velocity;
         if (e.keyCode == '38') {
-            balls[0].applyForce(new THREE.Vector2(0,0.04));
-        }
-        else if (e.keyCode == '40') {
-            balls[0].applyForce(new THREE.Vector2(0,-0.04));
-        }
-        else if (e.keyCode == '37') {
+            balls[0].applyForce(new THREE.Vector2(0, 0.04));
+        } else if (e.keyCode == '40') {
+            balls[0].applyForce(new THREE.Vector2(0, -0.04));
+        } else if (e.keyCode == '37') {
             // balls[0].mesh.rotate.x += 1;
-            balls[0].applyForce(new THREE.Vector2(-0.04,0));
+            balls[0].applyForce(new THREE.Vector2(-0.04, 0));
 
-        }
-        else if (e.keyCode == '39') {
-            balls[0].applyForce(new THREE.Vector2(0.04,0));
+        } else if (e.keyCode == '39') {
+            balls[0].applyForce(new THREE.Vector2(0.04, 0));
         }
 
 
     }
 
-    window.addEventListener('resize',() =>{
+    window.addEventListener('resize', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.aspect = window.innerWidth / window.innerHeight;
 
         camera.updateProjectionMatrix();
     })
 
-    window.addEventListener('mousemove',(event) =>{
-        mouse.x = event.x/window.innerWidth*2-1;
-        mouse.y = event.y/window.innerHeight*2-1;
+    window.addEventListener('mousemove', (event) => {
+        mouse.x = event.x / window.innerWidth * 2 - 1;
+        mouse.y = event.y / window.innerHeight * 2 - 1;
     })
+
+    function checkCollision() {
+        for (let i = 0; i < balls.length; i++) {
+            for (let j = 0; j < balls.length; j++) {
+                if (i != j) {
+                    balls[i].Collide(balls[j]);
+                    balls[j].Move();
+                }
+            }
+
+            for (let p = 0; p < 3; p++) {
+                table.pockets[p][0].Collide(balls[i]);
+                table.pockets[p][1].Collide(balls[i]);
+            }
+
+            table.Collide(balls[i]);
+
+            balls[i].Move();
+        }
+    }
 
     function animate() {
         requestAnimationFrame(animate);
 
-        raycaster.setFromCamera(mouse,camera);
+        raycaster.setFromCamera(mouse, camera);
 
-        //balls[0].location = new THREE.Vector2(Math.sin(x),Math.cos(x));
-
-        balls[0].Move();
+        checkCollision();
         controls.update();
         // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
         renderer.render(scene, camera);
