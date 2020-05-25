@@ -82,7 +82,7 @@
         const ball = new Ball(14, 0, radius, true, scene);
         balls.push(ball);
         initBalls();
-        //var que = new Que(ball.location.x,ball.location.y, scene);
+        var que = new Que(ball.location.x,ball.location.y, scene);
 
         raycaster = new THREE.Raycaster()
 
@@ -118,6 +118,10 @@
         camera.aspect = window.innerWidth / window.innerHeight;
 
         camera.updateProjectionMatrix();
+    })
+
+    window.addEventListener('mousedown',() =>{
+        que.location = new THREE.Vector2(mouse.x,mouse.y);
     })
 
     window.addEventListener('mousemove', (event) => {
@@ -163,7 +167,6 @@
         raycaster.setFromCamera(mouse, camera);
 
         checkCollision();
-
         updateMovement();
         controls.update();
         // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
