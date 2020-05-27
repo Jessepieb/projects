@@ -28,9 +28,27 @@ class Pocket {
         this._radius = newRad;
     }
 
-    Collide(ball){
-        if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)){
-            console.log("Ball sunk "+ ball.mesh.id);
+    Collide(ball, arrayLength) {
+        if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
+            switch (ball.ballsort) {
+                case ("black"):
+                    if (arrayLength > 2) {
+                        console.log("Game Over!")
+                    } else {
+                        console.log("Current player wins");
+                    }
+                    break;
+
+                case ("even"):
+                    break;
+
+                case("odd"):
+                    break;
+                default:
+                    ball.velocity = new THREE.Vector2(0, 0);
+                    ball.location = new THREE.Vector2(14, 0);
+            }
+            console.log("Ball sunk " + ball.ballsort);
         }
     }
 
