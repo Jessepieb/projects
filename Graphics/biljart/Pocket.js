@@ -28,7 +28,7 @@ class Pocket {
         this._radius = newRad;
     }
 
-    Collide(ball, arrayLength) {
+    Collide(ball, arrayLength, player) {
         if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
             switch (ball.ballsort) {
                 case ("black"):
@@ -40,10 +40,16 @@ class Pocket {
                     break;
 
                 case ("even"):
-                    break;
+                    if (player.isOdd){
+
+                    }
+                return true;
 
                 case("odd"):
-                    break;
+                    if (player.isOdd){
+                        player.score = player.score+1;
+                    }
+                    return true;
                 default:
                     ball.velocity = new THREE.Vector2(0, 0);
                     ball.location = new THREE.Vector2(14, 0);

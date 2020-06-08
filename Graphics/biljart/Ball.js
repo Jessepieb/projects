@@ -55,10 +55,6 @@ class Ball {
         this.mesh.position.y = this._location.y;
     }
 
-    static Collide(otherObj) {
-
-    }
-
     get velocity() {
         return this._velocity;
     }
@@ -76,13 +72,13 @@ class Ball {
         this.velocity = this._velocity.clamp(this.minSpeed, this.maxSpeed);
         this.location = this._location.add(this._velocity);
         if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
-            this._velocity.x = this._velocity.x * 0.99;
+            this._velocity.x = this._velocity.x * 0.985;
         } else {
             this._velocity.x = 0;
         }
 
         if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
-            this._velocity.y = this._velocity.y * 0.99;
+            this._velocity.y = this._velocity.y * 0.985;
         } else {
             this._velocity.y = 0;
         }
@@ -90,16 +86,21 @@ class Ball {
 
     applyForce(force) {
         this.velocity.add(force);
-        this.velocity = this.velocity.clamp(this.minSpeed, this.maxSpeed);
+        // this.velocity = this.velocity.clamp(this.minSpeed, this.maxSpeed);
     }
 
     //
     Collide(otherObj) {
         if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius)) {
             var newValue = this._velocity;
-            this.applyForce(otherObj.velocity);
+            var newOtherValue = otherObj.velocity;
+
+
+            this.applyForce(newOtherValue);
             otherObj.applyForce(newValue);
-            this._velocity.multiply(new THREE.Vector2(-1., -1.));
+
+            // this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
+            this._velocity.multiplyScalar(-0.985);
         }
     }
 

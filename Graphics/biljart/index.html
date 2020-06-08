@@ -23,6 +23,7 @@
 <script src="Wall.js"></script>
 <script src="Pocket.js"></script>
 <script src="Que.js"></script>
+<script src="Player.js"></script>
 <script src="js/OrbitControls.js"></script>
 <script>
 
@@ -34,6 +35,7 @@
     const radius = 0.8;
 
     var table, que;
+    var players = [];
 
     let controls;
 
@@ -91,6 +93,14 @@
         table = new Table(width, height, scene);
     }
 
+    function initPlayers() {
+        var player = new Player("Player1", true);
+        player.isOdd = true;
+        players.push(player);
+        player = new Player("player2", false);
+        players.push(player);
+    }
+
     function init() {
         scene = new THREE.Scene();
         scene.background = new THREE.Color('lightgray');
@@ -102,7 +112,7 @@
         //  var que = new Que(ball.location.x,ball.location.y, scene);
 
         raycaster = new THREE.Raycaster()
-
+        initPlayers();
         initCamera();
         initRenderer();
 
@@ -110,6 +120,8 @@
 
         document.body.appendChild(renderer.domElement);
     }
+
+
 
     document.onkeydown = checkKey;
 
@@ -146,6 +158,16 @@
         mouse.y = event.y / window.innerHeight * 2 - 1;
     })
 
+    function getCurrentPlayer() {
+        if (players[0].turn){
+            return players[0];
+        }
+        else{
+            return players[1];
+        }
+    }
+
+
     function checkCollision() {
         for (let i = 0; i < balls.length; i++) {
             table.Collide(balls[i]);
@@ -159,10 +181,13 @@
 
             for (let p = 0; p < 3; p++) {
                 try {
-                    if (table.pockets[p][0].Collide(balls[i], balls.length) ||
-                        table.pockets[p][1].Collide(balls[i], balls.length)) {
+                    if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer()) ||
+                        table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
                         //scene.remove(balls[i].mesh.name);
-                        balls[i].mesh.remove();
+                        scene.remove(balls[i].mesh);
+                        // scene.update();
+                        delete balls[i];    
+                        console.log(balls)
                     }
                 } catch (e) {
                     console.log(e.toString());
@@ -176,6 +201,8 @@
             balls[i].Move();
         }
     }
+
+
 
     function animate() {
         requestAnimationFrame(animate);
