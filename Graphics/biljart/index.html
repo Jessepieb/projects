@@ -31,7 +31,7 @@
     const height = window.innerHeight;
 
     var balls = [];
-    const radius = 1;
+    const radius = 0.8;
 
     var table, que;
 
@@ -49,23 +49,40 @@
     function initRenderer() {
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(width, height);
+
     }
 
     function initControls() {
         controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+
     }
 
     function initBalls() {
         var x, y;
-        var offset = radius * 2.1 ;
-        isOdd = true;
+        var offset = radius * 2.1;
+        let count = 0;
+        let isOdd = false;
+
         for (let j = 5; j > 0; j--) {
             for (let i = j * -0.5; i < j / 2.0; i++) {
                 y = 0 - (offset * (i + 0.5));
-                x = -5 -(offset *j);
-                var newBall = new Ball(x, y, radius, isOdd, scene);
-                balls.push(newBall);
-                isOdd = !isOdd;
+                x = -5 - (offset * j);
+                if (count == 10) {
+                    var newBall = new Ball(x, y, radius, scene, "black");
+                    balls.push(newBall);
+                } else {
+                    var ballsort;
+                    if (isOdd) {
+                        ballsort = "odd";
+                    } else {
+                        ballsort = "even";
+                    }
+                    var newBall = new Ball(x, y, radius, scene, ballsort);
+                    balls.push(newBall);
+                    isOdd = !isOdd;
+                }
+                count++;
             }
         }
     }
@@ -79,10 +96,10 @@
         scene.background = new THREE.Color('lightgray');
 
         initTable();
-        const ball = new Ball(14, 0, radius, true, scene);
+        const ball = new Ball(14, 0, radius, scene);
         balls.push(ball);
         initBalls();
-        var que = new Que(ball.location.x,ball.location.y, scene);
+        //  var que = new Que(ball.location.x,ball.location.y, scene);
 
         raycaster = new THREE.Raycaster()
 
@@ -119,10 +136,10 @@
 
         camera.updateProjectionMatrix();
     })
-
-    window.addEventListener('mousedown',() =>{
-        que.location = new THREE.Vector2(mouse.x,mouse.y);
-    })
+    //
+    // window.addEventListener('mousedown',() =>{
+    //     que.location = new THREE.Vector2(mouse.x,mouse.y);
+    // })
 
     window.addEventListener('mousemove', (event) => {
         mouse.x = event.x / window.innerWidth * 2 - 1;
@@ -134,29 +151,28 @@
             table.Collide(balls[i]);
 
             for (let j = 0; j < balls.length; j++) {
-                if (i != j) {
+                if (i !== j) {
                     balls[i].Collide(balls[j]);
                 }
                 balls[j].Move();
             }
 
             for (let p = 0; p < 3; p++) {
-               try{
-                if (table.pockets[p][0].Collide(balls[i])||
-                    table.pockets[p][1].Collide(balls[i])){
-                    //scene.remove(balls[i].mesh.name);
-                    balls[i].mesh.remove();
+                try {
+                    if (table.pockets[p][0].Collide(balls[i], balls.length) ||
+                        table.pockets[p][1].Collide(balls[i], balls.length)) {
+                        //scene.remove(balls[i].mesh.name);
+                        balls[i].mesh.remove();
+                    }
+                } catch (e) {
+                    console.log(e.toString());
                 }
-            }
-            catch (e) {
-                console.log(e.toString());
-            }
             }
         }
     }
 
-    function updateMovement(){
-        for (let i = 0; i < balls.length; i++){
+    function updateMovement() {
+        for (let i = 0; i < balls.length; i++) {
             balls[i].Move();
         }
     }

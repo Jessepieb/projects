@@ -1,24 +1,31 @@
 class Ball {
-    constructor(x, y, radius, isOdd, scene) {
+    constructor(x, y, radius, scene, ballsort) {
 
-        this.minSpeed = new THREE.Vector2(-0.2,-0.2);
-        this.maxSpeed = new THREE.Vector2(0.2,0.2);
+        this.minSpeed = new THREE.Vector2(-0.2, -0.2);
+        this.maxSpeed = new THREE.Vector2(0.2, 0.2);
         this.scene = scene;
 
         this._location = new THREE.Vector2(x, y);
         this._radius = radius;
         this._velocity = new THREE.Vector2(0, 0);
 
+        this._ballsort = ballsort;
+
         //this._velocity.clamp(0,0.006);
 
-        this.isOdd = isOdd;
+        switch (this._ballsort) {
+            case("black"):
+                this.material = new THREE.MeshBasicMaterial({color: 0x000000});
+                break;
+            case("odd"):
+                this.material = new THREE.MeshBasicMaterial({color: 0x0000ff});
+                break;
+            case("even"):
+                this.material = new THREE.MeshBasicMaterial({color: 0xff0000});
+                break;
+            default:
+                this.material = new THREE.MeshBasicMaterial({color: 0xffffff});
 
-        if (this.isOdd){
-            this.material = new THREE.MeshBasicMaterial({color: 0x0000ff});
-
-        }
-        else{
-            this.material = new THREE.MeshBasicMaterial({color: 0xff0000});
         }
         // this.texture = new THREE.TextureLoader().load('models/textures/Ball2.jpg');
         //this.material = new THREE.MeshBasicMaterial({map: this.texture});
@@ -32,6 +39,10 @@ class Ball {
         this.mesh.position.z = 1;
         this.mesh.name = "Ball";
         this.scene.add(this.mesh);
+    }
+
+    get ballsort() {
+        return this._ballsort;
     }
 
     get location() {
@@ -62,24 +73,24 @@ class Ball {
     }
 
     Move() {
-        this.velocity = this._velocity.clamp(this.minSpeed,this.maxSpeed);
+        this.velocity = this._velocity.clamp(this.minSpeed, this.maxSpeed);
         this.location = this._location.add(this._velocity);
-        if (this._velocity.x > 0.005 || this._velocity.x < -0.0001) {
-            this._velocity.x = this._velocity.x * 0.995;
+        if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
+            this._velocity.x = this._velocity.x * 0.99;
         } else {
             this._velocity.x = 0;
         }
 
-        if (this._velocity.y > 0.005 || this._velocity.y < -0.0001) {
-            this._velocity.y = this._velocity.y * 0.995;
+        if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
+            this._velocity.y = this._velocity.y * 0.99;
         } else {
             this._velocity.y = 0;
         }
     }
 
     applyForce(force) {
-        this._velocity.add(force);
-        this.velocity = this.velocity.clamp(this.minSpeed,this.maxSpeed);
+        this.velocity.add(force);
+        this.velocity = this.velocity.clamp(this.minSpeed, this.maxSpeed);
     }
 
     //
