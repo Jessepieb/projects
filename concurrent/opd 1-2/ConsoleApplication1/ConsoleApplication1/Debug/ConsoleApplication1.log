@@ -1,4 +1,7 @@
-﻿  ConsoleApplication1.cpp
-d:\github\projects\concurrent\opd 1-2\consoleapplication1\consoleapplication1\consoleapplication1.cpp(11): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
-d:\github\projects\concurrent\opd 1-2\consoleapplication1\consoleapplication1\consoleapplication1.cpp(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  pch.cpp
+  ConsoleApplication1.cpp
+D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(11,65): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
+D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(11,40): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
+D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(53,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(53,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ConsoleApplication1.vcxproj -> D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\Debug\ConsoleApplication1.exe
