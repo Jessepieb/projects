@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\Users\Jesse\source\repos\SortTimer\Sorter.cpp(24,21): warning C4018: '<': signed/unsigned mismatch
+D:\Users\Jesse\source\repos\SortTimer\Sorter.cpp(25,22): warning C4018: '<': signed/unsigned mismatch
+  SortTimer.vcxproj -> D:\Users\Jesse\source\repos\SortTimer\Debug\SortTimer.exe
