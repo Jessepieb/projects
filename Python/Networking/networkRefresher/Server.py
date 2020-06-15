@@ -36,6 +36,7 @@ class Server:
 			try:
 				request = clientsocket.recv(1024)
 				print(f"[{addr[0]}:{addr[1]}] : {request.decode('utf-8')}")
+				
 			except:
 				clientsocket.close()
 				print(f"[-]{addr[0]}:{addr[1]} left")
