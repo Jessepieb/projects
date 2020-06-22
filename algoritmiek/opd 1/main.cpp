@@ -1,9 +1,9 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
-#include "../../../../Users/Jesse/source/repos/SortTimer/Sorter.cpp"
+#include "SortTimer/Sorter.cpp"
 
-const int result = 200;
+const int result = 100;
 void meassure(size_t size){
    std::ofstream testfile;
     testfile.open("test.csv", std::ofstream::trunc);
@@ -33,6 +33,6 @@ void meassure(size_t size){
 }
 int main() {
 
-    meassure(10000);
+    meassure(5000);
     return 0;
 }

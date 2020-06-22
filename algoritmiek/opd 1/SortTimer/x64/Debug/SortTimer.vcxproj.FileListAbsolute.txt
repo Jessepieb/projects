@@ -1,0 +1,2 @@
+D:\GitHub\projects\algoritmiek\opd 1\SortTimer\x64\Debug\SortTimer.exe
+D:\GitHub\projects\algoritmiek\opd 1\SortTimer\x64\Debug\SortTimer.pdb

@@ -23,8 +23,8 @@ public:
 	void BubbleSort() {
 		for (int i = 0; i < arr.size(); i++) {
 			for (int j = 1; j < arr.size(); j++) {
-				if (arr[j - 1] > arr[j]) {
-					iter_swap(&arr[j - 1], &arr[j]);
+				if (arr[short(j-1)] > arr[j]) {
+					iter_swap(&arr[short(j-1)], &arr[j]);
 				}
 			}
 		}
