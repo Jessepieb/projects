@@ -2,11 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/.vs/PegGame/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/.vs/PegGame/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/.vs/PegGame/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/.vs/PegGame/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/8puzzle.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/8puzzle.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/PegGame.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/PegGame.lastbuildstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/PegGame.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/vc142.idb" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/vc142.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/vc142.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/PegGame/Debug/vc142.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/ipch/AutoPCH/15a19e7a452d5d86/MAIN.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 1/SortTimer/.vs/SortTimer/v16/ipch/AutoPCH/15a19e7a452d5d86/MAIN.ipch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/.vs/bfs/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/.vs/bfs/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/.vs/bfs/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/.vs/bfs/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/Debug/bfs.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.pch" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.pch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/bfs.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/bfs.lastbuildstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/bfs.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/stdafx.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../algoritmiek/opd 2/bfs/bfs/Debug/stdafx.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/Browse.VC.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +114,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -149,6 +181,13 @@
       <workItem from="1590703481753" duration="1197000" />
       <workItem from="1590750591806" duration="5760000" />
       <workItem from="1590761609079" duration="3758000" />
+      <workItem from="1593624529803" duration="28000" />
+      <workItem from="1593624604620" duration="146000" />
+      <workItem from="1595946277692" duration="45000" />
+      <workItem from="1595946393879" duration="416000" />
+      <workItem from="1595946894453" duration="30000" />
+      <workItem from="1597238799310" duration="6000" />
+      <workItem from="1597238820626" duration="566000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -168,7 +207,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="biljart update" />
@@ -181,14 +220,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="728" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588787500838" />
-    <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588779878182">
+    <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1595946313883">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588779878182" />
-    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584047449278">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584047449278" />
+    <state x="1120" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595946313883" />
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1590074883096">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -197,16 +232,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1065" y="108" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590330444725" />
-    <state x="1065" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582985824724" />
     <state width="506" height="466" key="DebuggerActiveHint" timestamp="1590593867597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="506" height="466" key="DebuggerActiveHint/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590336326279" />
     <state width="506" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1590593867597" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583154806878">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583154806878" />
     <state width="1899" height="347" key="GridCell.Tab.0.bottom" timestamp="1590779987897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -287,24 +317,10 @@
     </state>
     <state width="1877" height="346" key="GridCell.Tab.3.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1589235747553" />
     <state width="1899" height="347" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590779987897" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1583175126415">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="163" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583175126415" />
-    <state x="1161" y="268" width="540" height="524" key="StructurePopup" timestamp="1582924375276">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1161" y="268" width="540" height="524" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582285121983" />
-    <state x="1161" y="268" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1582924375276" />
-    <state x="661" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1582985682422">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582985682422" />
     <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588780413097">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588780413097" />
-    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582727097773" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1590596584813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -314,7 +330,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1589807029500" />
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582998063284" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/biljart$index_html.dat" NAME="index.html Coverage Results" MODIFIED="1590349448165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

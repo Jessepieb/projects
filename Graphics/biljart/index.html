@@ -5,7 +5,7 @@
     <title>Three.js practice</title>
     <style>
         html, body {
-            margin: 0px;
+            margin: 0;
         }
 
         canvas {
@@ -63,15 +63,16 @@
     function initBalls() {
         var x, y;
         var offset = radius * 2.1;
-        let count = 0;
+        var count = 0;
         let isOdd = false;
+        var newBall;
 
         for (let j = 5; j > 0; j--) {
             for (let i = j * -0.5; i < j / 2.0; i++) {
                 y = 0 - (offset * (i + 0.5));
                 x = -5 - (offset * j);
-                if (count == 10) {
-                    var newBall = new Ball(x, y, radius, scene, "black");
+                if (count === 10) {
+                    newBall = new Ball(x, y, radius, scene, "black");
                     balls.push(newBall);
                 } else {
                     var ballsort;
@@ -80,7 +81,7 @@
                     } else {
                         ballsort = "even";
                     }
-                    var newBall = new Ball(x, y, radius, scene, ballsort);
+                    newBall = new Ball(x, y, radius, scene, ballsort);
                     balls.push(newBall);
                     isOdd = !isOdd;
                 }
@@ -127,15 +128,15 @@
 
     function checkKey(e) {
         e = e || window.event;
-        if (e.keyCode == '38') {
+        if (e.keyCode === '38') {
             balls[0].applyForce(new THREE.Vector2(0, 0.06));
-        } else if (e.keyCode == '40') {
+        } else if (e.keyCode === '40') {
             balls[0].applyForce(new THREE.Vector2(0, -0.06));
-        } else if (e.keyCode == '37') {
+        } else if (e.keyCode === '37') {
             // balls[0].mesh.rotate.x += 1;
             balls[0].applyForce(new THREE.Vector2(-0.06, 0));
 
-        } else if (e.keyCode == '39') {
+        } else if (e.keyCode === '39') {
             balls[0].applyForce(new THREE.Vector2(0.06, 0));
         }
 
