@@ -3,7 +3,10 @@ library(SnowballC)
 
 #read data from csv file
 twts = read.csv("twts.csv", stringsAsFactors = FALSE)
+<<<<<<< HEAD
 twts = subset(twts, select = c(Sentiment, Tweet))
+=======
+>>>>>>> 02cf27680df4edddae9db3601e19e128b3d863df
 #extract only the needed data
 #twts = subset(twts, select = c(Sentiment, Tweet))
 

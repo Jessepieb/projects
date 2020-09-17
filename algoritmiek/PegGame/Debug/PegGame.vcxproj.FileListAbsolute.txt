@@ -1,0 +1,2 @@
+D:\GitHub\projects\algoritmiek\PegGame\Debug\PegGame.exe
+D:\GitHub\projects\algoritmiek\PegGame\Debug\PegGame.pdb
