@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/ipch/2c81fdbc36940b3b.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/.vs/ConsoleApplication1/v16/ipch/2c81fdbc36940b3b.ipch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/Debug/ConsoleApplication1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/mandelbrot.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/../../concurrent/opd 1-2/ConsoleApplication1/ConsoleApplication1/mandelbrot.ppm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +57,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -83,6 +85,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -149,6 +152,9 @@
       <workItem from="1590703481753" duration="1197000" />
       <workItem from="1590750591806" duration="5760000" />
       <workItem from="1590761609079" duration="3758000" />
+      <workItem from="1599056075450" duration="30000" />
+      <workItem from="1599056212848" duration="42000" />
+      <workItem from="1599056366298" duration="56000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -168,7 +174,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="biljart update" />
