@@ -56,7 +56,7 @@ public:
         complex<float> point((float)x / width - 1.5, (float)y / height - 0.5);
         complex<float> z(0, 0);
         unsigned int nb_iter = 0;
-        unsigned int max_iter = 96;
+        unsigned int max_iter = 140;
         while (abs(z) < 2 && nb_iter <= max_iter) {
             z = z * z + point;
             nb_iter++;
@@ -78,20 +78,14 @@ public:
             for (size_t x = 0; x < _cols; x++)
                 out << _matrix[y][x].r << _matrix[y][x].g << _matrix[y][x].b;
     }
+
 };
 
-//void thread_task(PPMImage *img, int start, int size, int width, int height) {
-//    for (int y = start; y < (start+size); y++) {
-//        for (int x = 0; x < width; x++) {
-//            *img[y][x].r = *img[y][x].g = img[y][x].b = img.value(x, y, width, height);
-//        }
-//    }
-//}
 
-void thread_task(PPMImage* img, int start, int size, int width, int height) {
+void thread_task(PPMImage &image,int start, int size, int width, int height) {
     for (int y = start; y < (start + size); y++) {
         for (int x = 0; x < width; x++) {
-            img[y][x].r = img[y][x].g = img[y][x].b = img.value(x, y, width, height);
+            image[y][x].r = image[y][x].g = image[y][x].b = image.value(x, y, width, height);
         }
     }
 }
@@ -102,26 +96,22 @@ int main()
     const unsigned height = 1600;
 
     PPMImage image(height, width);
+    const unsigned workerAmount = 8;
+    int blocksize = height / workerAmount;
     vector<thread> workers;
     auto start = chrono::steady_clock::now();
+    for (size_t i = 0; i < workerAmount; i++)
+    {   
+        workers.push_back(thread(thread_task, std::ref(image), blocksize*i, blocksize, width, height));
+    }
+    
+    for (auto &th : workers)
+    {
+        th.join();
+    }
 
-    //image.thread_task(0, 1600, 1600, 1600);
-    auto t1 = thread(thread_task,&image,0, 1600, 1600, 1600);
-    t1.join();
-    //for (int y = 0; y < height; y++) {
-    //    for (int x = 0; x < width; x++) {
-    //        image[y][x].r = image[y][x].g = image[y][x].b = image.value(x,y,width,height);
-    //    }
-    //}
-
-    //for (int y = 0; y < height; y++) {
-    //    for (int x = 0; x < width; x++) {
-    //        image[y][x].r = image[y][x].g = image[y][x].b = image.value(x,y,width,height);
-    //    }
-    //}
-
-    image.save("mandelbrot.ppm");
     auto end = chrono::steady_clock::now();
+    image.save("mandelbrot.ppm");
     chrono::duration<double> elapsed = end - start;
     cout << "elapsed time: " << elapsed.count() << "s\n";
     return 0;

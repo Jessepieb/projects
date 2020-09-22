@@ -10,9 +10,7 @@ int coord_to_idx(int r, int c)
 
 typename std::vector<Vertex>::const_iterator Graph::cbegin(Vertex v) const
 {
-    // clear all vertices
     adjacents.clear();
-
 
     for (int r = 0; r < 5; r++) {
         for (int c = 0; c <= r; c++) {
@@ -59,7 +57,6 @@ Vertex doMove(const Vertex& v, const Move& m)
     n[coord_to_idx((std::get<0>(m) + std::get<2>(m)) / 2, (std::get<1>(m) + std::get<3>(m)) / 2)] = false;
     n[coord_to_idx(std::get<2>(m), std::get<3>(m))] = true;
 
-    // return vertex which will be placed in adjacents
     return n;
 }
 
@@ -75,7 +72,7 @@ std::ostream& operator<<(std::ostream& os, const Vertex& state)
     return os;
 }
 
-Path dfs(const Graph& graph, const Vertex& start, std::function<bool(const Vertex & vertex)> goalTest)
+Path dfs(const Graph& graph, const Vertex& start, std::function<bool(const Vertex& vertex)> goalTest)
 {
     std::stack<Path> queue;
     std::set<Vertex> visited;
@@ -107,46 +104,9 @@ Path dfs(const Graph& graph, const Vertex& start, std::function<bool(const Verte
     }
     return Path();
 }
-#include <list>
+
 Path bfs(const Graph& graph, const Vertex& start, std::function<bool(const Vertex& vertex)> goalTest)
 {
-	std::list<Path> queue;
-	std::set<Vertex> visited;
-	Path path;
-
-	queue.push_front(path);
-
-	while (!queue.empty()) {
-
-		path = queue.front();
-		queue.pop_front();
-
-		Vertex last;
-
-		if (path.size() == 0)
-		{
-			last = start;
-		}
-		else
-		{
-			last = path.back();
-		}
-
-		if (goalTest(last))
-		{
-			return path;
-		}
-
-		if (visited.find(last) == visited.end()) {
-			visited.insert(last);
-			for (auto it = graph.cbegin(last); it != graph.cend(); it++) {
-				Path n = path;
-				n.push_back(*it);
-				queue.push_back(n);
-			}
-		}
-	}
-	return Path();
 }
 
 int main()
@@ -169,4 +129,3 @@ int main()
 
     return 0;
 }
-

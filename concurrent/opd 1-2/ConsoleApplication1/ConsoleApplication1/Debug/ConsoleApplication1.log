@@ -1,10 +1,4 @@
 ﻿  ConsoleApplication1.cpp
-D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(56,72): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
-D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(56,47): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
-D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(94,26): error C2228: left of '.r' must have class/struct/union
-D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(94,26): message : type is 'T *'
-          with
-          [
-              T=RGB<unsigned char>
-          ]
-D:\Github\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(94,26): message : did you intend to use '->' instead?
+D:\GitHub\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(56,72): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
+D:\GitHub\projects\concurrent\opd 1-2\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(56,47): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
+  ConsoleApplication1.vcxproj -> D:\GitHub\projects\concurrent\opd 1-2\ConsoleApplication1\Debug\ConsoleApplication1.exe
