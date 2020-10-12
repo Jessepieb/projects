@@ -51,6 +51,7 @@ typename std::vector<Vertex>::const_iterator Graph::cend() const
 
 Vertex doMove(const Vertex& v, const Move& m)
 {
+    // Vertex = State = bool array
     Vertex n = v;
 
     n[coord_to_idx(std::get<0>(m), std::get<1>(m))] = false;
@@ -107,6 +108,7 @@ Path dfs(const Graph& graph, const Vertex& start, std::function<bool(const Verte
 
 Path bfs(const Graph& graph, const Vertex& start, std::function<bool(const Vertex& vertex)> goalTest)
 {
+    return Path();
 }
 
 int main()
@@ -119,7 +121,7 @@ int main()
            true, true, true, true,
         true, true, true, true, true };
 
-    Path path = bfs(graph, start, [](Vertex v) { return (std::count(v.begin(), v.end(), true) == 1); });
+    Path path = dfs(graph, start, [](Vertex v) { return (std::count(v.begin(), v.end(), true) == 1); });
 
     std::cout << start << std::endl;
     for (auto it = path.cbegin(); it != path.cend(); it++)
