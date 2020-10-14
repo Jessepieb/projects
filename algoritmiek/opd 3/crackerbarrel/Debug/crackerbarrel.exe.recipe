@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
+<<<<<<< HEAD
   <ProjectOutputs>D:\Github\projects\algoritmiek\opd 3\crackerbarrel\Debug\crackerbarrel.exe</ProjectOutputs>
+=======
+  <ProjectOutputs>D:\GitHub\projects\algoritmiek\opd 3\crackerbarrel\Debug\crackerbarrel.exe</ProjectOutputs>
+>>>>>>> bb2332457702892f05b15421a6e40210b6a0b9cd
   <ContentFiles></ContentFiles>
   <SatelliteDlls></SatelliteDlls>
   <NonRecipeFileRefs></NonRecipeFileRefs>

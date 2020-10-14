@@ -101,7 +101,7 @@ int main()
     vector<thread> workers;
     auto start = chrono::steady_clock::now();
     for (size_t i = 0; i < workerAmount; i++)
-    {   
+    {
         workers.push_back(thread(thread_task, std::ref(image), blocksize*i, blocksize, width, height));
     }
     
