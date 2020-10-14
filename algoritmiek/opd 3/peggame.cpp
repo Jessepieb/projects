@@ -107,6 +107,7 @@ Path dfs(const Graph& graph, const Vertex& start, std::function<bool(const Verte
 
 Path bfs(const Graph& graph, const Vertex& start, std::function<bool(const Vertex& vertex)> goalTest)
 {
+    return Path();
 }
 
 int main()
@@ -119,7 +120,8 @@ int main()
            true, true, true, true,
         true, true, true, true, true };
 
-    Path path = bfs(graph, start, [](Vertex v) { return (std::count(v.begin(), v.end(), true) == 1); });
+    //Path path = bfs(graph, start, [](Vertex v) { return (std::count(v.begin(), v.end(), true) == 1); });
+    Path path = dfs(graph, start, [](Vertex v) { return (std::count(v.begin(), v.end(), true) == 1); });
 
     std::cout << start << std::endl;
     for (auto it = path.cbegin(); it != path.cend(); it++)
