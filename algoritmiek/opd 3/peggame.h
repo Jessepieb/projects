@@ -11,11 +11,13 @@
 #include <algorithm>
 #include <stack>
 #include <set>
+#include <queue>
 
 using Move = std::tuple<int, int, int, int>;
 using State = std::array<bool, 15>;
 
 using Vertex = State;
+//path is vector of bool arrays
 using Path = std::vector<Vertex>;
 
 class Graph

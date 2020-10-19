@@ -1,0 +1,2 @@
+D:\Users\Jesse\source\repos\MazeSolveBFS\x64\Debug\MazeSolveBFS.exe
+D:\Users\Jesse\source\repos\MazeSolveBFS\x64\Debug\MazeSolveBFS.pdb
