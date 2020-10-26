@@ -1,2 +1,4 @@
 D:\Users\Jesse\source\repos\MazeSolveBFS\x64\Debug\MazeSolveBFS.exe
 D:\Users\Jesse\source\repos\MazeSolveBFS\x64\Debug\MazeSolveBFS.pdb
+D:\GitHub\projects\algoritmiek\opd 3\MazeSolveBFS\x64\Debug\MazeSolveBFS.exe
+D:\GitHub\projects\algoritmiek\opd 3\MazeSolveBFS\x64\Debug\MazeSolveBFS.pdb
