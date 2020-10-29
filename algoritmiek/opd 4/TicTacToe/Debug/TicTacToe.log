@@ -1,3 +1,7 @@
-﻿  ttt_mc.cpp
-C:\Users\Jesse\Downloads\ttt_mc.cpp(36,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  TicTacToe.vcxproj -> D:\Users\Jesse\source\repos\TicTacToe\Debug\TicTacToe.exe
+﻿  ttt.cpp
+  ttt_mc.cpp
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(33,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(17): error C4716: 'mcTrial': must return a value
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(25): error C4716: 'getBestMove': must return a value
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(29): error C4716: 'mcMove': must return a value
