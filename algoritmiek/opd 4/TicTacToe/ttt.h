@@ -13,6 +13,7 @@
 
 enum class Player { X, O, None };
 using Move = int;
+//State is our playing grid
 using State = std::array<Player, 9>;
 
 // used to get a random element from a container

@@ -14,6 +14,7 @@ enum class PlayerType { Human, Computer };
 
 State mcTrial(const State& board)
 {
+	return State();
 }
 
 void mcUpdateScores(std::array<int, 9>& scores, const State& board, const Player& player)
@@ -22,10 +23,14 @@ void mcUpdateScores(std::array<int, 9>& scores, const State& board, const Player
 
 Move getBestMove(const std::array<int, 9>& scores, const State& board)
 {
+	return Move();
 }
 
 Move mcMove(const State& board, const Player& player)
 {
+	Move bestMove = getBestMove();
+
+	return Move();
 }
 
 int main()

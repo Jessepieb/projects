@@ -1,2 +1,4 @@
 D:\Users\Jesse\source\repos\TicTacToe\Debug\TicTacToe.exe
 D:\Users\Jesse\source\repos\TicTacToe\Debug\TicTacToe.pdb
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.pdb
