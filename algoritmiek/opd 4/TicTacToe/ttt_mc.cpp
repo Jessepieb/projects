@@ -26,11 +26,13 @@ Move getBestMove(const std::array<int, 9>& scores, const State& board)
 	return Move();
 }
 
+
 Move mcMove(const State& board, const Player& player)
 {
-	Move bestMove = getBestMove();
-
-	return Move();
+	std::vector<Move>posMove = getMoves(board);
+	auto randMove = select_randomly(posMove.begin(), posMove.end());
+	int& result = randMove[0];
+	return (Move)result;
 }
 
 int main()
