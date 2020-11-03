@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <map>
+#include<list>
 #include "ttt.h"
 
 unsigned const n_trials = 1000;
@@ -12,9 +13,25 @@ unsigned const mc_other = 1;
 
 enum class PlayerType { Human, Computer };
 
+
+Move mcMove(const State& board, const Player& player)
+{
+	return Move();
+}
+
+
+//simulation
 State mcTrial(const State& board)
 {
-	return State();
+	State newboard = board;
+	std::vector<Move> posMove = getMoves(newboard);
+	while (posMove.size() > 0) {
+		auto randMove = select_randomly(posMove.begin(), posMove.end());
+		int& result = randMove[0];
+		newboard = doMove(newboard, result);
+		posMove = getMoves(newboard);
+	}
+	return newboard;
 }
 
 void mcUpdateScores(std::array<int, 9>& scores, const State& board, const Player& player)
@@ -23,17 +40,11 @@ void mcUpdateScores(std::array<int, 9>& scores, const State& board, const Player
 
 Move getBestMove(const std::array<int, 9>& scores, const State& board)
 {
+
 	return Move();
 }
 
 
-Move mcMove(const State& board, const Player& player)
-{
-	std::vector<Move>posMove = getMoves(board);
-	auto randMove = select_randomly(posMove.begin(), posMove.end());
-	int& result = randMove[0];
-	return (Move)result;
-}
 
 int main()
 {
@@ -48,6 +59,7 @@ int main()
 		Player::None, Player::None, Player::None,
 		Player::None, Player::None, Player::None };
 	std::cout << board << std::endl;
+
 
 	std::vector<Move> moves = getMoves(board);
 	while (moves.size() > 0) {
@@ -67,11 +79,12 @@ int main()
 			board = doMove(board, m);
 		}
 		else {
-			board = doMove(board, mcMove(board, getCurrentPlayer(board)));
+			board = mcTrial(board);
 		}
 		std::cout << board << std::endl;
 		moves = getMoves(board);
 	}
+	std::cout << getWinner(board) << std::endl;
 
 	return 0;
 }

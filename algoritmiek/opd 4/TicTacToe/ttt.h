@@ -8,13 +8,28 @@
 #include <vector>
 #include <ctime>
 #include <random>
+#include <memory>
 #include <iterator>
 #include <iostream>
+#include <vector>
 
 enum class Player { X, O, None };
 using Move = int;
 //State is our playing grid
 using State = std::array<Player, 9>;
+
+class Node {
+public:
+    State state;
+    std::unique_ptr<Node> root;
+    std::vector<Node> children;
+};
+
+class Tree {
+public:
+    Node root;
+};
+
 
 // used to get a random element from a container
 template<typename Iter, typename RandomGenerator>
@@ -39,5 +54,7 @@ State doMove(const State& state, const Move& m);
 Player getWinner(const State& state);
 std::vector<Move> getMoves(const State& state);
 
+
 #endif // TTT_H
 #pragma once
+ 
