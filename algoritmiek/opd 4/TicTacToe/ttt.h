@@ -11,12 +11,20 @@
 #include <memory>
 #include <iterator>
 #include <iostream>
-#include <vector>
+#include <list>
+
 
 enum class Player { X, O, None };
 using Move = int;
 //State is our playing grid
-using State = std::array<Player, 9>;
+using Board = std::array<Player, 9>;
+
+class State {
+public:
+    Board board;
+    int visitCount;
+    double winscore; 
+};
 
 class Node {
 public:
@@ -28,6 +36,12 @@ public:
 class Tree {
 public:
     Node root;
+};
+
+class UCB {
+public:
+    static double UCBvalue(int totalvisit, double nodewinscore, int nodevisit);
+    static Node findBestNodeUCB(Node node);
 };
 
 
@@ -46,13 +60,13 @@ Iter select_randomly(Iter start, Iter end) {
     return select_randomly(start, end, gen);
 }
 
-std::ostream& operator<<(std::ostream& os, const State& state);
+std::ostream& operator<<(std::ostream& os, const Board& state);
 std::ostream& operator<<(std::ostream& os, const Player& player);
 
-Player getCurrentPlayer(const State& state);
-State doMove(const State& state, const Move& m);
-Player getWinner(const State& state);
-std::vector<Move> getMoves(const State& state);
+Player getCurrentPlayer(const Board& state);
+Board doMove(const Board& state, const Move& m);
+Player getWinner(const Board& state);
+std::vector<Move> getMoves(const Board& state);
 
 
 #endif // TTT_H

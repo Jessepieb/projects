@@ -1,3 +1,3 @@
 ﻿  ttt_mc.cpp
-D:\GitHub\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(51,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GitHub\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(68,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   TicTacToe.vcxproj -> D:\GitHub\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe
