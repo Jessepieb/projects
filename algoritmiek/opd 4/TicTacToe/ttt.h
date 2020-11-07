@@ -18,6 +18,8 @@ enum class Player { X, O, None };
 using Move = int;
 //State is our playing grid
 using Board = std::array<Player, 9>;
+class Node;
+
 
 class State {
 public:
@@ -29,11 +31,15 @@ public:
 class Node {
 public:
     State state;
-    std::unique_ptr<Node> root;
+    Node* root;
     std::vector<Node> children;
+
+    Node(State s) {
+        this->state = s;
+    };
 };
 
-class Tree {
+class Tree { 
 public:
     Node root;
 };

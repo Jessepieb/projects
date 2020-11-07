@@ -30,14 +30,27 @@ Board mcTrial(const Board& board)
 
 Move mcMove(const Board& board, const Player& player)
 {
+	Tree tree = Tree();
+	Node rootNode = tree.
 	mcTrial(board);
 	return Move();
 }
 
+void expandNode(Node node) {
+	std::vector<Move> posmoves = getMoves(node.state.board);
+
+	for () {
+		Node newNode = new Node()
+		node.children.push_back();
+	}
+}
+
+//backpropagation
 void mcUpdateScores(std::array<int, 9>& scores, const Board& board, const Player& player)
 {
 }
 
+//selection
 Move getBestMove(const std::array<int, 9>& scores, const Board& board)
 {
 
@@ -53,20 +66,19 @@ double UCB::UCBvalue(int totalvisit, double nodewinscore, int nodevisit) {
 }
 
 Node UCB::findBestNodeUCB(Node node) {
-	const Node& np;
+	//const std::vector<Node>::iterator np;
+	unsigned np;
+	double max = -1;
 	int parentvisit = node.state.visitCount;
-	double max = 0;
-	for (int i = 0; i<node.children.size(); i++)
+	for (unsigned it = 0; it != node.children.size(); it++)
 	{
-		double result = UCB::UCBvalue(parentvisit,node.children[i].state.winscore, node.children[i].state.visitCount);
-		if (result > max) {
-			max = result;
-			np = const_cast<Node&>(node.children[i]);
-		}
-	};
-	return np;
+		double result = UCB::UCBvalue(parentvisit, node.children[it].state.winscore, node.children[it].state.visitCount);
+		if (result > max) { max = result; np = it; }
 
-	return Node();
+		//double result = UCB::UCBvalue(parentvisit,it -> state.winscore, it -> state.visitCount);
+	};
+	auto& n = node.children[np];
+	return Node();;
 }
 
 int main()
