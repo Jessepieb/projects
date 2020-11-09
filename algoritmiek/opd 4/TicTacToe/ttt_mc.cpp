@@ -31,17 +31,20 @@ Board mcTrial(const Board& board)
 Move mcMove(const Board& board, const Player& player)
 {
 	Tree tree = Tree();
-	Node rootNode = tree.
+	Node rootNode = tree.root;
 	mcTrial(board);
 	return Move();
 }
 
-void expandNode(Node node) {
+void expandNode(Node node, Board board) {
 	std::vector<Move> posmoves = getMoves(node.state.board);
 
-	for () {
-		Node newNode = new Node()
-		node.children.push_back();
+	for (Move m : posmoves) {
+		State s = State();
+		s.board = doMove(board, m);
+
+		Node newNode = Node(s,&node);
+		node.children.push_back(newNode);
 	}
 }
 
@@ -58,11 +61,11 @@ Move getBestMove(const std::array<int, 9>& scores, const Board& board)
 }
 
 
-double UCB::UCBvalue(int totalvisit, double nodewinscore, int nodevisit) {
-	if (nodevisit == 0) {
+double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
+	if (nodeVisit == 0) {
 		return INT_MAX;
 	}
-	return ((double)nodewinscore) / (double)nodevisit + 1.41 * (log(totalvisit) / (double)nodevisit);
+	return ((double)nodeWinscore) / (double)nodeVisit + 1.41 * (log(totalVisit) / (double)nodeVisit);
 }
 
 Node UCB::findBestNodeUCB(Node node) {
@@ -74,11 +77,9 @@ Node UCB::findBestNodeUCB(Node node) {
 	{
 		double result = UCB::UCBvalue(parentvisit, node.children[it].state.winscore, node.children[it].state.visitCount);
 		if (result > max) { max = result; np = it; }
-
-		//double result = UCB::UCBvalue(parentvisit,it -> state.winscore, it -> state.visitCount);
 	};
 	auto& n = node.children[np];
-	return Node();;
+	return n;
 }
 
 int main()

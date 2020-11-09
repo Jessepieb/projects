@@ -25,23 +25,31 @@ class State {
 public:
     Board board;
     int visitCount;
-    double winscore; 
+    double winscore;
+
+    State() {};
+    ~State() {};
 };
 
 class Node {
 public:
     State state;
-    Node* root;
+    Node* root = NULL;
     std::vector<Node> children;
+    Node() {};
 
-    Node(State s) {
-        this->state = s;
+    Node(State s, Node* r) {
+        this->state = s; this->root = r;
     };
+
+    ~Node() {};
 };
 
 class Tree { 
 public:
     Node root;
+    Tree() {};
+    ~Tree() {};
 };
 
 class UCB {
@@ -66,7 +74,7 @@ Iter select_randomly(Iter start, Iter end) {
     return select_randomly(start, end, gen);
 }
 
-std::ostream& operator<<(std::ostream& os, const Board& state);
+std::ostream& operator<<(std::ostream& os, const Board& state); 
 std::ostream& operator<<(std::ostream& os, const Player& player);
 
 Player getCurrentPlayer(const Board& state);
