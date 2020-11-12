@@ -13,6 +13,25 @@ unsigned const mc_other = 1;
 
 enum class PlayerType { Human, Computer };
 
+//Steps:
+/*
+1. Selection with UCB from tree root (getBestMove)
+2. if leaf Node (No children and no terminal state), expand into possible nodes (expandNode)
+3. from these nodes, take random node and playout, this results in a win, loss or tie (mcTrail)
+4. up wincounter and visitcounter for node and do so recursively for it's parents (updateScored)
+*/
+
+
+bool inProgress(Board b) {
+	Player getWin = getWinner(b);
+	if (getWin == Player::None && getMoves(b).size() > 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 //simulation
 Board mcTrial(const Board& board)
 {
@@ -30,19 +49,20 @@ Board mcTrial(const Board& board)
 
 Move mcMove(const Board& board, const Player& player)
 {
-	Tree tree = Tree();
-	Node rootNode = tree.root;
+	
 	mcTrial(board);
 	return Move();
 }
 
-void expandNode(Node node, Board board) {
+//expansion
+void expandNode(Node node) {
 	std::vector<Move> posmoves = getMoves(node.state.board);
 
 	for (Move m : posmoves) {
-		State s = State();
-		s.board = doMove(board, m);
-
+		
+		Board newboard = node.state.board;
+		newboard = doMove(newboard, m);
+		State s = State(newboard,0,0);
 		Node newNode = Node(s,&node);
 		node.children.push_back(newNode);
 	}
@@ -56,7 +76,25 @@ void mcUpdateScores(std::array<int, 9>& scores, const Board& board, const Player
 //selection
 Move getBestMove(const std::array<int, 9>& scores, const Board& board)
 {
+	Node rootNode = Node(State(board, 0, 0), NULL);
+	Tree tree = Tree(rootNode);
+	
+	unsigned i = 0;
+	rootNode = tree.root;
 
+	while (i < n_trials) {
+		Node promisingNode = UCB::findBestNodeUCT(rootNode);
+
+		if (inProgress(promisingNode.state.board)) {
+			expandNode(promisingNode);
+		}
+		Node exploreNode;
+		if (promisingNode.children.size() > 0) {
+			//exploreNode = promisingNode.children[select_randomly(promisingNode.children.begin(), promisingNode.children.end())];
+		}
+		i++;
+	}
+	
 	return Move();
 }
 
@@ -68,7 +106,7 @@ double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
 	return ((double)nodeWinscore) / (double)nodeVisit + 1.41 * (log(totalVisit) / (double)nodeVisit);
 }
 
-Node UCB::findBestNodeUCB(Node node) {
+Node UCB::findBestNodeUCT(Node node) {
 	//const std::vector<Node>::iterator np;
 	unsigned np;
 	double max = -1;

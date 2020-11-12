@@ -28,18 +28,23 @@ public:
     double winscore;
 
     State() {};
+    State(Board b, int visCount, double winScore) {
+        this->board = b;
+        this->visitCount = visCount;
+        this->winscore = winScore;
+    };
     ~State() {};
 };
 
 class Node {
 public:
     State state;
-    Node* root = NULL;
+    Node* parent = NULL;
     std::vector<Node> children;
     Node() {};
 
     Node(State s, Node* r) {
-        this->state = s; this->root = r;
+        this->state = s; this->parent = r;
     };
 
     ~Node() {};
@@ -49,13 +54,14 @@ class Tree {
 public:
     Node root;
     Tree() {};
+    Tree(Node r) { this->root = r; };
     ~Tree() {};
 };
 
 class UCB {
 public:
     static double UCBvalue(int totalvisit, double nodewinscore, int nodevisit);
-    static Node findBestNodeUCB(Node node);
+    static Node findBestNodeUCT(Node node);
 };
 
 
