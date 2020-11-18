@@ -46,6 +46,10 @@ public:
     Node(State s, Node* r) {
         this->state = s; this->parent = r;
     };
+    
+    Node getBestChildNode() {
+
+    };
 
     ~Node() {};
 };

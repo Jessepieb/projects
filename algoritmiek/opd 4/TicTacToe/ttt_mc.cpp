@@ -18,7 +18,7 @@ enum class PlayerType { Human, Computer };
 1. Selection with UCB from tree root (getBestMove)
 2. if leaf Node (No children and no terminal state), expand into possible nodes (expandNode)
 3. from these nodes, take random node and playout, this results in a win, loss or tie (mcTrail)
-4. up wincounter and visitcounter for node and do so recursively for it's parents (updateScored)
+4. up wincounter and visitcounter for node and do so recursively for it's parents (updateScores)
 */
 
 
@@ -37,7 +37,7 @@ Board mcTrial(const Board& board)
 {
 	Board newboard = board;
 	std::vector<Move> posMove = getMoves(newboard);
-	while (posMove.size() > 0) {
+	while (inProgress(newboard)) {
 		auto randMove = select_randomly(posMove.begin(), posMove.end());
 		int& result = randMove[0];
 		newboard = doMove(newboard, result);
@@ -90,14 +90,22 @@ Move getBestMove(const std::array<int, 9>& scores, const Board& board)
 		}
 		Node exploreNode;
 		if (promisingNode.children.size() > 0) {
-			//exploreNode = promisingNode.children[select_randomly(promisingNode.children.begin(), promisingNode.children.end())];
+			auto iter = select_randomly(promisingNode.children.begin(), promisingNode.children.end());
+			exploreNode = promisingNode.children[i];
 		}
+		Board playout = mcTrial(exploreNode.state.board);
+		//backprop
 		i++;
 	}
+
+	Node Bestnode = rootNode;
 	
 	return Move();
 }
 
+static void getBestChildNode() {
+
+}
 
 double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
 	if (nodeVisit == 0) {
@@ -108,15 +116,15 @@ double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
 
 Node UCB::findBestNodeUCT(Node node) {
 	//const std::vector<Node>::iterator np;
-	unsigned np;
+	std::vector<Node>::iterator np;
 	double max = -1;
 	int parentvisit = node.state.visitCount;
-	for (unsigned it = 0; it != node.children.size(); it++)
+	for (std::vector<Node>::iterator it = node.children.begin(); it != node.children.end(); ++it)
 	{
-		double result = UCB::UCBvalue(parentvisit, node.children[it].state.winscore, node.children[it].state.visitCount);
-		if (result > max) { max = result; np = it; }
+		double result = UCB::UCBvalue(parentvisit,it->state.winscore, it->state.visitCount);
+		if (result > max) { max = result; np = (std::vector<Node>::iterator) it; }
 	};
-	auto& n = node.children[np];
+	auto& n = *np;
 	return n;
 }
 
