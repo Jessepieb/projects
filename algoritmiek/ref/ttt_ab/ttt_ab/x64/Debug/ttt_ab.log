@@ -1,0 +1,4 @@
+﻿  ttt_ab.cpp
+d:\users\wijbe jan 2\documents\school\algoritmiek\ttt_ab\ttt_ab\ttt_ab\ttt_ab.cpp(82): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ttt_ab.vcxproj -> D:\Users\Wijbe Jan 2\Documents\School\Algoritmiek\ttt_ab\ttt_ab\x64\Debug\ttt_ab.exe
+  ttt_ab.vcxproj -> D:\Users\Wijbe Jan 2\Documents\School\Algoritmiek\ttt_ab\ttt_ab\x64\Debug\ttt_ab.pdb (Partial PDB)

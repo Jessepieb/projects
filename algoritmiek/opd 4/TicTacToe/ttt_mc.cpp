@@ -23,7 +23,7 @@ enum class PlayerType { Human, Computer };
 
 bool inProgress(Board& b) {
 	Player getWin = getWinner(b);
-	if (getMoves(b).size() > 0) {
+	if (getMoves(b).size() > 0 && getWin == Player::None) {
 		return true;
 	}
 	else {
@@ -109,14 +109,13 @@ double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
 
 Move getBestMove(const Board& board)
 {
-	Node rootNode = Node(State(board, NULL), NULL);
-	Tree tree = Tree(rootNode);
+	Tree tree = Tree(Node(State(board, NULL), NULL));
 
 	unsigned i = 0;
-	rootNode = tree.root;
+	Node* rootNode = &tree.root;
 
 	while (i < n_trials) {
-		Node promisingNode = selectPromNode(rootNode);
+		Node promisingNode = selectPromNode(*rootNode);
 
 		if (inProgress(promisingNode.state.board)) {
 			expandNode(promisingNode);
@@ -124,14 +123,14 @@ Move getBestMove(const Board& board)
 		Node exploreNode = promisingNode;
 		if (exploreNode.children.size() > 0) {
 			auto iter = select_randomly(exploreNode.children.begin(), exploreNode.children.end());
-			exploreNode = iter;
+			exploreNode = *iter;
 		}
 		Board playout = mcTrial(exploreNode.state.board);
 		backpropagation(exploreNode, playout);
 		i++;
 	}
 
-	Node Bestnode = getBestChildNode(rootNode);
+	Node Bestnode = getBestChildNode(*rootNode);
 
 	return Bestnode.state.move;
 }
