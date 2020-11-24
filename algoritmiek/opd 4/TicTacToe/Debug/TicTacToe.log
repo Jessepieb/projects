@@ -1,4 +1,58 @@
-﻿  ttt_mc.cpp
-D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(125,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  LINK : D:\Github\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe not found or not built by the last incremental link; performing full link
-  TicTacToe.vcxproj -> D:\Github\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe
+﻿  ttt.cpp
+  ttt_mc.cpp
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(49,34): error C2664: 'void std::vector<Node *,std::allocator<Node *>>::push_back(_Ty &&)': cannot convert argument 1 from 'Node' to 'const _Ty &'
+          with
+          [
+              _Ty=Node *
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(49,34): message : Reason: cannot convert from 'Node' to 'const _Ty'
+          with
+          [
+              _Ty=Node *
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(49,27): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(716,10): message : see declaration of 'std::vector<Node *,std::allocator<Node *>>::push_back'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(97,37): error C2679: binary '=': no operator found which takes a right-hand operand of type '_Ty' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=Node *
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt.h(58,1): message : could be 'Node &Node::operator =(Node &&)'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt.h(58,1): message : or       'Node &Node::operator =(const Node &)'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(97,37): message : while trying to match the argument list '(Node, _Ty)'
+          with
+          [
+              _Ty=Node *
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(127,23): error C2679: binary '=': no operator found which takes a right-hand operand of type 'Node *' (or there is no acceptable conversion)
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt.h(58,1): message : could be 'Node &Node::operator =(Node &&)'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt.h(58,1): message : or       'Node &Node::operator =(const Node &)'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(127,23): message : while trying to match the argument list '(Node, Node *)'
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(144,3): error C2440: 'initializing': cannot convert from 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' to 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
+          with
+          [
+              _Ty=Node *
+          ]
+          and
+          [
+              _Ty=Node
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(144,39): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(144,89): error C2678: binary '!=': no operator found which takes a left-hand operand of type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=Node
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(152,21): message : could be 'bool std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>::operator !=(const std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> &) const'
+          with
+          [
+              _Ty=Node
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\random(2034,24): message : or       'bool std::operator !=(const std::bernoulli_distribution &,const std::bernoulli_distribution &)' [found using argument-dependent lookup]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(144,89): message : while trying to match the argument list '(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>)'
+          with
+          [
+              _Ty=Node
+          ]
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(154,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...

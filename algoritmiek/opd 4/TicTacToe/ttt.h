@@ -23,23 +23,28 @@ class Node;
 
 class State {
 public:
+    Move move;
     Board board;
     int visitCount;
     double winscore;
 
     State() {};
-    State(Board b, int visCount, double winScore) {
+    State(Board b, Move m) {
         this->board = b;
-        this->visitCount = visCount;
-        this->winscore = winScore;
+        this->visitCount = 0;
+        this->winscore = 0;
+        this->move = m;
     };
-    ~State() {};
+
+    void addScore(int i) {
+        this->winscore += i;
+    }
 };
 
 class Node {
 public:
     State state;
-    Node* parent = NULL;
+    Node* parent = nullptr;
     std::vector<Node> children;
     Node() {};
 
@@ -50,8 +55,6 @@ public:
     Node getBestChildNode() {
 
     };
-
-    ~Node() {};
 };
 
 class Tree { 

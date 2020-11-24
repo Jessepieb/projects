@@ -6,7 +6,6 @@
 #include <map>
 #include<list>
 #include "ttt.h"
-
 unsigned const n_trials = 1000;
 unsigned const mc_match = 1;
 unsigned const mc_other = 1;
@@ -22,17 +21,34 @@ enum class PlayerType { Human, Computer };
 */
 
 
-bool inProgress(Board b) {
+bool inProgress(Board& b) {
 	Player getWin = getWinner(b);
-	if (getWin == Player::None && getMoves(b).size() > 0) {
+	if (getMoves(b).size() > 0) {
 		return true;
 	}
 	else {
 		return false;
 	}
 }
+Node selectPromNode(Node& rootnode) {
+	Node node = rootnode;
+	while (node.children.size() != 0) {
+		node = UCB::findBestNodeUCT(node);
+	}
+	return node;
+}
+void expandNode(Node& node) {
+	std::vector<Move> posmoves = getMoves(node.state.board);
 
-//simulation
+	for (Move m : posmoves) {
+
+		Board newboard = node.state.board;
+		newboard = doMove(newboard, m);
+		State s = State(newboard, m);
+		Node newNode = Node(s, &node);
+		node.children.push_back(newNode);
+	}
+}
 Board mcTrial(const Board& board)
 {
 	Board newboard = board;
@@ -42,10 +58,21 @@ Board mcTrial(const Board& board)
 		int& result = randMove[0];
 		newboard = doMove(newboard, result);
 		posMove = getMoves(newboard);
-		std::cout << newboard << std::endl;
+		//std::cout << newboard << std::endl;
 	}
 	return newboard;
 }
+void backpropagation(Node n, Board b) {
+	Node* tempNode = &n;
+	while (tempNode != nullptr) {
+		tempNode->state.visitCount++;
+		if (getWinner(b) == Player::X) {
+			tempNode->state.addScore(1);
+		}
+		tempNode = tempNode->parent;
+	}
+};
+
 
 Move mcMove(const Board& board, const Player& player)
 {
@@ -54,57 +81,23 @@ Move mcMove(const Board& board, const Player& player)
 	return Move();
 }
 
-//expansion
-void expandNode(Node node) {
-	std::vector<Move> posmoves = getMoves(node.state.board);
+//void mcUpdateScores(std::array<int, 9>& scores, const Board& board, const Player& player)
+//{
+//}
 
-	for (Move m : posmoves) {
-		
-		Board newboard = node.state.board;
-		newboard = doMove(newboard, m);
-		State s = State(newboard,0,0);
-		Node newNode = Node(s,&node);
-		node.children.push_back(newNode);
-	}
-}
 
-//backpropagation
-void mcUpdateScores(std::array<int, 9>& scores, const Board& board, const Player& player)
-{
-}
 
-//selection
-Move getBestMove(const std::array<int, 9>& scores, const Board& board)
-{
-	Node rootNode = Node(State(board, 0, 0), NULL);
-	Tree tree = Tree(rootNode);
-	
-	unsigned i = 0;
-	rootNode = tree.root;
-
-	while (i < n_trials) {
-		Node promisingNode = UCB::findBestNodeUCT(rootNode);
-
-		if (inProgress(promisingNode.state.board)) {
-			expandNode(promisingNode);
+Node getBestChildNode(Node& parentNode) {
+	int max = 0;
+	Node bestNode = parentNode;
+	for (size_t i = 0; i < parentNode.children.size(); i++)
+	{
+		if (parentNode.children[i].state.visitCount > max) {
+			max = parentNode.children[i].state.visitCount;
+			bestNode = parentNode.children[i];
 		}
-		Node exploreNode;
-		if (promisingNode.children.size() > 0) {
-			auto iter = select_randomly(promisingNode.children.begin(), promisingNode.children.end());
-			exploreNode = promisingNode.children[i];
-		}
-		Board playout = mcTrial(exploreNode.state.board);
-		//backprop
-		i++;
 	}
-
-	Node Bestnode = rootNode;
-	
-	return Move();
-}
-
-static void getBestChildNode() {
-
+	return bestNode;
 }
 
 double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
@@ -114,18 +107,46 @@ double UCB::UCBvalue(int totalVisit, double nodeWinscore, int nodeVisit) {
 	return ((double)nodeWinscore) / (double)nodeVisit + 1.41 * (log(totalVisit) / (double)nodeVisit);
 }
 
+Move getBestMove(const Board& board)
+{
+	Node rootNode = Node(State(board, NULL), NULL);
+	Tree tree = Tree(rootNode);
+
+	unsigned i = 0;
+	rootNode = tree.root;
+
+	while (i < n_trials) {
+		Node promisingNode = selectPromNode(rootNode);
+
+		if (inProgress(promisingNode.state.board)) {
+			expandNode(promisingNode);
+		}
+		Node exploreNode = promisingNode;
+		if (exploreNode.children.size() > 0) {
+			auto iter = select_randomly(exploreNode.children.begin(), exploreNode.children.end());
+			exploreNode = iter;
+		}
+		Board playout = mcTrial(exploreNode.state.board);
+		backpropagation(exploreNode, playout);
+		i++;
+	}
+
+	Node Bestnode = getBestChildNode(rootNode);
+
+	return Bestnode.state.move;
+}
+
+
 Node UCB::findBestNodeUCT(Node node) {
-	//const std::vector<Node>::iterator np;
-	std::vector<Node>::iterator np;
+	Node newNode = node;
 	double max = -1;
 	int parentvisit = node.state.visitCount;
-	for (std::vector<Node>::iterator it = node.children.begin(); it != node.children.end(); ++it)
-	{
-		double result = UCB::UCBvalue(parentvisit,it->state.winscore, it->state.visitCount);
-		if (result > max) { max = result; np = (std::vector<Node>::iterator) it; }
-	};
-	auto& n = *np;
-	return n;
+		for (std::vector<Node>::iterator it = node.children.begin(); it != node.children.end(); ++it)
+		{
+			double result = UCB::UCBvalue(parentvisit, it->state.winscore, it->state.visitCount);
+			if (result > max) { max = result; newNode = (std::vector<Node>::iterator::value_type) * it; }
+		}
+	return newNode;
 }
 
 int main()
@@ -162,9 +183,9 @@ int main()
 		}
 		else {
 			//board = doMove(board,mcMove(board, getCurrentPlayer(board)));
-			board = mcTrial(board);
+			board = doMove(board,getBestMove(board));
 		}
-		//std::cout << board << std::endl;
+		std::cout << board << std::endl;
 		moves = getMoves(board);
 	}
 	std::cout << getWinner(board) << std::endl;
