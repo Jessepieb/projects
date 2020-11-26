@@ -8,73 +8,16 @@
 #include <vector>
 #include <ctime>
 #include <random>
-#include <memory>
 #include <iterator>
 #include <iostream>
-#include <list>
-
 
 enum class Player { X, O, None };
 using Move = int;
-//State is our playing grid
-using Board = std::array<Player, 9>;
-class Node;
-
-
-class State {
-public:
-    Move move;
-    Board board;
-    int visitCount;
-    double winscore;
-
-    State() {};
-    State(Board b, Move m) {
-        this->board = b;
-        this->visitCount = 0;
-        this->winscore = 0;
-        this->move = m;
-    };
-
-    void addScore(int i) {
-        this->winscore += i;
-    }
-};
-
-class Node {
-public:
-    State state;
-    Node* parent = nullptr;
-    std::vector<Node> children;
-    Node() {};
-
-    Node(State s, Node* r) {
-        this->state = s; this->parent = r;
-    };
-    
-    Node getBestChildNode() {
-
-    };
-};
-
-class Tree { 
-public:
-    Node root;
-    Tree() {};
-    Tree(Node r) { this->root = r; };
-    ~Tree() {};
-};
-
-class UCB {
-public:
-    static double UCBvalue(int totalvisit, double nodewinscore, int nodevisit);
-    static Node findBestNodeUCT(Node node);
-};
-
+using State = std::array<Player, 9>;
 
 // used to get a random element from a container
 template<typename Iter, typename RandomGenerator>
-Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {
+Iter select_randomly2(Iter start, Iter end, RandomGenerator& g) {
     std::uniform_int_distribution<> dis(0, std::distance(start, end) - 1);
     std::advance(start, dis(g));
     return start;
@@ -84,18 +27,15 @@ template<typename Iter>
 Iter select_randomly(Iter start, Iter end) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
-    return select_randomly(start, end, gen);
+    return select_randomly2(start, end, gen);
 }
 
-std::ostream& operator<<(std::ostream& os, const Board& state); 
+std::ostream& operator<<(std::ostream& os, const State& state);
 std::ostream& operator<<(std::ostream& os, const Player& player);
 
-Player getCurrentPlayer(const Board& state);
-Board doMove(const Board& state, const Move& m);
-Player getWinner(const Board& state);
-std::vector<Move> getMoves(const Board& state);
-
+Player getCurrentPlayer(const State& state);
+State doMove(const State& state, const Move& m);
+Player getWinner(const State& state);
+std::vector<Move> getMoves(const State& state);
 
 #endif // TTT_H
-#pragma once
- 

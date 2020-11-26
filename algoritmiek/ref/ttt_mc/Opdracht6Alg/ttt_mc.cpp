@@ -16,11 +16,11 @@ enum class PlayerType { Human, Computer };
 State mcTrial(const State &board) 
 {			
 	State b = board;
-	while (getMoves(board).size() > 0) {
-		std::vector<Move> possibleMoves = getMoves(board);
+	while (getMoves(b).size() > 0) {
+		std::vector<Move> possibleMoves = getMoves(b);
 		auto random = select_randomly(possibleMoves.begin(),possibleMoves.end());
-		b = doMove(board, *random);
-		if (getWinner(board) != Player::None)
+		b = doMove(b, *random);
+		if (getWinner(b) != Player::None)
 			break;
 	}
 	return b;

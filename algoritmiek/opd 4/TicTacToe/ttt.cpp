@@ -14,7 +14,7 @@ std::ostream& operator<<(std::ostream& os, const Player& player)
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const Board& state)
+std::ostream& operator<<(std::ostream& os, const State& state)
 {
     for (int r = 0; r < 3; r++) {
         os << "+-+-+-+" << std::endl;
@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream& os, const Board& state)
     return os;
 }
 
-Player getCurrentPlayer(const Board& state)
+Player getCurrentPlayer(const State& state)
 {
     int countX = 0;
     int countO = 0;
@@ -38,9 +38,9 @@ Player getCurrentPlayer(const Board& state)
     return (countX > countO ? Player::O : Player::X);
 }
 
-Board doMove(const Board& state, const Move& m)
+State doMove(const State& state, const Move& m)
 {
-    Board result = state;
+    State result = state;
     int countX = 0;
     int countO = 0;
     for (int i = 0; i < 9; i++) {
@@ -51,7 +51,7 @@ Board doMove(const Board& state, const Move& m)
     return result;
 }
 
-Player getWinner(const Board& state)
+Player getWinner(const State& state)
 {
     for (int r = 0; r < 3; r++)
         if (state[r * 3] == state[r * 3 + 1] && state[r * 3 + 1] == state[r * 3 + 2] && state[r * 3] != Player::None)
@@ -66,7 +66,7 @@ Player getWinner(const Board& state)
     return Player::None;
 }
 
-std::vector<Move> getMoves(const Board& state)
+std::vector<Move> getMoves(const State& state)
 {
     std::vector<Move> moves;
     if (getWinner(state) == Player::None) {
@@ -78,5 +78,4 @@ std::vector<Move> getMoves(const Board& state)
     }
     return moves;
 }
-
 
