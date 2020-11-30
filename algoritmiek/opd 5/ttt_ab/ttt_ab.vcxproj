@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ttt.h" />
+    <ClInclude Include="ttt_ab.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ttt.cpp" />
