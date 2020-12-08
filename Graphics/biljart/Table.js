@@ -25,7 +25,7 @@ class Table {
         const w = this._widthScale * 50;
         const h = this._heightScale * 30;
         const geometry = new THREE.PlaneGeometry(w, h);
-        const material = new THREE.MeshBasicMaterial({color: 'forestgreen'});
+        const material = new THREE.MeshBasicMaterial({color: 0x33cc33});
         const mesh = new THREE.Mesh(geometry, material);
         mesh.name = "Base";
         this.scene.add(mesh);
@@ -43,8 +43,8 @@ class Table {
 
         l = this._heightScale * 27;
 
-        const wall3 = new Wall((this._width / 75) * -1, 0, w, l);
-        const wall4 = new Wall(this._width / 75, 0, w, l);
+        const wall3 = new Wall((this._width / 75) * -1, 0, w+.25, l);
+        const wall4 = new Wall(this._width / 75, 0, w+.25, l);
 
         this.walls[0] = wall1;
         this.walls[1] = wall2;
