@@ -30,7 +30,7 @@ class Pocket {
 
     Collide(ball, arrayLength, player) {
         if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
-            switch (ball.ballsort) {
+            switch (ball.balltype) {
                 case ("black"):
                     if (arrayLength > 2) {
                         console.log("Game Over!")
@@ -54,7 +54,7 @@ class Pocket {
                     ball.velocity = new THREE.Vector2(0, 0);
                     ball.location = new THREE.Vector2(14, 0);
             }
-            console.log("Ball sunk " + ball.ballsort);
+            console.log("Ball sunk " + ball.balltype);
         }
     }
 

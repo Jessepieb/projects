@@ -1,8 +1,8 @@
 class Ball {
     constructor(x, y, radius, scene, balltype) {
 
-        this.minSpeed = new THREE.Vector2(-0.3, -0.3);
-        this.maxSpeed = new THREE.Vector2(0.3, 0.3);
+        this.minSpeed = new THREE.Vector2(-0.2, -0.2);
+        this.maxSpeed = new THREE.Vector2(0.2, 0.2);
         this.scene = scene;
 
         this._location = new THREE.Vector2(x, y);
@@ -85,12 +85,12 @@ class Ball {
 
     applyForce(force) {
         this.velocity.add(force);
-        // this.velocity = this.velocity.clamp(this.minSpeed, this.maxSpeed);
+        // this.velocity.add(force.clamp(this.minSpeed, this.maxSpeed));
     }
 
     dis(other){
-        var dx = this.location.x - other.location.x;
-        var dy = this.location.y - other.location.y;
+        let dx = this.location.x - other.location.x;
+        let dy = this.location.y - other.location.y;
         return Math.sqrt(dx*dx+dy*dy);
     }
     Collide(otherObj) {
@@ -102,8 +102,8 @@ class Ball {
             this.applyForce(newOtherValue);
             otherObj.applyForce(newValue);
 
-            this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
-            // this._velocity.multiplyScalar(0.99);
+            //this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
+            this._velocity.multiplyScalar(0.99);
         }
     }
 
