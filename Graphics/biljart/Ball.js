@@ -1,5 +1,5 @@
 class Ball {
-    constructor(x, y, radius, scene, ballsort) {
+    constructor(x, y, radius, scene, balltype) {
 
         this.minSpeed = new THREE.Vector2(-0.3, -0.3);
         this.maxSpeed = new THREE.Vector2(0.3, 0.3);
@@ -9,11 +9,11 @@ class Ball {
         this._radius = radius;
         this._velocity = new THREE.Vector2(0, 0);
 
-        this._ballsort = ballsort;
+        this._balltype = balltype;
 
         //this._velocity.clamp(0,0.006);
 
-        switch (this._ballsort) {
+        switch (this._balltype) {
             case("black"):
                 this.material = new THREE.MeshBasicMaterial({color: 0x000000});
                 break;
@@ -41,8 +41,8 @@ class Ball {
         this.scene.add(this.mesh);
     }
 
-    get ballsort() {
-        return this._ballsort;
+    get balltype() {
+        return this._balltype;
     }
 
     get location() {
@@ -102,8 +102,8 @@ class Ball {
             this.applyForce(newOtherValue);
             otherObj.applyForce(newValue);
 
-            // this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
-            this._velocity.multiplyScalar(-0.995);
+            this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
+            // this._velocity.multiplyScalar(0.99);
         }
     }
 

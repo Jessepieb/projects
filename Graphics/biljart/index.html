@@ -75,13 +75,13 @@
                     newBall = new Ball(x, y, radius, scene, "black");
                     balls.push(newBall);
                 } else {
-                    var ballsort;
+                    var balltype = "";
                     if (isOdd) {
-                        ballsort = "odd";
+                        balltype = "odd";
                     } else {
-                        ballsort = "even";
+                        balltype = "even";
                     }
-                    newBall = new Ball(x, y, radius, scene, ballsort);
+                    newBall = new Ball(x, y, radius, scene, balltype);
                     balls.push(newBall);
                     isOdd = !isOdd;
                 }
