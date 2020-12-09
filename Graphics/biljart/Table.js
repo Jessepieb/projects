@@ -63,9 +63,9 @@ class Table {
 
     createPockets() {
         for (let i = -1; i < 2; i++) {
-            this.pockets[i + 1][0] = (new Pocket((this._width / 79) * i, this._height / 77, 2));
+            this.pockets[i + 1][0] = (new Pocket((this._width / 77) * i, this._height / 77, 1.75));
             this.pocketsMesh.add((this.pockets[i + 1][0]).mesh);
-            this.pockets[i + 1][1] = (new Pocket((this._width / 79) * i, (this._height / 77) * -1, 2));
+            this.pockets[i + 1][1] = (new Pocket((this._width / 77) * i, (this._height / 77) * -1, 1.75));
             this.pocketsMesh.add((this.pockets[i + 1][1]).mesh);
         }
         this.pocketsMesh.name = "Pockets";

@@ -128,15 +128,15 @@
 
     function checkKey(e) {
         e = e || window.event;
-        if (e.keyCode === '38') {
+        if (e.key === 'w') {
             balls[0].applyForce(new THREE.Vector2(0, 0.06));
-        } else if (e.keyCode === '40') {
+        } else if (e.key === 's') {
             balls[0].applyForce(new THREE.Vector2(0, -0.06));
-        } else if (e.keyCode === '37') {
+        } else if (e.key === 'a') {
             // balls[0].mesh.rotate.x += 1;
             balls[0].applyForce(new THREE.Vector2(-0.06, 0));
 
-        } else if (e.keyCode === '39') {
+        } else if (e.key === 'd') {
             balls[0].applyForce(new THREE.Vector2(0.06, 0));
         }
 
@@ -176,6 +176,7 @@
             for (let j = 0; j < balls.length; j++) {
                 if (i !== j) {
                     balls[i].Collide(balls[j]);
+                    balls[i].Move();
                 }
                 balls[j].Move();
             }
@@ -185,7 +186,7 @@
                     if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer()) ||
                         table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
                         //scene.remove(balls[i].mesh.name);
-                        scene.remove(balls[i].mesh);
+                        scene.remove(balls[i]);
                         // scene.update();
                         delete balls[i];    
                         console.log(balls)
@@ -209,7 +210,6 @@
         requestAnimationFrame(animate);
 
         raycaster.setFromCamera(mouse, camera);
-
         checkCollision();
         updateMovement();
         controls.update();

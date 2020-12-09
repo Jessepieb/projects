@@ -1,8 +1,8 @@
 class Ball {
     constructor(x, y, radius, scene, ballsort) {
 
-        this.minSpeed = new THREE.Vector2(-0.2, -0.2);
-        this.maxSpeed = new THREE.Vector2(0.2, 0.2);
+        this.minSpeed = new THREE.Vector2(-0.3, -0.3);
+        this.maxSpeed = new THREE.Vector2(0.3, 0.3);
         this.scene = scene;
 
         this._location = new THREE.Vector2(x, y);
@@ -60,8 +60,7 @@ class Ball {
     }
 
     set velocity(newVel) {
-        var corrected = newVel.clamp(this.minSpeed, this.maxSpeed);
-        this._velocity = corrected;
+        this._velocity = newVel.clamp(this.minSpeed, this.maxSpeed);
     }
 
     get radius() {
@@ -72,13 +71,13 @@ class Ball {
         this.velocity = this._velocity.clamp(this.minSpeed, this.maxSpeed);
         this.location = this._location.add(this._velocity);
         if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
-            this._velocity.x = this._velocity.x * 0.985;
+            this._velocity.x = this._velocity.x * 0.995;
         } else {
             this._velocity.x = 0;
         }
 
         if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
-            this._velocity.y = this._velocity.y * 0.985;
+            this._velocity.y = this._velocity.y * 0.995;
         } else {
             this._velocity.y = 0;
         }
@@ -89,9 +88,13 @@ class Ball {
         // this.velocity = this.velocity.clamp(this.minSpeed, this.maxSpeed);
     }
 
-    //
+    dis(other){
+        var dx = this.location.x - other.location.x;
+        var dy = this.location.y - other.location.y;
+        return Math.sqrt(dx*dx+dy*dy);
+    }
     Collide(otherObj) {
-        if (this.location.distanceTo(otherObj.location) < (this._radius + otherObj.radius)) {
+        if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
             var newValue = this._velocity;
             var newOtherValue = otherObj.velocity;
 
@@ -100,7 +103,7 @@ class Ball {
             otherObj.applyForce(newValue);
 
             // this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
-            this._velocity.multiplyScalar(-0.985);
+            this._velocity.multiplyScalar(-0.995);
         }
     }
 
