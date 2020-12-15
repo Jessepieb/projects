@@ -93,18 +93,18 @@ class Ball {
         let dy = this.location.y - other.location.y;
         return Math.sqrt(dx*dx+dy*dy);
     }
-    Collide(otherObj) {
-        if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
-            var newValue = this._velocity;
-            var newOtherValue = otherObj.velocity;
-
-
-            this.applyForce(newOtherValue);
-            otherObj.applyForce(newValue);
-
-            //this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
-            this._velocity.multiplyScalar(0.99);
-        }
+    checkCollision(otherObj) {
+        // if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
+        //     var newValue = this._velocity;
+        //     var newOtherValue = otherObj.velocity;
+        //
+        //
+        //     this.applyForce(newOtherValue);
+        //     otherObj.applyForce(newValue);
+        //
+        //     //this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
+        //     this._velocity.multiplyScalar(0.99);
+        // }
     }
 
 }

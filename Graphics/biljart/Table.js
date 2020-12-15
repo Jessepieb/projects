@@ -17,8 +17,7 @@ class Table {
         for (let row = 0; row < 3; row++) {
             this.pockets[row] = new Array(2);
         }
-
-        this.createBase();
+        this.base = this.createBase();
         this.initTable();
     }
 
@@ -30,6 +29,7 @@ class Table {
         const mesh = new THREE.Mesh(geometry, material);
         mesh.name = "Base";
         this.scene.add(mesh);
+        return [w,h];
         //return mesh;
     }
 
@@ -60,10 +60,12 @@ class Table {
 
 
     createPockets() {
+        const w = this._width/77;
+        const h = this._height/77;
         for (let i = -1; i < 2; i++) {
-            this.pockets[i + 1][0] = (new Pocket((this._width / 77) * i, this._height / 77, 1.75));
+            this.pockets[i + 1][0] = (new Pocket(w * i, h, 1.75));
             this.pocketsMesh.add((this.pockets[i + 1][0]).mesh);
-            this.pockets[i + 1][1] = (new Pocket((this._width / 77) * i, (this._height / 77) * -1, 1.75));
+            this.pockets[i + 1][1] = (new Pocket(w * i, h * -1, 1.75));
             this.pocketsMesh.add((this.pockets[i + 1][1]).mesh);
         }
         this.pocketsMesh.name = "Pockets";
@@ -71,22 +73,22 @@ class Table {
     }
 
     initTable() {
-        this.createWalls();
+        //this.createWalls();
         this.createPockets();
     }
 
     Collide(ball) {
-        if (ball.location.y > 11 && ball.velocity.y > 0) {
+        if (ball.location.y > (this.base[1]/2) - ball.radius&& ball.velocity.y > 0) {
             ball.velocity.multiply(new THREE.Vector2(1., -1.));
         }
-        if (ball.location.y < -11 && ball.velocity.y < 0) {
+        if (ball.location.y < (-this.base[1]/2) + ball.radius && ball.velocity.y < 0) {
             ball.velocity.multiply(new THREE.Vector2(1., -1.));
         }
 
-        if (ball.location.x > 24 && ball.velocity.x > 0) {
+        if (ball.location.x > (this.base[0]/2)-ball.radius && ball.velocity.x > 0) {
             ball.velocity.multiply(new THREE.Vector2(-1., 1.));
         }
-        if (ball.location.x < -24 && ball.velocity.x < 0) {
+        if (ball.location.x < (-this.base[0]/2)+ball.radius && ball.velocity.x < 0) {
             ball.velocity.multiply(new THREE.Vector2(-1., 1.));
         }
 

@@ -34,9 +34,7 @@
     var balls = [];
     const radius = 0.8;
 
-    var helperarrows = new THREE.Group();
-
-    var table, que;
+    var table; //var que;
     var players = [];
 
     let controls;
@@ -92,21 +90,6 @@
         }
     }
 
-    function  initArrows(){
-        for (let i =0; i < balls; i++){
-            const dir = balls[i].velocity();
-            dir.normalize();
-
-            const origin = balls[i].location();
-            const length =3 ;
-            const hex = 0xff0000;
-
-            const helperarrow = new THREE.ArrowHelper(dir, origin, length, hex);
-            helperarrows.add(helperarrow);
-        }
-        scene.add(helperarrows);
-    }
-
     function initTable() {
         table = new Table(width, height, scene);
     }
@@ -127,7 +110,6 @@
         const ball = new Ball(14, 0, radius, scene);
         balls.push(ball);
         initBalls();
-        initArrows();
         //  var que = new Que(ball.location.x,ball.location.y, scene);
 
         raycaster = new THREE.Raycaster()
@@ -187,17 +169,10 @@
     }
 
 
-    function checkCollision() {
+    function Collision() {
         for (let i = 0; i < balls.length; i++) {
             table.Collide(balls[i]);
-
-            for (let j = 0; j < balls.length; j++) {
-                if (i !== j) {
-                    balls[i].Collide(balls[j]);
-                    balls[i].Move();
-                }
-                balls[j].Move();
-            }
+            balls[i].checkCollision(balls);
 
             for (let p = 0; p < 3; p++) {
                 try {
@@ -206,7 +181,7 @@
                         //scene.remove(balls[i].mesh.name);
                         scene.remove(balls[i]);
                         // scene.update();
-                        delete balls[i];    
+                        delete balls[i];
                         console.log(balls)
                     }
                 } catch (e) {
@@ -222,19 +197,12 @@
         }
     }
 
-    //
-    // function updateArrows() {
-    //     var i = 0;
-    //     for (b in balls){
-    //         helperarrows
-    //     }
-    // }
 
     function animate() {
         requestAnimationFrame(animate);
 
         raycaster.setFromCamera(mouse, camera);
-        checkCollision();
+        Collision();
         updateMovement();
         //updateArrows();
         controls.update()
