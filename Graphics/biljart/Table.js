@@ -18,7 +18,8 @@ class Table {
             this.pockets[row] = new Array(2);
         }
 
-        this.base = this.createBase();
+        this.createBase();
+        this.initTable();
     }
 
     createBase() {
@@ -29,9 +30,7 @@ class Table {
         const mesh = new THREE.Mesh(geometry, material);
         mesh.name = "Base";
         this.scene.add(mesh);
-        this.initTable();
-
-        return mesh;
+        //return mesh;
     }
 
 
