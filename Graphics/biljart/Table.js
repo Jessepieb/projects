@@ -46,7 +46,7 @@ class Table {
 
         l = this._heightScale * 27;
 
-        wall = new Wall((this._width / 75) * -1, 0, w+.25, l);
+        wall = new Wall((-this._width / 75), 0, w+.25, l);
         this.walls.push(wall);
         this.wallsMesh.add(wall.mesh);
         wall = new Wall(this._width / 75, 0, w+.25, l);
@@ -73,7 +73,7 @@ class Table {
     }
 
     initTable() {
-        //this.createWalls();
+        this.createWalls();
         this.createPockets();
     }
 

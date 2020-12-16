@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/Table.js" afterDir="false" />
@@ -53,19 +52,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\jsm" />
-      <recent name="C:\Users\Jesse\WebstormProjects\biljart\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GitHub\projects\Graphics\biljart\old" />
       <recent name="D:\Github\projects\Graphics\biljart\models\textures" />
       <recent name="D:\Github\projects\Graphics\biljart\js" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
       <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models\textures" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\models" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\jsm" />
+      <recent name="C:\Users\Jesse\WebstormProjects\biljart\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,7 +152,7 @@
       <workItem from="1607378376398" duration="18000" />
       <workItem from="1607427388667" duration="5398000" />
       <workItem from="1607504044441" duration="9460000" />
-      <workItem from="1608028106488" duration="12891000" />
+      <workItem from="1608028106488" duration="19070000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>

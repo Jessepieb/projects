@@ -71,13 +71,13 @@ class Ball {
         this.velocity = this._velocity.clamp(this.minSpeed, this.maxSpeed);
         this.location = this._location.add(this._velocity);
         if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
-            this._velocity.x = this._velocity.x * 0.995;
+            this._velocity.x = this._velocity.x * 0.992;
         } else {
             this._velocity.x = 0;
         }
 
         if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
-            this._velocity.y = this._velocity.y * 0.995;
+            this._velocity.y = this._velocity.y * 0.992;
         } else {
             this._velocity.y = 0;
         }
@@ -89,22 +89,20 @@ class Ball {
     }
 
     dis(other){
-        let dx = this.location.x - other.location.x;
-        let dy = this.location.y - other.location.y;
+        let dx = this._location.x - other.location.x;
+        let dy = this._location.y - other.location.y;
         return Math.sqrt(dx*dx+dy*dy);
     }
     checkCollision(otherObj) {
-        // if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
-        //     var newValue = this._velocity;
-        //     var newOtherValue = otherObj.velocity;
-        //
-        //
-        //     this.applyForce(newOtherValue);
-        //     otherObj.applyForce(newValue);
-        //
-        //     //this._velocity.multiply(new THREE.Vector2(-0.9, -0.9));
-        //     this._velocity.multiplyScalar(0.99);
-        // }
+        if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
+            if(this.balltype === undefined){
+                console.log("collided with "+ otherObj.balltype)
+            }
+            var newValue = this._velocity;
+
+            this._velocity= otherObj.velocity;
+            otherObj.velocity = newValue;
+        }
     }
 
 }
