@@ -73,7 +73,7 @@ class Table {
     }
 
     initTable() {
-        this.createWalls();
+        //ssthis.createWalls();
         this.createPockets();
     }
 

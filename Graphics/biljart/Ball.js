@@ -91,17 +91,19 @@ class Ball {
     dis(other){
         let dx = this._location.x - other.location.x;
         let dy = this._location.y - other.location.y;
-        return Math.sqrt(dx*dx+dy*dy);
+        return Math.sqrt((dx*dx)+(dy*dy));
     }
     checkCollision(otherObj) {
-        if (this.dis(otherObj) < (this._radius + otherObj.radius)) {
+        if (this.dis(otherObj) <= (this.radius + otherObj.radius)) {
             if(this.balltype === undefined){
                 console.log("collided with "+ otherObj.balltype)
             }
             var newValue = this._velocity;
-
-            this._velocity= otherObj.velocity;
+            this.velocity= otherObj.velocity;
             otherObj.velocity = newValue;
+
+            this.Move();
+            otherObj.Move();
         }
     }
 

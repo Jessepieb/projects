@@ -4,6 +4,7 @@
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/Table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -152,7 +153,7 @@
       <workItem from="1607378376398" duration="18000" />
       <workItem from="1607427388667" duration="5398000" />
       <workItem from="1607504044441" duration="9460000" />
-      <workItem from="1608028106488" duration="19070000" />
+      <workItem from="1608028106488" duration="22992000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>

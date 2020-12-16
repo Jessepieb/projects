@@ -48,6 +48,7 @@ class Pocket {
                 case("odd"):
                     if (player.isOdd){
                         player.score = player.score+1;
+
                     }
                     return true;
                 default:
