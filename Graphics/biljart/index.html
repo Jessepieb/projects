@@ -182,10 +182,11 @@
                     if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer()) ||
                         table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
                         //scene.remove(balls[i].mesh.name);
+                        balls.pop(i);
                         scene.remove(balls[i]);
                         // scene.update();
                         //delete balls[i];
-                        balls.pop(i);
+                        //animate();
                         console.log(balls)
                     }
                 } catch (e) {
