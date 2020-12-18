@@ -32,7 +32,7 @@ class Pocket {
         if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
             switch (ball.balltype) {
                 case ("black"):
-                    if (arrayLength > 2) {
+                    if (arrayLength > 1) {
                         console.log("Game Over!")
                     } else {
                         console.log("Current player wins");

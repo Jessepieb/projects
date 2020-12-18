@@ -94,21 +94,20 @@ class Ball {
         return Math.sqrt((dx*dx)+(dy*dy));
     }
     checkCollision(otherObj) {
-        const disVect = new THREE.Vector2(otherObj.location).sub(this.location);
-        const disVectMag = otherObj.dis(this);
+        //const disVect = new THREE.Vector2(otherObj.location).sub(this.location);
+        if (otherObj !== undefined) {
 
-        const minDistance = this.radius + otherObj.radius
-        if (disVectMag <= minDistance) {
-            if(this.balltype === undefined){
-                console.log("collided with "+ otherObj.balltype)
+            const disVectMag = otherObj.dis(this);
+
+            const minDistance = this.radius + otherObj.radius
+            if (disVectMag <= minDistance) {
+                var newValue = this._velocity;
+                this.velocity = otherObj.velocity;
+                otherObj.velocity = newValue;
+
+                this.Move();
+                otherObj.Move();
             }
-            var newValue = this._velocity;
-            this.velocity= otherObj.velocity;
-            otherObj.velocity = newValue;
-
-            this.Move();
-            otherObj.Move();
         }
     }
-
 }

@@ -62,7 +62,7 @@
 
     function initBalls() {
         var x, y;
-        var offset = radius * 2.15;
+        var offset = radius * 2xx;
         var count = 0;
         let isOdd = false;
         var newBall;
@@ -171,46 +171,43 @@
 
     function Collision() {
         for (let i = 0; i < balls.length; i++) {
-            table.Collide(balls[i]);
+            if (balls[i] !== undefined) {
+                table.Collide(balls[i]);
                 for (let b = 0; b < balls.length; b++) {
-                    if (i !== b) {
+                    if (i !== b || balls[b]!==undefined) {
                         balls[i].checkCollision(balls[b]);
                     }
                 }
                 for (let p = 0; p < 3; p++) {
                     try {
-                        if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer())||
+                        if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer()) ||
                             table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
                             //scene.remove(balls[i].mesh.name);
                             scene.remove(balls[i].mesh)
                             scene.remove(balls[i].geometry);
 
-                            if (balls.indexOf(i) > -1) {
-                                balls.slice(balls.indexOf(i),1);
+                            if (balls[i] !== undefined) {
+                                // balls.slice(i,1);
+                                balls[i] = undefined;
                                 console.log(balls);
-                                break;
-                            }
-                            else{
-                                console.log(balls);
-                                console.log(balls.length);
-                                //console.log(balls[i])
-                                break;
-                            }
+                                break;}
                         }
-                            //delete balls[i];
-                            //animate();
+                        //delete balls[i];
+                        //animate();
                     } catch (e) {
                         console.log(e.toString());
                     }
                 }
             }
         }
+    }
 
     function updateMovement() {
-        Collision();
         for (let i = 0; i < balls.length; i++) {
-            balls[i].Move();
+            if(balls[i] !== undefined){
+            balls[i].Move();}
         }
+        Collision();
     }
 
 
