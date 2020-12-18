@@ -54,6 +54,7 @@ class Pocket {
                 default:
                     ball.velocity = new THREE.Vector2(0, 0);
                     ball.location = new THREE.Vector2(14, 0);
+                    return false;
             }
             console.log("Ball sunk " + ball.balltype);
         }

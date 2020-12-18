@@ -94,7 +94,11 @@ class Ball {
         return Math.sqrt((dx*dx)+(dy*dy));
     }
     checkCollision(otherObj) {
-        if (this.dis(otherObj) <= (this.radius + otherObj.radius)) {
+        const disVect = new THREE.Vector2(otherObj.location).sub(this.location);
+        const disVectMag = otherObj.dis(this);
+
+        const minDistance = this.radius + otherObj.radius
+        if (disVectMag <= minDistance) {
             if(this.balltype === undefined){
                 console.log("collided with "+ otherObj.balltype)
             }

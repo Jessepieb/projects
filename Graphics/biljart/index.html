@@ -172,31 +172,42 @@
     function Collision() {
         for (let i = 0; i < balls.length; i++) {
             table.Collide(balls[i]);
-            for(let b =0; b<balls.length;b++){
-                if(i!==b) {
-                    balls[i].checkCollision(balls[b]);
-                }
-            }
-            for (let p = 0; p < 3; p++) {
-                try {
-                    if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer()) ||
-                        table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
-                        //scene.remove(balls[i].mesh.name);
-                        balls.pop(i);
-                        scene.remove(balls[i]);
-                        // scene.update();
-                        //delete balls[i];
-                        //animate();
-                        console.log(balls)
+                for (let b = 0; b < balls.length; b++) {
+                    if (i !== b) {
+                        balls[i].checkCollision(balls[b]);
                     }
-                } catch (e) {
-                    console.log(e.toString());
+                }
+                for (let p = 0; p < 3; p++) {
+                    try {
+                        if (table.pockets[p][0].Collide(balls[i], balls.length, getCurrentPlayer())||
+                            table.pockets[p][1].Collide(balls[i], balls.length, getCurrentPlayer())) {
+                            //scene.remove(balls[i].mesh.name);
+                            scene.remove(balls[i].mesh)
+                            scene.remove(balls[i].geometry);
+
+                            if (balls.indexOf(i) > -1) {
+                                balls.slice(balls.indexOf(i),1);
+                                console.log(balls);
+                                break;
+                            }
+                            else{
+                                console.log(balls);
+                                console.log(balls.length);
+                                //console.log(balls[i])
+                                break;
+                            }
+                        }
+                            //delete balls[i];
+                            //animate();
+                    } catch (e) {
+                        console.log(e.toString());
+                    }
                 }
             }
         }
-    }
 
     function updateMovement() {
+        Collision();
         for (let i = 0; i < balls.length; i++) {
             balls[i].Move();
         }
@@ -205,10 +216,10 @@
 
     function animate() {
         requestAnimationFrame(animate);
-
-        raycaster.setFromCamera(mouse, camera);
-        Collision();
         updateMovement();
+        raycaster.setFromCamera(mouse, camera);
+
+
         //updateArrows();
         controls.update()
         // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
