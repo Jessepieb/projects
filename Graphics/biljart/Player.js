@@ -1,6 +1,6 @@
 class Player {
     constructor(name,playerTurn) {
-        this.isOdd = null;
+        this._isOdd =-1;
         this._score = 0;
 
         this._name = name;
@@ -13,6 +13,14 @@ class Player {
 
     set score(newScore){
         this._score = newScore;
+    }
+
+    get isOdd(){
+        return this._isOdd;
+    }
+
+    set isOdd(bool){
+        this._isOdd = bool;
     }
 
     get name(){

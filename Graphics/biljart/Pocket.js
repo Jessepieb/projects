@@ -3,7 +3,7 @@ class Pocket {
         this._location = new THREE.Vector2(x, y);
         this._radius = radius;
 
-        this._geometry = new THREE.CylinderGeometry(this._radius, this._radius, 2, 32);
+        this._geometry = new THREE.CylinderGeometry(this._radius, this._radius, 1, 32);
         this._material = new THREE.MeshBasicMaterial({color: 0x000000});
 
         this.mesh = new THREE.Mesh(this._geometry, this._material);
@@ -28,35 +28,56 @@ class Pocket {
         this._radius = newRad;
     }
 
-    Collide(ball, arrayLength, player) {
+    Collide(ball, arrayLength, player, otherPlayer) {
         if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
+            if (player.isOdd === -1){
+                if(ball.balltype === "even"){
+                    player.isOdd = 0;
+                    otherPlayer.isOdd = 1;
+                }
+                else{
+                    player.isOdd = 1;
+                    otherPlayer.isOdd = 0;
+                }
+            }
             switch (ball.balltype) {
                 case ("black"):
-                    if (arrayLength > 1) {
-                        console.log("Game Over!")
+                    if (player.score === 7) {
+                        console.log("Game Over! " + player.name + " Wins!")
                     } else {
-                        console.log("Current player wins");
+                        console.log("Black Ball! " + otherPlayer.name +" wins");
                     }
-                    break;
+                   return true;
 
                 case ("even"):
                     if (player.isOdd){
-
+                        otherPlayer.score = otherPlayer.score+ 1;
+                        otherPlayer.turn = true;
+                        player.turn = false;
+                    }
+                    else{
+                        player.score = player.score + 1;
                     }
                 return true;
 
                 case("odd"):
                     if (player.isOdd){
-                        player.score = player.score+1;
-
+                        player.score = player.score + 1;
+                    }
+                    else{
+                        otherPlayer.score = otherPlayer.score+ 1;
+                        otherPlayer.turn = true;
+                        player.turn = false;
                     }
                     return true;
                 default:
                     ball.velocity = new THREE.Vector2(0, 0);
                     ball.location = new THREE.Vector2(14, 0);
+                    player.turn = !player.turn;
+                    otherPlayer.turn = !otherPlayer.turn;
                     return false;
             }
-            console.log("Ball sunk " + ball.balltype);
+
         }
     }
 
