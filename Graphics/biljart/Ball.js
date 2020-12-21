@@ -1,8 +1,8 @@
 class Ball {
     constructor(x, y, radius, scene, balltype) {
-
-        this.minSpeed = new THREE.Vector2(-0.2, -0.2);
-        this.maxSpeed = new THREE.Vector2(0.2, 0.2);
+        const limit = .8;
+        this.minSpeed = new THREE.Vector2(-limit, -limit);
+        this.maxSpeed = new THREE.Vector2(limit, limit);
         this.scene = scene;
 
         this._location = new THREE.Vector2(x, y);
@@ -88,25 +88,43 @@ class Ball {
         // this.velocity.add(force.clamp(this.minSpeed, this.maxSpeed));
     }
 
-    dis(other){
-        let dx = this._location.x - other.location.x;
-        let dy = this._location.y - other.location.y;
+    distance(other){
+        let dx = other.location.x - this._location.x;
+        let dy = other.location.y - this._location.y;
         return Math.sqrt((dx*dx)+(dy*dy));
     }
     checkCollision(otherObj) {
-        //const disVect = new THREE.Vector2(otherObj.location).sub(this.location);
+        //const magVect = new THREE.Vector2(otherObj.location).sub(this.location);
+
         if (otherObj !== undefined) {
+            const distance = this.distance(otherObj);
+            //const otherDisVectMag = otherObj.mag(this);
 
-            const disVectMag = otherObj.dis(this);
+            const minDistance = this.radius + otherObj.radius;
+            if (distance <= minDistance) {
+                let vCollision = new THREE.Vector2(
+                    otherObj.location.x - this.location.x,
+                    otherObj.location.y - this.location.y);
+                let vCollisionNorm = new THREE.Vector2(vCollision.x/distance, vCollision.y/distance);
 
-            const minDistance = this.radius + otherObj.radius
-            if (disVectMag <= minDistance) {
-                var newValue = this._velocity;
-                this.velocity = otherObj.velocity;
-                otherObj.velocity = newValue;
+                let relativeVelocity = new THREE.Vector2(
+                    this._velocity.x - otherObj.velocity.x,
+                    this._velocity.y - otherObj.velocity.y);
 
-                this.Move();
-                otherObj.Move();
+                let speed = relativeVelocity.x * vCollisionNorm.x+relativeVelocity.y*vCollisionNorm.y;
+                if (speed > 0) {
+                    this._velocity.x = this._velocity.x - (vCollisionNorm.x*speed);
+                    this._velocity.y = this._velocity.y - (vCollisionNorm.y*speed);
+
+                    otherObj.velocity.x = otherObj.velocity.x + (vCollisionNorm.x*speed);
+                    otherObj.velocity.y = otherObj.velocity.y +(vCollisionNorm.y*speed);
+
+                    // const newValue = this._velocity;
+                    // this.velocity = otherObj.velocity;
+                    // otherObj.velocity = newValue;
+                }
+                //this.Move();
+                //otherObj.Move();
             }
         }
     }

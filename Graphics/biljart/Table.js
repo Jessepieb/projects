@@ -35,9 +35,9 @@ class Table {
 
 
     createWalls() {
-        var w = this._widthScale * 2.35;
-        var l = this._heightScale * 60;
-        var wall = new Wall(0, this._height / 73, l, w);
+        const w = this._widthScale * 2.35;
+        let l = this._heightScale * 60;
+        let wall = new Wall(0, this._height / 73, l, w);
         this.walls.push(wall);
         this.wallsMesh.add(wall.mesh);
         wall = new Wall(0, (this._height / 73) * -1, l, w);

@@ -127,15 +127,15 @@
     function checkKey(e) {
         e = e || window.event;
         if (e.key === 'w') {
-            balls[0].applyForce(new THREE.Vector2(0, 0.06));
+            balls[0].applyForce(new THREE.Vector2(0, 0.5));
         } else if (e.key === 's') {
-            balls[0].applyForce(new THREE.Vector2(0, -0.06));
+            balls[0].applyForce(new THREE.Vector2(0, -0.5));
         } else if (e.key === 'a') {
             // balls[0].mesh.rotate.x += 1;
-            balls[0].applyForce(new THREE.Vector2(-0.06, 0));
+            balls[0].applyForce(new THREE.Vector2(-0.5, 0));
 
         } else if (e.key === 'd') {
-            balls[0].applyForce(new THREE.Vector2(0.06, 0));
+            balls[0].applyForce(new THREE.Vector2(0.5, 0));
         }
 
 
@@ -171,7 +171,7 @@
         for (let i = 0; i < balls.length; i++) {
             if (balls[i] !== undefined) {
                 table.Collide(balls[i]);
-                for (let b = i; b < balls.length; b++) {
+                for (let b = i+1; b < balls.length; b++) {
                     if (i !== b || balls[b]!==undefined) {
                         balls[i].checkCollision(balls[b]);
                     }
