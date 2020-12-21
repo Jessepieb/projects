@@ -11,12 +11,13 @@ class Que{
         this.mesh.name = "Que";
         this._scene.add(this.mesh);
     }
-    updatepos(){
+
+    set location(newLoc){
+        this._location = newLoc;
         this.mesh.position.x = this._location.x;
         this.mesh.position.y = this._location.y;
     }
-    set location(newLoc){
-        this._location = newLoc;
-        this.updatepos();
+    get location(){
+        return this._location;
     }
 }

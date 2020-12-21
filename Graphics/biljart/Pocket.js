@@ -3,7 +3,7 @@ class Pocket {
         this._location = new THREE.Vector2(x, y);
         this._radius = radius;
 
-        this._geometry = new THREE.CylinderGeometry(this._radius, this._radius, 1, 32);
+        this._geometry = new THREE.CylinderGeometry(this._radius, this._radius, .25, 32);
         this._material = new THREE.MeshBasicMaterial({color: 0x000000});
 
         this.mesh = new THREE.Mesh(this._geometry, this._material);
@@ -29,7 +29,7 @@ class Pocket {
     }
 
     Collide(ball, arrayLength, player, otherPlayer) {
-        if (this.location.distanceTo(ball.location) < (this._radius + ball.radius)) {
+        if (this.location.distanceTo(ball.location) < (this._radius*.75 + ball.radius)) {
             if (player.isOdd === -1){
                 if(ball.balltype === "even"){
                     player.isOdd = 0;

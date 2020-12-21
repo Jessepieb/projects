@@ -2,6 +2,7 @@
   <dictionary name="Jesse">
     <words>
       <w>balltype</w>
+      <w>raycaster</w>
       <w>txtr</w>
       <w>updatepos</w>
       <w>vect</w>
