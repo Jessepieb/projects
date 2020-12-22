@@ -110,7 +110,7 @@
         const ball = new Ball(14, 0, radius, scene);
         balls.push(ball);
         initBalls();
-        que = new Que(balls[0].location.x,balls[0].location.y, scene);
+        que = new Que(balls[0], scene);
 
         raycaster = new THREE.Raycaster()
         initPlayers();
@@ -125,22 +125,39 @@
 
 
     document.onkeydown = checkKey;
-
+    let force = new THREE.Vector2(0,0);
     function checkKey(e) {
+        // e = e || window.event;
+        // if (e.key === 'w') {
+        //     balls[0].applyForce(new THREE.Vector2(0, 0.5));
+        // } else if (e.key === 's') {
+        //     balls[0].applyForce(new THREE.Vector2(0, -0.5));
+        // } else if (e.key === 'a') {
+        //     // balls[0].mesh.rotate.x += 1;
+        //     balls[0].applyForce(new THREE.Vector2(-0.5, 0));
+        //
+        // } else if (e.key === 'd') {
+        //     balls[0].applyForce(new THREE.Vector2(0.5, 0));
+        // }
         e = e || window.event;
         if (e.key === 'w') {
-            balls[0].applyForce(new THREE.Vector2(0, 0.5));
+            force.add(new THREE.Vector2(0, 0.5));
         } else if (e.key === 's') {
-            balls[0].applyForce(new THREE.Vector2(0, -0.5));
+            force.add(new THREE.Vector2(0, -0.5));
         } else if (e.key === 'a') {
             // balls[0].mesh.rotate.x += 1;
-            balls[0].applyForce(new THREE.Vector2(-0.5, 0));
+            force.add(new THREE.Vector2(-0.5, 0));
 
         } else if (e.key === 'd') {
-            balls[0].applyForce(new THREE.Vector2(0.5, 0));
+            force.add(new THREE.Vector2(0.5, 0));
         }
 
-
+        else if(e.keyCode === 32){
+            balls[0].applyForce(force);
+            force = new THREE.Vector2(0,0);
+        }
+        console.log(force);
+        que.location = force;
     }
 
     window.addEventListener('resize', () => {
@@ -150,9 +167,9 @@
         camera.updateProjectionMatrix();
     })
 
-     window.addEventListener('mousedown',() =>{
-         que.location = new THREE.Vector2(mouse.x,mouse.y);
-     })
+     // window.addEventListener('mousedown',() =>{
+     //     que.location = new THREE.Vector2(mouse.x,mouse.y);
+     // })
 
     window.addEventListener('mousemove', (event) => {
         mouse.x = event.x / window.innerWidth * 2 - 1;
@@ -205,21 +222,24 @@
 
 
     function animate() {
-        moving = false;
-        for (let i = 0; i < balls.length; i++){
-            if (balls[i] !== undefined){
-                const ball = balls[i];
-                if (balls[i].velocity.x != 0 || balls[i].velocity.y != 0){
-                    moving = true
-                    break;
-                }
-            }
-        }
-        if (moving){
-            que.visible = false;
-        }
-        else{
-            que.visible = true;
+        // moving = false;
+        // for (let i = 0; i < balls.length; i++){
+        //     if (balls[i] !== undefined){
+        //         const ball = balls[i];
+        //         if (balls[i].velocity.x != 0 || balls[i].velocity.y != 0){
+        //             moving = true
+        //             break;
+        //         }
+        //     }
+        // }
+        // if (moving){
+        //     que.visible = false;
+        // }
+        // else{
+        //     que.visible = true;
+        // }
+        if (balls[0].velocity === new THREE.Vector2(0,0)){
+            que.location = force;
         }
         requestAnimationFrame(animate);
         updateMovement();
