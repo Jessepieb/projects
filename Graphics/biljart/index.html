@@ -141,19 +141,19 @@
         // }
         e = e || window.event;
         if (e.key === 'w') {
-            force.add(new THREE.Vector2(0, 0.5));
+            force.add(new THREE.Vector2(0, 0.25));
         } else if (e.key === 's') {
-            force.add(new THREE.Vector2(0, -0.5));
+            force.add(new THREE.Vector2(0, -0.25));
         } else if (e.key === 'a') {
             // balls[0].mesh.rotate.x += 1;
-            force.add(new THREE.Vector2(-0.5, 0));
+            force.add(new THREE.Vector2(-0.25, 0));
 
         } else if (e.key === 'd') {
-            force.add(new THREE.Vector2(0.5, 0));
+            force.add(new THREE.Vector2(0.25, 0));
         }
 
         else if(e.keyCode === 32){
-            balls[0].applyForce(force);
+            balls[0].velocity = (force);
             force = new THREE.Vector2(0,0);
         }
         console.log(force);
@@ -177,7 +177,7 @@
     })
 
     function getCurrentPlayer() {
-        return players[0].turn ? true : false;
+        return !!players[0].turn;
     }
 
 
@@ -239,6 +239,11 @@
         //     que.visible = true;
         // }
         if (balls[0].velocity === new THREE.Vector2(0,0)){
+            que.visible = true;
+            que.location = force;
+        }
+        else{
+            que.visible = false;
             que.location = force;
         }
         requestAnimationFrame(animate);

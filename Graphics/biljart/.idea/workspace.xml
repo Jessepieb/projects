@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Que.js" beforeDir="false" afterPath="$PROJECT_DIR$/Que.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -158,6 +157,9 @@
       <workItem from="1608304987873" duration="4611000" />
       <workItem from="1608329036447" duration="10968000" />
       <workItem from="1608556708694" duration="26759000" />
+      <workItem from="1608598873042" duration="1646000" />
+      <workItem from="1608722961264" duration="125000" />
+      <workItem from="1608723097012" duration="1203000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -199,7 +201,6 @@
           <condition expression="this._velocity.x &gt; this.maxSpeed || this._velocity &lt; this.minSpeed" language="JavaScript" />
           <url>file://$PROJECT_DIR$/Ball.js</url>
           <line>71</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

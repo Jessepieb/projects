@@ -21,8 +21,8 @@ class Que{
     set location(newLoc){
         this._scene.remove(this.line);
         this.points = [];
-        this.points.push( new THREE.Vector2( balls[0].location.x+this.ball.radius, balls[0].location.y ));
-        this.points.push( new THREE.Vector2(this.location.x + newLoc.x,this.location.y+ newLoc.y ));
+        this.points.push( new THREE.Vector2( balls[0].location.x, balls[0].location.y ));
+        this.points.push( new THREE.Vector2(balls[0].location.x + (newLoc.x),balls[0].location.y+ (newLoc.y)));
         this.geometry = new THREE.BufferGeometry().setFromPoints( this.points );
         this.line = new THREE.Line(this.geometry, this.material);
         this.line.position.z = 1;
