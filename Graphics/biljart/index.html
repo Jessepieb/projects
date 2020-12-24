@@ -3,20 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Three.js practice</title>
-    <style>
-        html, body {
-            margin: 0;
-        }
-
-        canvas {
-            position: absolute;
-            overflow: hidden;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="index.css">
 </head>
 <body>
-
-<!--<div id="label" style="position: absolute; color: black"></div>-->
+<div id="scoreboard">test</div>
 <script src="js/three.js"></script>
 <script src="Table.js"></script>
 <script src="Ball.js"></script>
@@ -50,9 +40,9 @@
     }
 
     function initRenderer() {
+        var container = document.getElementById("canvas");
         renderer = new THREE.WebGLRenderer();
-        renderer.setSize(width, height);
-
+        renderer.setSize(width,height);
     }
 
     function initControls() {
@@ -127,44 +117,30 @@
     document.onkeydown = checkKey;
     let force = new THREE.Vector2(0,0);
     function checkKey(e) {
-        // e = e || window.event;
-        // if (e.key === 'w') {
-        //     balls[0].applyForce(new THREE.Vector2(0, 0.5));
-        // } else if (e.key === 's') {
-        //     balls[0].applyForce(new THREE.Vector2(0, -0.5));
-        // } else if (e.key === 'a') {
-        //     // balls[0].mesh.rotate.x += 1;
-        //     balls[0].applyForce(new THREE.Vector2(-0.5, 0));
-        //
-        // } else if (e.key === 'd') {
-        //     balls[0].applyForce(new THREE.Vector2(0.5, 0));
-        // }
         e = e || window.event;
         if (e.key === 'w') {
-            force.add(new THREE.Vector2(0, 0.25));
+            force.add(new THREE.Vector2(0, balls[0].radius/50));
         } else if (e.key === 's') {
-            force.add(new THREE.Vector2(0, -0.25));
+            force.add(new THREE.Vector2(0, -balls[0].radius/50));
         } else if (e.key === 'a') {
             // balls[0].mesh.rotate.x += 1;
-            force.add(new THREE.Vector2(-0.25, 0));
+            force.add(new THREE.Vector2(-balls[0].radius/50, 0));
 
         } else if (e.key === 'd') {
-            force.add(new THREE.Vector2(0.25, 0));
+            force.add(new THREE.Vector2(balls[0].radius/50, 0));
         }
 
         else if(e.keyCode === 32){
             balls[0].velocity = (force);
             force = new THREE.Vector2(0,0);
         }
-        console.log(force);
         que.location = force;
     }
 
     window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
         camera.aspect = window.innerWidth / window.innerHeight;
-
         camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     })
 
      // window.addEventListener('mousedown',() =>{
@@ -201,7 +177,7 @@
                             scene.remove(balls[i].geometry);
 
                             balls[i] = undefined;
-                            console.log(balls);
+                            //console.log(balls);
                             break;
                         }
                     } catch (e) {
@@ -222,23 +198,7 @@
 
 
     function animate() {
-        // moving = false;
-        // for (let i = 0; i < balls.length; i++){
-        //     if (balls[i] !== undefined){
-        //         const ball = balls[i];
-        //         if (balls[i].velocity.x != 0 || balls[i].velocity.y != 0){
-        //             moving = true
-        //             break;
-        //         }
-        //     }
-        // }
-        // if (moving){
-        //     que.visible = false;
-        // }
-        // else{
-        //     que.visible = true;
-        // }
-        if (balls[0].velocity === new THREE.Vector2(0,0)){
+       if (balls[0].velocity === new THREE.Vector2(0,0)){
             que.visible = true;
             que.location = force;
         }
@@ -250,7 +210,11 @@
         updateMovement();
         raycaster.setFromCamera(mouse, camera);
         controls.update()
-        // document.getElementById("label").innerHTML = balls[0].location.toArray().toString();
+        var currentPlayer = getCurrentPlayer() ? 0:1;
+        document.getElementById("scoreboard").innerHTML =
+            "Player 1 score: " + players[0].score + "<br/>"+
+            "Player 2 score: " + players[1].score + "<br/>"+
+            players[currentPlayer].name +"'s Turn";
         renderer.render(scene, camera);
     }
 

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Que.js" beforeDir="false" afterPath="$PROJECT_DIR$/Que.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/OrbitControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/OrbitControls.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -159,7 +162,10 @@
       <workItem from="1608556708694" duration="26759000" />
       <workItem from="1608598873042" duration="1646000" />
       <workItem from="1608722961264" duration="125000" />
-      <workItem from="1608723097012" duration="1203000" />
+      <workItem from="1608723097012" duration="3944000" />
+      <workItem from="1608738375825" duration="4549000" />
+      <workItem from="1608762199603" duration="1222000" />
+      <workItem from="1608805866649" duration="6635000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>

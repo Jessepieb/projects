@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+canvas{
+
+}
+#scoreboard{
+    background: transparent;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
