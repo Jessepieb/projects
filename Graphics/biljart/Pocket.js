@@ -28,24 +28,53 @@ class Pocket {
         this._radius = newRad;
     }
 
+    applyColour(player,otherPlayer){
+        switch (player.isOdd){
+            case 0:
+                document.getElementById("EvenColor").innerText= player.name;
+                document.getElementById("OddColor").innerText= otherPlayer.name;
+                break;
+            case 1:
+                document.getElementById("EvenColor").innerHTML= otherPlayer.name;
+                document.getElementById("OddColor").innerText= player.name;
+                break;
+
+        }
+
+    }
+
+    static checkIsMoving(){
+        let isMoving = false;
+        for(let i = 0; i<balls.length; i++) {
+            if (balls[i] !== undefined) {
+                if (balls[i].velocity.x !== 0 || balls[i].velocity.y !== 0) {
+                    isMoving = true;
+                }
+            }
+        }
+        return isMoving;
+    }
+
     Collide(ball, arrayLength, player, otherPlayer) {
         if (this.location.distanceTo(ball.location) < (this._radius*.75 + ball.radius)) {
             if (player.isOdd === -1){
                 if(ball.balltype === "even"){
                     player.isOdd = 0;
                     otherPlayer.isOdd = 1;
+                    this.applyColour(player,otherPlayer);
                 }
-                else{
+                else if (ball.balltype === "odd"){
                     player.isOdd = 1;
                     otherPlayer.isOdd = 0;
+                    this.applyColour(player,otherPlayer);
                 }
             }
             switch (ball.balltype) {
                 case ("black"):
                     if (player.score === 7) {
-                        console.log("Game Over! " + player.name + " Wins!")
+                        document.getElementById("WinText").innerHTML=("Game Over! " + player.name + " Wins!")
                     } else {
-                        console.log("Black Ball! " + otherPlayer.name +" wins");
+                        document.getElementById("WinText").innerHTML=("Black Ball! " + otherPlayer.name +" wins");
                     }
                    return true;
 

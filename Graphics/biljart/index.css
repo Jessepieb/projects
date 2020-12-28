@@ -7,8 +7,39 @@ canvas{
 #scoreboard{
     background: transparent;
     width: 200px;
-    height: 200px;
+    height: 100px;
     position: fixed;
     top: 10px;
     left: 10px;
+}
+
+#EvenColor {
+    color: white;
+    text-align: center;
+    background: red;
+    width: 100px;
+    height: 40px;
+    position: fixed;
+    top: 100px;
+    left: 10px;
+}
+
+#OddColor {
+    color: white;
+    text-align: center;
+    background: blue;
+    width: 100px;
+    height: 40px;
+    position: fixed;
+    top: 150px;
+    left: 10px;
+}
+
+#WinText{
+    top: 40%;
+    left:30%;
+    color: white;
+    position: fixed;
+    width: 60%;
+    height: 40%;
 }

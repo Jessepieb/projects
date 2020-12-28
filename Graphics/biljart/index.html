@@ -7,6 +7,9 @@
 </head>
 <body>
 <div id="scoreboard">test</div>
+<div id="EvenColor" style="font-size: 30px"></div>
+<div id="OddColor" style="font-size: 30px"></div>
+<div id="WinText" style="font-size: 80px"></div>
 <script src="js/three.js"></script>
 <script src="Table.js"></script>
 <script src="Ball.js"></script>
@@ -40,7 +43,7 @@
     }
 
     function initRenderer() {
-        var container = document.getElementById("canvas");
+        //var container = document.getElementById("canvas");
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(width,height);
     }
@@ -198,7 +201,7 @@
 
 
     function animate() {
-       if (balls[0].velocity === new THREE.Vector2(0,0)){
+       if (!Pocket.checkIsMoving()){
             que.visible = true;
             que.location = force;
         }
@@ -209,7 +212,7 @@
         requestAnimationFrame(animate);
         updateMovement();
         raycaster.setFromCamera(mouse, camera);
-        controls.update()
+        controls.update();
         var currentPlayer = getCurrentPlayer() ? 0:1;
         document.getElementById("scoreboard").innerHTML =
             "Player 1 score: " + players[0].score + "<br/>"+

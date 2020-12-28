@@ -1,6 +1,6 @@
 class Ball {
     constructor(x, y, radius, scene, balltype) {
-        const limit = 1;
+        const limit = 1.3;
         this.minSpeed = new THREE.Vector2(-limit, -limit);
         this.maxSpeed = new THREE.Vector2(limit, limit);
         this.scene = scene;
