@@ -6,7 +6,7 @@ class Que{
 
 
 
-        this.material = new THREE.MeshBasicMaterial({color:'red'});
+        this.material = new THREE.MeshBasicMaterial({color:'brown'});
         this.points = [];
         this.points.push( new THREE.Vector2( this.location.x, this.location.y ));
         this.points.push( new THREE.Vector2( this.location.x-ball.radius*2, this.location.y ) );

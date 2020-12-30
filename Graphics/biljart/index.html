@@ -10,6 +10,7 @@
 <div id="EvenColor" style="font-size: 30px"></div>
 <div id="OddColor" style="font-size: 30px"></div>
 <div id="WinText" style="font-size: 80px"></div>
+<div id="controls">Use WASD for aim and power & 'space' to launch</div>
 <script src="js/three.js"></script>
 <script src="Table.js"></script>
 <script src="Ball.js"></script>
@@ -43,7 +44,6 @@
     }
 
     function initRenderer() {
-        //var container = document.getElementById("canvas");
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(width,height);
     }
@@ -119,6 +119,7 @@
 
     document.onkeydown = checkKey;
     let force = new THREE.Vector2(0,0);
+    var shot = false;
     function checkKey(e) {
         e = e || window.event;
         if (e.key === 'w') {
@@ -126,7 +127,6 @@
         } else if (e.key === 's') {
             force.add(new THREE.Vector2(0, -balls[0].radius/50));
         } else if (e.key === 'a') {
-            // balls[0].mesh.rotate.x += 1;
             force.add(new THREE.Vector2(-balls[0].radius/50, 0));
 
         } else if (e.key === 'd') {
@@ -136,6 +136,7 @@
         else if(e.keyCode === 32){
             balls[0].velocity = (force);
             force = new THREE.Vector2(0,0);
+            shot = true;
         }
         que.location = force;
     }
@@ -146,10 +147,6 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     })
 
-     // window.addEventListener('mousedown',() =>{
-     //     que.location = new THREE.Vector2(mouse.x,mouse.y);
-     // })
-
     window.addEventListener('mousemove', (event) => {
         mouse.x = event.x / window.innerWidth * 2 - 1;
         mouse.y = event.y / window.innerHeight * 2 - 1;
@@ -158,7 +155,6 @@
     function getCurrentPlayer() {
         return !!players[0].turn;
     }
-
 
     function Collision() {
         for (let i = 0; i < balls.length; i++) {
@@ -180,7 +176,6 @@
                             scene.remove(balls[i].geometry);
 
                             balls[i] = undefined;
-                            //console.log(balls);
                             break;
                         }
                     } catch (e) {
@@ -199,12 +194,23 @@
         Collision();
     }
 
+    var scored= false;
 
     function animate() {
-       if (!Pocket.checkIsMoving()){
+       if (!Pocket.checkIsMoving()&&shot){
             que.visible = true;
             que.location = force;
-        }
+            if (!scored)
+            {
+                players[0].turn = !players[0].turn;
+                players[1].turn = !players[1].turn;
+                scored = false;
+                shot = false;
+            }
+           else {
+               scored=false;
+               shot=false;
+            }}
         else{
             que.visible = false;
             que.location = force;

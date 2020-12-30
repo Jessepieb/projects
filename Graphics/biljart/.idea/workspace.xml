@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Que.js" beforeDir="false" afterPath="$PROJECT_DIR$/Que.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -168,6 +169,9 @@
       <workItem from="1608992658060" duration="1701000" />
       <workItem from="1608998960168" duration="1371000" />
       <workItem from="1609081249261" duration="8550000" />
+      <workItem from="1609337541036" duration="131000" />
+      <workItem from="1609337737427" duration="4429000" />
+      <workItem from="1609342253688" duration="270000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
@@ -215,6 +219,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/biljart$index_html.dat" NAME="index.html Coverage Results" MODIFIED="1608595934500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/biljart$index_html.dat" NAME="index.html Coverage Results" MODIFIED="1609341265384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

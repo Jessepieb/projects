@@ -55,6 +55,7 @@ class Pocket {
         return isMoving;
     }
 
+
     Collide(ball, arrayLength, player, otherPlayer) {
         if (this.location.distanceTo(ball.location) < (this._radius*.75 + ball.radius)) {
             if (player.isOdd === -1){
@@ -81,29 +82,26 @@ class Pocket {
                 case ("even"):
                     if (player.isOdd){
                         otherPlayer.score = otherPlayer.score+ 1;
-                        otherPlayer.turn = true;
-                        player.turn = false;
                     }
                     else{
                         player.score = player.score + 1;
+                        scored=true;
                     }
                 return true;
 
                 case("odd"):
                     if (player.isOdd){
                         player.score = player.score + 1;
+                        scored=true;
                     }
                     else{
                         otherPlayer.score = otherPlayer.score+ 1;
-                        otherPlayer.turn = true;
-                        player.turn = false;
                     }
                     return true;
                 default:
                     ball.velocity = new THREE.Vector2(0, 0);
                     ball.location = new THREE.Vector2(14, 0);
-                    player.turn = !player.turn;
-                    otherPlayer.turn = !otherPlayer.turn;
+                    scored=false;
                     return false;
             }
 

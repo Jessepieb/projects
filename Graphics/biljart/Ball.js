@@ -70,13 +70,13 @@ class Ball {
     Move() {
         this.velocity = this._velocity.clamp(this.minSpeed, this.maxSpeed);
         this.location = this._location.add(this._velocity);
-        if (this._velocity.x > 0.001 || this._velocity.x < -0.001) {
+        if (this._velocity.x > 0.005 || this._velocity.x < -0.005) {
             this._velocity.x = this._velocity.x * 0.99;
         } else {
             this._velocity.x = 0;
         }
 
-        if (this._velocity.y > 0.001 || this._velocity.y < -0.001) {
+        if (this._velocity.y > 0.005 || this._velocity.y < -0.005) {
             this._velocity.y = this._velocity.y * 0.99;
         } else {
             this._velocity.y = 0;
