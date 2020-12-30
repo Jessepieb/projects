@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a816355c-9519-4f3d-a292-c3af13015f7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Que.js" beforeDir="false" afterPath="$PROJECT_DIR$/Que.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,6 +167,7 @@
       <workItem from="1609337541036" duration="131000" />
       <workItem from="1609337737427" duration="4429000" />
       <workItem from="1609342253688" duration="270000" />
+      <workItem from="1609343298546" duration="413000" />
     </task>
     <task id="LOCAL-00001" summary="biljart update">
       <created>1582727192433</created>
