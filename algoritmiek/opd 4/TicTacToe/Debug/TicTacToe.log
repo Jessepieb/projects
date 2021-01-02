@@ -1,1 +1,6 @@
-﻿  TicTacToe.vcxproj -> D:\GitHub\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe
+﻿  ttt_mc.cpp
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(33,21): warning C4018: '<': signed/unsigned mismatch
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(41,21): warning C4018: '<': signed/unsigned mismatch
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(58,20): warning C4018: '<': signed/unsigned mismatch
+D:\Github\projects\algoritmiek\opd 4\TicTacToe\ttt_mc.cpp(85,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  TicTacToe.vcxproj -> D:\Github\projects\algoritmiek\opd 4\TicTacToe\Debug\TicTacToe.exe

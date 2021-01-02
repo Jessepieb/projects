@@ -85,8 +85,8 @@ int main()
 	std::srand(std::time(0));
 
 	std::map<Player, PlayerType> playerType;
-	playerType[Player::O] = PlayerType::Computer;
-	playerType[Player::X] = PlayerType::Human;
+	playerType[Player::O] = PlayerType::Human;
+	playerType[Player::X] = PlayerType::Computer;
 
 	State board = {
 		Player::None, Player::None, Player::None,
@@ -113,6 +113,7 @@ int main()
 		}
 		else {
 			board = doMove(board, mcMove(board, getCurrentPlayer(board)));
+
 		}
 		std::cout << board << std::endl;
 		moves = getMoves(board);

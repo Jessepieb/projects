@@ -1,3 +1,4 @@
 ﻿  ttt_ab.cpp
 D:\Github\projects\algoritmiek\opd 5\ttt_ab\ttt_ab.cpp(88,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  LINK : D:\Github\projects\algoritmiek\opd 5\ttt_ab\Debug\ttt_ab.exe not found or not built by the last incremental link; performing full link
   ttt_ab.vcxproj -> D:\Github\projects\algoritmiek\opd 5\ttt_ab\Debug\ttt_ab.exe

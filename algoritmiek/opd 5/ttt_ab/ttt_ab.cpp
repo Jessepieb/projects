@@ -88,8 +88,8 @@ int main()
 	std::srand(std::time(0));
 
 	std::map<Player, PlayerType> playerType;
-	playerType[Player::X] = PlayerType::Human;
-	playerType[Player::O] = PlayerType::Computer;
+	playerType[Player::X] = PlayerType::Computer;
+	playerType[Player::O] = PlayerType::Human;
 
 	State board = {
 		Player::None, Player::None, Player::None,
