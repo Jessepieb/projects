@@ -1,6 +1,3 @@
 ﻿  main.cpp
 D:\Github\projects\algoritmiek\opd 1\SortTimer\Sorter.cpp(13,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Sorter.cpp
-D:\Github\projects\algoritmiek\opd 1\SortTimer\Sorter.cpp(13,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   SortTimer.vcxproj -> D:\Github\projects\algoritmiek\opd 1\SortTimer\x64\Debug\SortTimer.exe

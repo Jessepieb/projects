@@ -3,14 +3,14 @@
 #include <fstream>
 #include "SortTimer/Sorter.cpp"
 
-const int result = 100;
-void meassure(size_t size){
+//const int resultNum = 500;
+void meassure(size_t size, const int step){
    std::ofstream testfile;
     testfile.open("test.csv", std::ofstream::trunc);
     testfile << "iter,size,duration\n";
     double starttime, endtime, duration;
     int iter = 1;
-    for (size_t i = (size/result); i <= size; i+=(size/result))
+    for (size_t i = step; i <= size; i+=step)
     {
         Sorter sorter = Sorter(i);
         sorter.Fillarray();
@@ -33,6 +33,6 @@ void meassure(size_t size){
 }
 int main() {
 
-    meassure(5000);
+    meassure(2000, 20);
     return 0;
 }
