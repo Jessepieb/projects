@@ -1,0 +1,2 @@
+D:\Users\Jesse\source\repos\boostTCPClient\Debug\boostTCPClient.exe
+D:\Users\Jesse\source\repos\boostTCPClient\Debug\boostTCPClient.pdb
