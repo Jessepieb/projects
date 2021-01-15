@@ -1,11 +1,13 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+#include <boost/array.hpp>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 using boost::asio::ip::tcp;
+using boost::asio::ip::udp;
 
 std::string make_daytime() {
 	using namespace std;
@@ -73,12 +75,37 @@ private:
 	tcp::acceptor acceptor_;
 };
 
+class udpServer
+{
+public:
+	udpServer(boost::asio::io_context& io) :socket_(io, udp::endpoint(udp::v4(), 13)) {
+		try {
+			std::cout << "spinning up UDP server\n";
+			for (;;) {
+				boost::array<char, 1> recv_buffer;
+				udp::endpoint remote_endpoint;
+				socket_.receive_from(boost::asio::buffer(recv_buffer), remote_endpoint);
+
+				std::string message = "Apple Pie";//make_daytime();
+				socket_.send_to(boost::asio::buffer(message), remote_endpoint, 0);
+			}
+		}
+		catch (std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+	};
+
+private:
+	udp::socket socket_;
+};
+
 int main() {
 	try
 	{
 		std::cout << "Spinning up...\n";
 		boost::asio::io_context io;
-		tcp_server server(io);
+		//tcp_server server(io);
+		udpServer server(io);
 		std::cout << "Server bound\n";
 		io.run();
 	}
