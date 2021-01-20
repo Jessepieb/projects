@@ -26,7 +26,7 @@ class chat_room
 public:
 	void join(chat_participant_ptr participant) {
 		participants_.insert(participant);
-		for (auto msg : recent_msgs_) {
+		for (chat_message& msg : recent_msgs_) {
 			participant->deliver(msg);
 		}
 	}
@@ -57,30 +57,93 @@ class chat_session :
 	public std::enable_shared_from_this<chat_session>
 {
 public:
-	chat_session(tcp::socket socket, chat_room& room) : socket_(std::move(socket)), room_(room) {};
+	chat_session(tcp::socket socket, chat_room& room) : socket_(std::move(socket)), room_(room) {
+		std::cout << "New Chat Session\n";
+	};
+
 	void start() {
 		room_.join(shared_from_this());
-		read_header();
+		do_read_header();
 	}
 
 	void deliver(const chat_message& msg) {
 		bool write_in_progress = !write_msgs_.empty();
 		write_msgs_.push_back(msg);
 		if (!write_in_progress) {
-			write();
+			do_write();
 		}
 	}
 
-	~chat_session();
-
 private:
-	void read_header() {
+	void do_read_header() {
+		auto self(shared_from_this());
+		boost::asio::async_read(socket_,
+			boost::asio::buffer(read_msg_.data(), chat_message::header_length),
+			[this, self](const boost::system::error_code& error, std::size_t /*length*/) {
+				if (!error && read_msg_.decode_header()) {
+					do_read_body();
+				}
+				else {
+					room_.leave(shared_from_this());
+				}
+			});
 	};
 
-	void write() {
-	};
+	void do_read_body() {
+		auto self(shared_from_this());
+		boost::asio::async_read(socket_,
+			boost::asio::buffer(read_msg_.data(), read_msg_.body_length()),
+			[this, self](const boost::system::error_code& error, std::size_t /*length*/) {
+				if (!error && read_msg_.decode_header()) {
+					room_.deliver(read_msg_);
+					do_read_header();
+				}
+				else {
+					room_.leave(shared_from_this());
+				}
+			});
+	}
+
+	void do_write() {
+		auto self(shared_from_this());
+		boost::asio::async_read(socket_,
+			boost::asio::buffer(write_msgs_.front().data(), write_msgs_.front().length()),
+			[this, self](const boost::system::error_code& error, std::size_t /*length*/) {
+				if (!error) {
+					write_msgs_.pop_front();
+					if (!write_msgs_.empty()) {
+						do_write();
+					}
+					else {
+						room_.leave(shared_from_this());
+					}
+				}
+			});
+	}
 	tcp::socket socket_;
 	chat_room& room_;
-	chat_message read_mgs_;
+	chat_message read_msg_;
 	chat_message_queue write_msgs_;
 	};
+
+class chat_server
+{
+public:
+	chat_server(boost::asio::io_context& io_context, const tcp::endpoint endpoint) :acceptor_(io_context) {
+		std::cout << "Start Accepting Loop\n";
+		do_accept();
+	};
+
+private:
+	void do_accept() {
+		acceptor_.async_accept(
+			[this](const boost::system::error_code& error, tcp::socket socket) {
+				if (!error) {
+					std::make_shared<chat_session>(std::move(socket), room_)->start();
+				}
+				do_accept();
+			});
+	}
+	tcp::acceptor acceptor_;
+	chat_room room_;
+};

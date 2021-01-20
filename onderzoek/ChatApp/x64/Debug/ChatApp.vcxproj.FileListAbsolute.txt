@@ -1,0 +1,2 @@
+D:\GitHub\projects\onderzoek\ChatApp\x64\Debug\ChatApp.exe
+D:\GitHub\projects\onderzoek\ChatApp\x64\Debug\ChatApp.pdb
