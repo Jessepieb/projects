@@ -28,6 +28,7 @@ private:
 			[this, self](const boost::system::error_code& err, std::size_t length) {
 				if (!err) {
 					std::cout.write(data_, strlen(data_));
+					std::cout<<"\n";
 					do_read();
 				}
 			});

@@ -28,11 +28,8 @@ private:
 			std::cin.getline(msg_, max_length);
 
 			std::size_t data_length = std::strlen(msg_);
-			socket_.write_some(boost::asio::buffer(msg_, data_length), err);
-			//boost::asio::write(socket_, boost::asio::buffer(msg_, data_length), err);
-			if (!err) {
-				//std::cout << "Message sent to server\n";
-			}
+			boost::asio::write(socket_, boost::asio::buffer(msg_, data_length), err);
+			std::cout << "packet sent\n";
 			do_read();
 		}
 		catch (std::exception& e) {
@@ -41,15 +38,19 @@ private:
 	}
 
 	void do_read() {
-		boost::system::error_code err;
 		try {
-			boost::asio::read(socket_, boost::asio::buffer(reply_, max_length), err);
-			if (!err) {
+			std::cout << "Start read...\n";
+			boost::asio::async_read(socket_,boost::asio::buffer(reply_, max_length),
+				[this](const boost::system::error_code& err, std::size_t length) {
+				if(!err){}
+				});
+
+				std::size_t reply_length = strlen(reply_);
+				std::cout << reply_ << ":" << reply_length;
 				std::cout << "Data received: \n";
-				std::cout.write(reply_, strlen(reply_));
+				std::cout.write(reply_, reply_length);
 				std::cout << "\n";
-			}
-			do_write();
+				do_write();
 		}
 		catch (std::exception& e) {
 			std::cerr << e.what() << std::endl;
