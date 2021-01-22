@@ -144,6 +144,9 @@
     <ClCompile Include="chat_client.cpp" />
     <ClCompile Include="chat_server.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="tcp_echo_client.cpp" />
+    <ClCompile Include="tcp_server_async.cpp" />
+    <ClCompile Include="udp_sever_async.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chat_message.h" />
