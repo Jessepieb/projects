@@ -45,8 +45,7 @@ private:
 				if(!err){}
 				});
 
-				std::size_t reply_length = strlen(reply_);
-				std::cout << reply_ << ":" << reply_length;
+				std::size_t reply_length = strlen(reply_); 
 				std::cout << "Data received: \n";
 				std::cout.write(reply_, reply_length);
 				std::cout << "\n";

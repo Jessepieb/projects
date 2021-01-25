@@ -22,3 +22,4 @@ onderzoek/ChatApp/.vs/ChatApp/v16/ipch/AutoPCH/57f521a321c30a18/CHAT_SERVER.ipch
 onderzoek/ChatApp/.vs/ChatApp/v16/ipch/AutoPCH/57bf471857b3b3ec/CHAT_CLIENT.ipch
 onderzoek/ChatApp/.vs/ChatApp/v16/ipch/AutoPCH/558f460f63ef47a5/TCP_ECHO_CLIENT.ipch
 onderzoek/ChatApp/.vs/ChatApp/v16/ipch/AutoPCH/e535e0813dca7e63/SOURCE.ipch
+*.ipch

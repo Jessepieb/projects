@@ -99,16 +99,18 @@
 //	udp::socket socket_;
 //};
 #include "tcp_client.cpp"
+#include "udp_client.cpp"
 int main() {
 	try
 	{
 		std::cout << "Spinning up...\n";
 		boost::asio::io_context io;
-		tcp::endpoint end(boost::asio::ip::address::from_string("127.0.0.1"), 1234);
+		tcp::endpoint end(boost::asio::ip::address::from_string("127.0.0.1"), 13);
 		//tcp::resolver resolver(io);
 		/*resolver.resolve("127.0.0.1", "1337");*/
 		//tcp_server server(io);
-		tcp_client server(io, end);
+		//tcp_client server(io, end);
+		udp_client(io, "127.0.0.1", "13");
 		io.run();
 	}
 	catch (std::exception& e)

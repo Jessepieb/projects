@@ -147,6 +147,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tcp_client.cpp" />
     <ClCompile Include="syncTCPServer.cpp" />
+    <ClCompile Include="udp_client.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

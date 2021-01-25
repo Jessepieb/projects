@@ -27,5 +27,8 @@
     <ClCompile Include="tcp_client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="udp_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
