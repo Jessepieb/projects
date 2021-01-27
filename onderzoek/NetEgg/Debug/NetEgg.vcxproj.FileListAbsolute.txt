@@ -1,0 +1,2 @@
+D:\Users\Jesse\source\repos\NetEgg\Debug\NetEgg.exe
+D:\Users\Jesse\source\repos\NetEgg\Debug\NetEgg.pdb
