@@ -65,6 +65,7 @@ int main(int argc, char* argv[])
 			}
 
 			c.close();
+			t.join();
 		}
 	}
 		catch (std::exception& e)
