@@ -1,10 +1,11 @@
-
 #include <cstdlib>
 #include <deque>
 #include <iostream>
 #include <thread>
 #include <boost/asio.hpp>
+#include <string>
 #include "chat_message.h"
+
 
 using boost::asio::ip::tcp;
 
@@ -14,9 +15,11 @@ class chat_client
 {
 public:
     chat_client(boost::asio::io_context& io_context,
-        const tcp::resolver::results_type& endpoints)
+        const tcp::resolver::results_type& endpoints,
+        const std::string name)
         : io_context_(io_context),
-        socket_(io_context)
+        socket_(io_context),
+        name_(name)
     {
         do_connect(endpoints);
     }
@@ -116,4 +119,5 @@ private:
     tcp::socket socket_;
     chat_message read_msg_;
     chat_message_queue write_msgs_;
+    std::string name_;
 };

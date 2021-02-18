@@ -27,7 +27,6 @@ class chat_room
 public:
     void join(chat_participant_ptr participant)
     {
-        std::cout << participant.get() << std::endl;
         participants_.insert(participant);
         for (auto msg : recent_msgs_)
             participant->deliver(msg);
