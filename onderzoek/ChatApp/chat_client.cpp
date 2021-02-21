@@ -18,9 +18,9 @@ public:
         const tcp::resolver::results_type& endpoints,
         const std::string name)
         : io_context_(io_context),
-        socket_(io_context),
-        name_(name)
+        socket_(io_context)
     {
+        name_ = "[" + name + "]";
         do_connect(endpoints);
     }
 
@@ -36,6 +36,10 @@ public:
                     do_write();
                 }
             });
+    }
+
+    std::string name() {
+        return name_;
     }
 
     void close()

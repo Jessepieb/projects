@@ -4,6 +4,7 @@
 #include <list>
 #include <memory>
 #include <set>
+#include <string>
 #include <utility>
 #include <boost/asio.hpp>
 #include "chat_message.h"
@@ -30,6 +31,8 @@ public:
         participants_.insert(participant);
         for (auto msg : recent_msgs_)
             participant->deliver(msg);
+
+
     }
 
     void leave(chat_participant_ptr participant)
@@ -166,6 +169,8 @@ private:
             {
                 if (!ec)
                 {
+                    std::cout <<"Receiving an incoming connection from " <<
+                        socket.remote_endpoint().address().to_string()<<" on port " << acceptor_.local_endpoint().port() <<std::endl;
                     std::make_shared<chat_session>(std::move(socket), room_)->start();
                 }
 

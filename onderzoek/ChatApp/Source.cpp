@@ -53,12 +53,14 @@ int main(int argc, char* argv[])
 			std::cin >> port;
 			std::cout << "Enter name:\n";
 			std::cin >> name;
+			
+			//start client
 			tcp::resolver resolver(io_context);
 			auto endpoints = resolver.resolve(ip, port);
 			chat_client c(io_context, endpoints, name);
 
 			std::thread t([&io_context]() { io_context.run(); });
-			char line[chat_message::name_length + chat_message::max_body_length + 1];
+			char line[chat_message::max_body_length + 1];
 			while (std::cin.getline(line, chat_message::max_body_length + 1)) {
 				chat_message msg;
 				msg.body_length(std::strlen(line));
