@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 			std::cin >> port;
 			std::cout << "Enter name:\n";
 			std::cin >> name;
-			
+			name = "[" + name + "]";
 			//start client
 			tcp::resolver resolver(io_context);
 			auto endpoints = resolver.resolve(ip, port);

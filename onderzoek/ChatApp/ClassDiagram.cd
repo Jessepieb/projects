@@ -55,6 +55,11 @@
           <NewMemberFileName>chat_message.h</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
+      <Enum Name="chat_message::__unnamed_enum_0002_3" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>chat_message.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAEAIAAAAAAAAAAAEQAAAAAAQAAAAAAAAAUAAAAEAA=</HashCode>

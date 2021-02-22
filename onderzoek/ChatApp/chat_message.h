@@ -9,7 +9,7 @@ class chat_message
 {
 public:
 	enum { header_length = 4 };
-	//enum { name_length = 16 };
+	enum { max_name_length = 16 };
 	enum { max_body_length = 512 };
 
 	chat_message()
@@ -54,6 +54,10 @@ public:
 			body_length_ = max_body_length;
 	}
 
+	void name_length(std::size_t new_len) {
+		
+	}
+
 	bool decode_header()
 	{
 		char header[header_length + 1] = "";
@@ -76,7 +80,8 @@ public:
 
 
 private:
-	char data_[header_length + max_body_length];
+	char data_[header_length + max_name_length + max_body_length];
 	std::size_t body_length_;
+	std::size_t name_length_;
 };
 #endif //CHAT_MESSAGE_H
