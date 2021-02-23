@@ -1,0 +1,2 @@
+D:\Users\Jesse\source\repos\wxWidget_Test\x64\Debug\wxWidget_Test.exe
+D:\Users\Jesse\source\repos\wxWidget_Test\x64\Debug\wxWidget_Test.pdb

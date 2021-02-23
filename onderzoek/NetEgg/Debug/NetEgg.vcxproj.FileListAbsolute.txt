@@ -1,4 +1,4 @@
 D:\Users\Jesse\source\repos\NetEgg\Debug\NetEgg.exe
 D:\Users\Jesse\source\repos\NetEgg\Debug\NetEgg.pdb
-D:\Github\projects\onderzoek\NetEgg\Debug\NetEgg.exe
-D:\Github\projects\onderzoek\NetEgg\Debug\NetEgg.pdb
+D:\GitHub\projects\onderzoek\NetEgg\Debug\NetEgg.exe
+D:\GitHub\projects\onderzoek\NetEgg\Debug\NetEgg.pdb
