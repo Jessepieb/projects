@@ -53,24 +53,35 @@ int main(int argc, char* argv[])
 			std::cin >> port;
 			std::cout << "Enter name:\n";
 			std::cin >> name;
-			name = "[" + name + "]";
-			//start client
-			tcp::resolver resolver(io_context);
-			auto endpoints = resolver.resolve(ip, port);
-			chat_client c(io_context, endpoints, name);
+			if (name.length() > 0) {
+				name = "[" + name + "]";
 
-			std::thread t([&io_context]() { io_context.run(); });
-			char line[chat_message::max_body_length + 1];
-			while (std::cin.getline(line, chat_message::max_body_length + 1)) {
-				chat_message msg;
-				msg.body_length(std::strlen(line));
-				std::memcpy(msg.body(), line, msg.body_length());
-				msg.encode_header();
-				c.write(msg);
+				//start client
+				tcp::resolver resolver(io_context);
+				auto endpoints = resolver.resolve(ip, port);
+				chat_client c(io_context, endpoints, name);
+
+				std::thread t([&io_context]() { io_context.run(); });
+				char line[chat_message::max_body_length + 1];
+				while (std::cin.getline(line, chat_message::max_body_length + 1)) {
+					chat_message msg;
+					char* namep = &name[0];
+					if (std::strlen(line) > 0) {
+						msg.body_length(std::strlen(line) + name.length());
+						std::memcpy(msg.body(), namep, name.length());
+						std::memcpy(msg.body() + name.length(), line, msg.body_length());
+						msg.encode_header();
+						c.write(msg);
+					}
+				}
+
+				c.close();
+				t.join();
 			}
+			else {
+				std::cout << "Name must be longer than 0";
 
-			c.close();
-			t.join();
+			}
 		}
 	}
 		catch (std::exception& e)

@@ -32,6 +32,7 @@ public:
         for (auto msg : recent_msgs_)
             participant->deliver(msg);
 
+        
 
     }
 
@@ -169,8 +170,11 @@ private:
             {
                 if (!ec)
                 {
-                    std::cout <<"Receiving an incoming connection from " <<
-                        socket.remote_endpoint().address().to_string()<<" on port " << acceptor_.local_endpoint().port() <<std::endl;
+                    std::cout <<
+                        "Receiving an incoming connection from " <<
+                        socket.remote_endpoint().address().to_string()<<":"<<
+                        socket.remote_endpoint().port()<<" on port " << 
+                        acceptor_.local_endpoint().port() <<std::endl;
                     std::make_shared<chat_session>(std::move(socket), room_)->start();
                 }
 

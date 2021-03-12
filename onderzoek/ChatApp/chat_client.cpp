@@ -44,6 +44,9 @@ public:
 
     void close()
     {
+        chat_message msg;
+
+
         boost::asio::post(io_context_, [this]() { socket_.close(); });
     }
 
