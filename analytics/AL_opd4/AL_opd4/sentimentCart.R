@@ -62,7 +62,6 @@ prp(tweetCART)
 predictCart = predict(tweetCART, newdata = testsparse, type = "class")
 predtable = table(testsparse$Negative, predictCart)
 predtable
-
 library(ROCR)
 #create ROC prediction
 pred = prediction(as.numeric(predictCart), as.numeric(testsparse$Negative))
@@ -73,7 +72,7 @@ perf = performance(pred, "tpr", "fpr")
 #Plot the ROC_Curve
 plot(perf,
      colorize = TRUE,
-     print.cutoffs.at = seq(0, 4, 0.1))
+     print.cutoffs.at = seq(0, 4, 0.2))
 #Addition of linear line
 abline(0, 1)
 

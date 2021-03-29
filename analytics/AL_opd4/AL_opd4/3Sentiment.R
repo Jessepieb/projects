@@ -51,12 +51,13 @@ testsparse = subset(tweetSparse,split == FALSE)
 library(rpart)
 library(rpart.plot)
 #create CART-Tree
+#todo
 tweetCART = rpart(Negative ~ ., data= trainsparse, method = "class")
 #plot CART-Tree
 prp(tweetCART)
 
 #prediction from our model applied to our test-set
-predictCart = predict(tweetCART, newdata = testsparse)
+predictCart = predict(tweetCART, newdata = testsparse, type = "class")
 predtable = table(testsparse$Negative,predictCart[,2]>0.5)
 predtable
 
