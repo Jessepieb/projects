@@ -1,3 +1,4 @@
+#load "tm" package for text mining
 library(tm)
 library(SnowballC)
 
@@ -13,7 +14,7 @@ twts = subset(
 #add new factor Negative (TRUE or FALSE)
 twts$Negative = as.factor(twts$Sentiment < 2)
 
-#load tweets into the Corpus format, making it easy to apply modifications to the provided text
+#load tweets into the Corpus format (collection of documents), making it easy to apply modifications to the provided text
 corpus = Corpus(VectorSource(twts$Tweet))
 #set all characters to lower
 corpus = tm_map(corpus, tolower)
@@ -72,6 +73,7 @@ perf = performance(pred, "tpr", "fpr")
 #Plot the ROC_Curve
 plot(perf,
      colorize = TRUE,
-     print.cutoffs.at = seq(0, 3, 0.2))
+     print.cutoffs.at = seq(0, 4, 0.1))
 #Addition of linear line
 abline(0, 1)
+
