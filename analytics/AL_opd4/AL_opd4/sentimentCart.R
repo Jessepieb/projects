@@ -1,8 +1,10 @@
 setwd("D:/GitHub/projects/analytics/AL_opd4/AL_opd4")
 
-#load "tm" package for text mining
 library(tm)
 library(SnowballC)
+
+library(caret)
+library(e1071)
 
 #read data from csv file
 twts = read.csv("twts.csv", stringsAsFactors = FALSE)
@@ -31,9 +33,7 @@ corpus = tm_map(corpus, removeWords, c(stopwords("english")))
 #stem all words
 corpus = tm_map(corpus, stemDocument)
 
-#-------------------------------------------------------------------------------
 #Bag of words
-
 #get frequencies of all the words in our corpus
 frequencies = DocumentTermMatrix(corpus)
 
@@ -65,8 +65,7 @@ testsparse = subset(tweetSparse, split == FALSE)
 
 library(rpart)
 library(rpart.plot)
-library(caret)
-library(e1071)
+
 #create CART-Tree
 tweetCART = rpart(Negative ~ ., data = trainsparse, method ="class")
 #plot Cart-Tree
@@ -82,15 +81,17 @@ confusionMatrix(testsparse$Negative, predictCart)
 
 library(ROCR)
 #create ROC prediction
-ROCRpred = prediction(as.numeric(predictCart), as.numeric(testsparse$Negative))
-#Calculate Area under the Curve
-AUC = performance(ROCRpred, "auc")@y.values
-AUC
+predictTreeROC = predict(tweetCART,newdata = testsparse)
+print(table(testsparse$Negative,predictTreeROC[,2]>0.5))
+ROCRpred = prediction(predictTreeROC[,2],testsparse$Negative)
 perf = performance(ROCRpred, "tpr", "fpr")
 #Plot the ROC_Curve
 plot(perf,
      colorize = TRUE,
-     print.cutoffs.at = seq(0, 4, 0.2))
+     print.cutoffs.at = seq(0, 1, 0.1))
 #Addition of linear line
 abline(0, 1)
-
+#Calculate Area under the Curve
+AUC = as.numeric(performance(ROCRpred, "auc")@y.values)
+AUC
+ 
