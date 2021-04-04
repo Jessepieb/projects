@@ -1,3 +1,5 @@
+setwd("D:/GitHub/projects/analytics/AL_opd4/AL_opd4")
+
 #load "tm" package for text mining
 library(tm)
 library(SnowballC)
@@ -63,24 +65,28 @@ testsparse = subset(tweetSparse, split == FALSE)
 
 library(rpart)
 library(rpart.plot)
+library(caret)
+library(e1071)
 #create CART-Tree
 tweetCART = rpart(Negative ~ ., data = trainsparse, method ="class")
 #plot Cart-Tree
 prp(tweetCART)
 #prediction from our model applied to our test-set
-predictCart = predict(tweetCART, newdata = testsparse, type = "class")
+predictCart = predict(tweetCART, newdata = testsparse, type="class")
 predtable = table(testsparse$Negative, predictCart)
 print(predtable)
+
+confusionMatrix(testsparse$Negative, predictCart)
 
 #-------------------------------------------------------------------------------
 
 library(ROCR)
 #create ROC prediction
-pred = prediction(as.numeric(predictCart), as.numeric(testsparse$Negative))
+ROCRpred = prediction(as.numeric(predictCart), as.numeric(testsparse$Negative))
 #Calculate Area under the Curve
-AUC = performance(pred, "auc")@y.values
+AUC = performance(ROCRpred, "auc")@y.values
 AUC
-perf = performance(pred, "tpr", "fpr")
+perf = performance(ROCRpred, "tpr", "fpr")
 #Plot the ROC_Curve
 plot(perf,
      colorize = TRUE,
