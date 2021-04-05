@@ -12,7 +12,6 @@ twts = read.csv("twts.csv", stringsAsFactors = FALSE)
 twts = subset(
   twts,
   select = c(Sentiment, Tweet)
-  ,subset = (Sentiment == 0 | Sentiment == 4)
 )
 
 #add new factor Negative (TRUE or FALSE)
@@ -21,7 +20,8 @@ twts$Negative = as.factor(twts$Sentiment < 2)
 #-------------------------------------------------------------------------------
 #Pre-processing
 
-#load tweets into the Corpus format (collection of documents), making it easy to apply modifications to the provided text
+#load tweets into the Corpus format (collection of documents)
+# making it easy to apply modifications to the provided text
 corpus = Corpus(VectorSource(twts$Tweet))
 #set all characters to lower
 corpus = tm_map(corpus, tolower)
@@ -33,7 +33,9 @@ corpus = tm_map(corpus, removeWords, c(stopwords("english")))
 #stem all words
 corpus = tm_map(corpus, stemDocument)
 
+#-------------------------------------------------------------------------------
 #Bag of words
+
 #get frequencies of all the words in our corpus
 frequencies = DocumentTermMatrix(corpus)
 
@@ -50,6 +52,7 @@ tweetSparse$Negative = twts$Negative
 
 
 #-------------------------------------------------------------------------------
+#Splitting data
 
 library(caTools)
 #seed for pseudo random generator
@@ -60,29 +63,29 @@ split = sample.split(tweetSparse$Negative, SplitRatio = 0.7)
 trainsparse = subset(tweetSparse, split == TRUE)
 #testing set
 testsparse = subset(tweetSparse, split == FALSE)
-
 #-------------------------------------------------------------------------------
+#CART-Tree
 
 library(rpart)
 library(rpart.plot)
 
 #create CART-Tree
-tweetCART = rpart(Negative ~ ., data = trainsparse, method ="class")
+tweetCART = rpart(Negative ~ ., data = trainsparse, method ="class")  
 #plot Cart-Tree
 prp(tweetCART)
 #prediction from our model applied to our test-set
 predictCart = predict(tweetCART, newdata = testsparse, type="class")
-predtable = table(testsparse$Negative, predictCart)
-print(predtable)
 
-confusionMatrix(testsparse$Negative, predictCart)
+#Confusion Matrix
+print(confusionMatrix(testsparse$Negative, predictCart))
 
 #-------------------------------------------------------------------------------
+#ROC-Curve
 
 library(ROCR)
-#create ROC prediction
+#create ROC predict
 predictTreeROC = predict(tweetCART,newdata = testsparse)
-print(table(testsparse$Negative,predictTreeROC[,2]>0.5))
+
 ROCRpred = prediction(predictTreeROC[,2],testsparse$Negative)
 perf = performance(ROCRpred, "tpr", "fpr")
 #Plot the ROC_Curve
@@ -93,5 +96,4 @@ plot(perf,
 abline(0, 1)
 #Calculate Area under the Curve
 AUC = as.numeric(performance(ROCRpred, "auc")@y.values)
-AUC
- 
+print(AUC)

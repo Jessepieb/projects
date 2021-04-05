@@ -1,0 +1,714 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Opgave 4},
+  pdfauthor={Jesse Piebenga},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Opgave 4}
+\author{Jesse Piebenga}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+Data voor deze opgave: twts.csv (documentatie: twts.txt).
+
+\hypertarget{inleveren}{%
+\section{Inleveren}\label{inleveren}}
+
+Inleveren UITSLUITEND via Blackboard. Uiterste datum van inleveren:
+21-3-2021 Inleveren UITSLUITEND in formaat .PDF, .DOC of .DOCX. Je kan,
+als je met RStudio werkt deze .Rmd file als basis gebruiken. Gebruik de
+``Knit'' functie om pdf of docx te genereren. Zet je naam in het
+document bij ``author'' hierboven..
+
+\hypertarget{inleiding}{%
+\section{Inleiding}\label{inleiding}}
+
+De opgave gaat over het analyseren van tweets. De vraag is om vast te
+stellen of een tweet een positieve dan wel een negatieve lading heeft.
+
+Bij deze opgave begin je met ruwe data. In de data staan een aantal
+variabelen die je waarschijnlijk beter niet kan gebruiken. Het kan zijn
+dat een aantal tweets meerdere malen voorkomt. (Misschien is het beter
+om deze teksten eerst te ontdubbelen, misschien maakt dat ook niet zo
+veel uit). Het is aan jou om deze data zodanig te behandelen dat je de
+analyse goed kan uitvoeren. De afhankelijke variabele is ``Sentiment''.
+
+De vraag is om een zo goed mogelijk CART-tree model te maken om uit de
+tekst van een tweet op te maken of het een positieve of negatieve lading
+heeft. De methode (text analytics) is uitgelegd op het college en is ook
+te vinden in de video's ``Turning Tweets into Knowledge''.
+
+Bij deze opgave wordt van je verwacht dat je zelf de juiste stappen zet
+om tot het gewenste eindresultaat te komen. Probeer zo goed mogelijk uit
+te leggen WAAROM je bepaalde stappen zet.
+
+\hypertarget{vraag-1}{%
+\section{Vraag 1}\label{vraag-1}}
+
+Maak een zo optimaal mogelijk CART-tree model om uit de tekst van een
+tweet het (positieve/negatieve) sentiment te halen.
+
+Let op: de Sentiment-variabele heeft DRIE verschillende waarden. Maak
+hiervan eerst een factor met slechts TWEE categorieen
+(positief/negatief). (Om te zorgen dat het een factor wordt kan je de
+functie as.factor gebruiken).
+
+Gebruik daarvoor de tekst-analyse methodiek uit de video's. Zorg er ook
+voor dat je de data splitst in een trainingsset en een testset, zodat je
+de validatie goed kan uitvoeren.
+
+In je antwoorddocument verwacht ik in elk geval:
+
+\begin{itemize}
+\tightlist
+\item
+  Alle R-commando's
+\item
+  Relevant commentaar zodat het duidelijk is wat je doet en waarom je
+  het doet
+\item
+  Alle relevante R-uitvoer (bijvoorbeeld confusion matrices)
+\item
+  Alle relevante R-plots
+\item
+  Niet alleen het opstellen van een model (op basis training data) maar
+  ook validatie van het model (op basis van testdata). Validatie bestaat
+  in elk geval uit confusion matrix + accuracy + sensitivity +
+  specificity en een ROC-curve, plus een argumentatie over hoe goed het
+  model de betreffende data kan voorspellen.
+\item
+  Een goed onderbouwde conclusie
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: NLP
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(SnowballC)}
+
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 4.0.4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.0.4
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'ggplot2'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:NLP':
+## 
+##     annotate
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(e1071)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'e1071' was built under R version 4.0.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#read data from csv file}
+\NormalTok{twts }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"twts.csv"}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\#extract only the needed data}
+\NormalTok{twts }\OtherTok{=} \FunctionTok{subset}\NormalTok{(}
+\NormalTok{  twts,}
+  \AttributeTok{select =} \FunctionTok{c}\NormalTok{(Sentiment, Tweet)}
+\NormalTok{)}
+
+\CommentTok{\#add new factor Negative (TRUE or FALSE)}
+\NormalTok{twts}\SpecialCharTok{$}\NormalTok{Negative }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(twts}\SpecialCharTok{$}\NormalTok{Sentiment }\SpecialCharTok{\textless{}} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Pre{-}processing}
+
+\CommentTok{\#load tweets into the Corpus format (collection of documents)}
+\CommentTok{\# making it easy to apply modifications to the provided text}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{Corpus}\NormalTok{(}\FunctionTok{VectorSource}\NormalTok{(twts}\SpecialCharTok{$}\NormalTok{Tweet))}
+\CommentTok{\#set all characters to lower}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, tolower)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, tolower): transformation drops documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#remove all punctuation}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, removePunctuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, removePunctuation): transformation drops
+## documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#remove all stop{-}words, these are not needed in our model}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, removeWords, }\FunctionTok{c}\NormalTok{(}\FunctionTok{stopwords}\NormalTok{(}\StringTok{"english"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, removeWords, c(stopwords("english"))):
+## transformation drops documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#stem all words}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, stemDocument)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, stemDocument): transformation drops
+## documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Bag of words}
+
+\CommentTok{\#get frequencies of all the words in our corpus}
+\NormalTok{frequencies }\OtherTok{=} \FunctionTok{DocumentTermMatrix}\NormalTok{(corpus)}
+
+\CommentTok{\#remove rare words}
+\NormalTok{sparse }\OtherTok{=} \FunctionTok{removeSparseTerms}\NormalTok{(frequencies, }\FloatTok{0.995}\NormalTok{)}
+
+\CommentTok{\#make sparse into a data frame}
+\NormalTok{tweetSparse }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(sparse))}
+\CommentTok{\#correcting names , words that start with numbers will be changed}
+\FunctionTok{colnames}\NormalTok{(tweetSparse) }\OtherTok{=} \FunctionTok{make.names}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(tweetSparse))}
+
+\CommentTok{\#add independent variable}
+\NormalTok{tweetSparse}\SpecialCharTok{$}\NormalTok{Negative }\OtherTok{=}\NormalTok{ twts}\SpecialCharTok{$}\NormalTok{Negative}
+
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Splitting data}
+
+\FunctionTok{library}\NormalTok{(caTools)}
+\CommentTok{\#seed for pseudo random generator}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\CommentTok{\#splitting the data}
+\NormalTok{split }\OtherTok{=} \FunctionTok{sample.split}\NormalTok{(tweetSparse}\SpecialCharTok{$}\NormalTok{Negative, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{)}
+\CommentTok{\#training set}
+\NormalTok{trainsparse }\OtherTok{=} \FunctionTok{subset}\NormalTok{(tweetSparse, split }\SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#testing set}
+\NormalTok{testsparse }\OtherTok{=} \FunctionTok{subset}\NormalTok{(tweetSparse, split }\SpecialCharTok{==} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#CART{-}Tree}
+
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+
+\CommentTok{\#create CART{-}Tree}
+\NormalTok{tweetCART }\OtherTok{=} \FunctionTok{rpart}\NormalTok{(Negative }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ trainsparse, }\AttributeTok{method =}\StringTok{"class"}\NormalTok{)  }
+\CommentTok{\#plot Cart{-}Tree}
+\FunctionTok{prp}\NormalTok{(tweetCART)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{opgave4-2021_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#prediction from our model applied to our test{-}set}
+\NormalTok{predictCart }\OtherTok{=} \FunctionTok{predict}\NormalTok{(tweetCART, }\AttributeTok{newdata =}\NormalTok{ testsparse, }\AttributeTok{type=}\StringTok{"class"}\NormalTok{)}
+
+\CommentTok{\#Confusion Matrix}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{confusionMatrix}\NormalTok{(testsparse}\SpecialCharTok{$}\NormalTok{Negative, predictCart))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction FALSE TRUE
+##      FALSE    94    2
+##      TRUE     35   18
+##                                           
+##                Accuracy : 0.7517          
+##                  95% CI : (0.6743, 0.8187)
+##     No Information Rate : 0.8658          
+##     P-Value [Acc > NIR] : 0.9999          
+##                                           
+##                   Kappa : 0.3704          
+##                                           
+##  Mcnemar's Test P-Value : 1.435e-07       
+##                                           
+##             Sensitivity : 0.7287          
+##             Specificity : 0.9000          
+##          Pos Pred Value : 0.9792          
+##          Neg Pred Value : 0.3396          
+##              Prevalence : 0.8658          
+##          Detection Rate : 0.6309          
+##    Detection Prevalence : 0.6443          
+##       Balanced Accuracy : 0.8143          
+##                                           
+##        'Positive' Class : FALSE           
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#ROC{-}Curve}
+
+\FunctionTok{library}\NormalTok{(ROCR)}
+\CommentTok{\#create ROC predict}
+\NormalTok{predictTreeROC }\OtherTok{=} \FunctionTok{predict}\NormalTok{(tweetCART,}\AttributeTok{newdata =}\NormalTok{ testsparse)}
+
+\NormalTok{ROCRpred }\OtherTok{=} \FunctionTok{prediction}\NormalTok{(predictTreeROC[,}\DecValTok{2}\NormalTok{],testsparse}\SpecialCharTok{$}\NormalTok{Negative)}
+\NormalTok{perf }\OtherTok{=} \FunctionTok{performance}\NormalTok{(ROCRpred, }\StringTok{"tpr"}\NormalTok{, }\StringTok{"fpr"}\NormalTok{)}
+\CommentTok{\#Plot the ROC\_Curve}
+\FunctionTok{plot}\NormalTok{(perf,}
+     \AttributeTok{colorize =} \ConstantTok{TRUE}\NormalTok{,}
+     \AttributeTok{print.cutoffs.at =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.1}\NormalTok{))}
+\CommentTok{\#Addition of linear line}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{opgave4-2021_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calculate Area under the Curve}
+\NormalTok{AUC }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{performance}\NormalTok{(ROCRpred, }\StringTok{"auc"}\NormalTok{)}\SpecialCharTok{@}\NormalTok{y.values)}
+\FunctionTok{print}\NormalTok{(AUC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6599843
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#[1] 0.659984}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vraag-2}{%
+\section{Vraag 2}\label{vraag-2}}
+
+Bij de eerste vraag heb je de 3 waarden voor Sentiment omgezet in 2
+waarden voor de tekst-analyse. Je zou ook een CART-tree kunnen maken met
+daarbij alle drie waarden van Sentiment. Doe dit en geef het resultaat.
+
+Gebruik cross-validation om de best mogelijke cp-parameter vast te
+stellen hiervoor.
+
+De confusion-matrix is nu 3 bij 3. Geef aan wat dat voor consequenties
+heeft voor je validatie.
+
+In je antwoorddocument verwacht ik in elk geval:
+
+\begin{itemize}
+\tightlist
+\item
+  Alle R-commando's
+\item
+  Relevant commentaar zodat het duidelijk is wat je doet en waarom je
+  het doet
+\item
+  Alle relevante R-uitvoer (bijvoorbeeld confusion matrices)
+\item
+  Alle relevante R-plots
+\item
+  Je antwoord op de vraag in de laatste zin van vraag 2 (over de 3x3
+  matrix)
+\item
+  Een goed onderbouwde conclusie
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tm)}
+\FunctionTok{library}\NormalTok{(SnowballC)}
+
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(e1071)}
+
+\CommentTok{\#read data from csv file}
+\NormalTok{twts }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"twts.csv"}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\#extract only the needed data}
+\NormalTok{twts }\OtherTok{=} \FunctionTok{subset}\NormalTok{(}
+\NormalTok{  twts,}
+  \AttributeTok{select =} \FunctionTok{c}\NormalTok{(Sentiment, Tweet)}
+\NormalTok{)}
+
+\NormalTok{twts}\SpecialCharTok{$}\NormalTok{Sentiment }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(twts}\SpecialCharTok{$}\NormalTok{Sentiment)}
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Pre{-}processing}
+
+\CommentTok{\#load tweets into the Corpus format (collection of documents)}
+\CommentTok{\# making it easy to apply modifications to the provided text}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{Corpus}\NormalTok{(}\FunctionTok{VectorSource}\NormalTok{(twts}\SpecialCharTok{$}\NormalTok{Tweet))}
+\CommentTok{\#set all characters to lower}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, tolower)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, tolower): transformation drops documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#remove all punctuation}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, removePunctuation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, removePunctuation): transformation drops
+## documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#remove all stop{-}words, these are not needed in our model}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, removeWords, }\FunctionTok{c}\NormalTok{(}\FunctionTok{stopwords}\NormalTok{(}\StringTok{"english"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, removeWords, c(stopwords("english"))):
+## transformation drops documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#stem all words}
+\NormalTok{corpus }\OtherTok{=} \FunctionTok{tm\_map}\NormalTok{(corpus, stemDocument)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in tm_map.SimpleCorpus(corpus, stemDocument): transformation drops
+## documents
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Bag of words}
+
+\CommentTok{\#get frequencies of all the words in our corpus}
+\NormalTok{frequencies }\OtherTok{=} \FunctionTok{DocumentTermMatrix}\NormalTok{(corpus)}
+
+\CommentTok{\#remove rare words}
+\NormalTok{sparse }\OtherTok{=} \FunctionTok{removeSparseTerms}\NormalTok{(frequencies, }\FloatTok{0.995}\NormalTok{)}
+
+\CommentTok{\#make sparse into a data frame}
+\NormalTok{tweetSparse }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(sparse))}
+\CommentTok{\#correcting names , words that start with numbers will be changed}
+\FunctionTok{colnames}\NormalTok{(tweetSparse) }\OtherTok{=} \FunctionTok{make.names}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(tweetSparse))}
+
+\CommentTok{\#add independent variable}
+\NormalTok{tweetSparse}\SpecialCharTok{$}\NormalTok{Sentiment }\OtherTok{=}\NormalTok{ twts}\SpecialCharTok{$}\NormalTok{Sentiment}
+
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#Splitting data}
+
+\FunctionTok{library}\NormalTok{(caTools)}
+\CommentTok{\#seed for pseudo random generator}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\CommentTok{\#splitting the data}
+\NormalTok{split }\OtherTok{=} \FunctionTok{sample.split}\NormalTok{(tweetSparse}\SpecialCharTok{$}\NormalTok{Sentiment, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{)}
+\CommentTok{\#training set}
+\NormalTok{trainsparse }\OtherTok{=} \FunctionTok{subset}\NormalTok{(tweetSparse, split }\SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#testing set}
+\NormalTok{testsparse }\OtherTok{=} \FunctionTok{subset}\NormalTok{(tweetSparse, split }\SpecialCharTok{==} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\#CART{-}Tree}
+
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+
+\CommentTok{\#use k{-}fold cross validation}
+\NormalTok{fitControl }\OtherTok{=} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{10}\NormalTok{)}
+\NormalTok{cartGrid }\OtherTok{=} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{.cp=}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{50}\NormalTok{)}\SpecialCharTok{*}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{cv }\OtherTok{=} \FunctionTok{train}\NormalTok{(Sentiment}\SpecialCharTok{\textasciitilde{}}\NormalTok{. , }\AttributeTok{data =}\NormalTok{ trainsparse, }\AttributeTok{method=}\StringTok{"rpart"}\NormalTok{,}\AttributeTok{trControl =}\NormalTok{ fitControl, }\AttributeTok{tuneGrid =}\NormalTok{ cartGrid)}
+
+\FunctionTok{print}\NormalTok{(cv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## CART 
+## 
+## 348 samples
+## 316 predictors
+##   3 classes: '0', '2', '4' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 315, 313, 313, 313, 314, 312, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp    Accuracy   Kappa      
+##   0.01  0.5196902  0.263630547
+##   0.02  0.4392870  0.136588210
+##   0.03  0.4283393  0.101369292
+##   0.04  0.4313696  0.105354578
+##   0.05  0.4313696  0.105354578
+##   0.06  0.4313696  0.105354578
+##   0.07  0.4313696  0.105354578
+##   0.08  0.4313696  0.105354578
+##   0.09  0.4313696  0.105354578
+##   0.10  0.3932871  0.045016848
+##   0.11  0.3678902  0.004545455
+##   0.12  0.3649491  0.000000000
+##   0.13  0.3649491  0.000000000
+##   0.14  0.3649491  0.000000000
+##   0.15  0.3649491  0.000000000
+##   0.16  0.3649491  0.000000000
+##   0.17  0.3649491  0.000000000
+##   0.18  0.3649491  0.000000000
+##   0.19  0.3649491  0.000000000
+##   0.20  0.3649491  0.000000000
+##   0.21  0.3649491  0.000000000
+##   0.22  0.3649491  0.000000000
+##   0.23  0.3649491  0.000000000
+##   0.24  0.3649491  0.000000000
+##   0.25  0.3649491  0.000000000
+##   0.26  0.3649491  0.000000000
+##   0.27  0.3649491  0.000000000
+##   0.28  0.3649491  0.000000000
+##   0.29  0.3649491  0.000000000
+##   0.30  0.3649491  0.000000000
+##   0.31  0.3649491  0.000000000
+##   0.32  0.3649491  0.000000000
+##   0.33  0.3649491  0.000000000
+##   0.34  0.3649491  0.000000000
+##   0.35  0.3649491  0.000000000
+##   0.36  0.3649491  0.000000000
+##   0.37  0.3649491  0.000000000
+##   0.38  0.3649491  0.000000000
+##   0.39  0.3649491  0.000000000
+##   0.40  0.3649491  0.000000000
+##   0.41  0.3649491  0.000000000
+##   0.42  0.3649491  0.000000000
+##   0.43  0.3649491  0.000000000
+##   0.44  0.3649491  0.000000000
+##   0.45  0.3649491  0.000000000
+##   0.46  0.3649491  0.000000000
+##   0.47  0.3649491  0.000000000
+##   0.48  0.3649491  0.000000000
+##   0.49  0.3649491  0.000000000
+##   0.50  0.3649491  0.000000000
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was cp = 0.01.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#create CART{-}Tree}
+\NormalTok{tweetCART }\OtherTok{=} \FunctionTok{rpart}\NormalTok{(Sentiment }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ trainsparse, }\AttributeTok{method =}\StringTok{"class"}\NormalTok{, }\AttributeTok{control =} \FunctionTok{rpart.control}\NormalTok{(}\AttributeTok{cp=}\FloatTok{0.01}\NormalTok{))  }
+\CommentTok{\#plot Cart{-}Tree}
+\FunctionTok{prp}\NormalTok{(tweetCART)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{opgave4-2021_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#prediction from our model applied to our test{-}set}
+\NormalTok{predictCart }\OtherTok{=} \FunctionTok{predict}\NormalTok{(tweetCART, }\AttributeTok{newdata =}\NormalTok{ testsparse, }\AttributeTok{type=}\StringTok{"class"}\NormalTok{)}
+\CommentTok{\#Confusion Matrix}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{confusionMatrix}\NormalTok{(testsparse}\SpecialCharTok{$}\NormalTok{Sentiment, predictCart))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction  0  2  4
+##          0 40  1 12
+##          2 22 16  4
+##          4 25  4 26
+## 
+## Overall Statistics
+##                                          
+##                Accuracy : 0.5467         
+##                  95% CI : (0.4634, 0.628)
+##     No Information Rate : 0.58           
+##     P-Value [Acc > NIR] : 0.8187         
+##                                          
+##                   Kappa : 0.306          
+##                                          
+##  Mcnemar's Test P-Value : 2.828e-05      
+## 
+## Statistics by Class:
+## 
+##                      Class: 0 Class: 2 Class: 4
+## Sensitivity            0.4598   0.7619   0.6190
+## Specificity            0.7937   0.7984   0.7315
+## Pos Pred Value         0.7547   0.3810   0.4727
+## Neg Pred Value         0.5155   0.9537   0.8316
+## Prevalence             0.5800   0.1400   0.2800
+## Detection Rate         0.2667   0.1067   0.1733
+## Detection Prevalence   0.3533   0.2800   0.3667
+## Balanced Accuracy      0.6267   0.7802   0.6753
+\end{verbatim}
+
+\hypertarget{eindbeoordeling-analytics}{%
+\section{Eindbeoordeling Analytics}\label{eindbeoordeling-analytics}}
+
+Als je alle vier opgaven hebt ingeleverd en deze zijn voldoende
+beoordeeld wordt je uitgenodigd om de resultaten van deze opgave in een
+assessment te bespreken met de docent. (Het assessment duurt ongeveer 8
+minuten). Het eindcijfer van het vak Analytics wordt bepaald in het
+assessment. Zie voor meer informatie het document ``Afsluitend
+assessment Analytics'' op Blackboard.
+
+\end{document}
