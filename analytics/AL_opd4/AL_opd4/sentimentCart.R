@@ -77,7 +77,7 @@ prp(tweetCART)
 predictCart = predict(tweetCART, newdata = testsparse, type="class")
 
 #Confusion Matrix
-print(confusionMatrix(testsparse$Negative, predictCart))
+print(confusionMatrix(predictCart, testsparse$Negative))
 
 #-------------------------------------------------------------------------------
 #ROC-Curve
