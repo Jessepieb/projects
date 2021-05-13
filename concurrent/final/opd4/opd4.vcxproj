@@ -117,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +141,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File_Handler.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Settings_Manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="File_Handler.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Settings_Manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
