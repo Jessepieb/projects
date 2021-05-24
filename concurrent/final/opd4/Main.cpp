@@ -30,19 +30,13 @@ public:
 	}
 
 	void copy_file(std::string src_url, std::string dest_url) {
-		std::string line;
-		
-		src.open(src_url);
-		dest.open(dest_url);
-
-		if (src.is_open() && dest.is_open()) {
-		while (std::getline(src, line)) {
-			std::cout << line << std::endl;
-			dest << line << std::endl;
+		const auto copyOptions = fs::copy_options::overwrite_existing;
+		try {
+			fs::copy(src_url, dest_url, copyOptions);
 		}
-	}
-			src.close();
-			dest.close();
+		catch(fs::filesystem_error){
+			std::cout << "failed to copy " << src_url << std::endl;
+		}
 	}
 
 	void find_keywords() {
@@ -115,25 +109,34 @@ Settings_Manager::~Settings_Manager()
 
 int main() {
 
-	Settings_Manager sm;
+	//Settings_Manager sm;
 
 	FileHandler fh;
-	fh.write_file("text.txt");
-	fh.copy_file("text.txt", "text2.txt");
-
+	fh.write_file("sandbox/text.txt");
+	fh.copy_file("sandbox/text.txt", "sandbox/text2.txt");
+	//fh.copy_file("Pictures/test_picture.jpg", "Pictures/copied_picture.jpg");
+	//static_cast<void>(std::system("tree"));
+	
 	int counter = 0;
-
+	
 	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4"))
 	{
-		if (i.is_regular_file()) {
-			std::cout << i.path().filename() << std::endl;
-			std::string::size_type pos = i.path().string().find(tolowerString("TeXt"));
-			if (pos != std::string::npos) {
-				std::cout << "Contains keyword!\n";
-			}
-			counter++;
-		}	
-	}
+		std::cout << i.path() << std::endl;
 
+		if (i.is_directory()) {
+
+		}
+		else if (i.is_regular_file()) {
+
+		}
+		//if (i.is_regular_file()) {
+		//	//std::cout << i.path().filename() << std::endl;
+		//	std::string::size_type pos = i.path().string().find(tolowerString("TeXt"));
+		//	if (pos != std::string::npos) {
+		//		std::cout << "Contains keyword!\n";
+		//	}
+		//	counter++;
+		//}	
+	}
 	std::cout << "amount of files in directory: " << counter << std::endl;
 }
