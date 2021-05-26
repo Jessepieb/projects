@@ -1,3 +1,26 @@
 {
-    "locations": null
+    "dst_dir": "p2",
+    "extensions": [
+        ".pdf"
+    ],
+    "keywords": [
+        "python"
+    ],
+    "loc_name": "python",
+    "sort_dir": false,
+    "sort_files": true,
+    "src_dir": "p1"
+}
+{
+    "dst_dir": "j2",
+    "extensions": [
+        ".pdf"
+    ],
+    "keywords": [
+        "java"
+    ],
+    "loc_name": "java",
+    "sort_dir": true,
+    "sort_files": false,
+    "src_dir": "j1"
 }
