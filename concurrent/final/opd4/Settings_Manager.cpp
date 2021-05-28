@@ -3,13 +3,14 @@
 
 using namespace sm;
 void to_json(json& j, const Entry& e) {
-	j = json{ {"loc_name", e.loc_name},
+	j = json{ "Entry", 
+		{ {"loc_name", e.loc_name},
 		{"src_dir", e.src_directory},
 		{"dst_dir", e.dst_directory},
 		{"keywords", e.keywords},
 		{"extensions", e.extensions},
 		{"sort_files", e.sort_files},
-		{"sort_dir", e.sort_dir}
+		{"sort_dir", e.sort_dir} }
 	};
 }
 
@@ -60,9 +61,9 @@ void Settings_Manager::create_loc() {
 
 	to_json(new_entry, e);
 
-	j_object.push_back(new_entry);
+	j_object.insert(j_object.end(),new_entry.begin(),new_entry.end());
 
-	update_settings();
+	update_settings(j_object);
 	show_settings(j_object);
 }
 
@@ -73,7 +74,7 @@ void Settings_Manager::remove_loc() {};
 std::vector<std::string> Settings_Manager::add_keywords() {
 	std::vector<std::string> new_kw;
 	std::string input = "";
-	std::cout << "Add new keywords to filter files and/ or directories on, type \"exit()\" when done:" << std::endl;
+	std::cout << "Add new keywords to filter files and/or directories on, type \"exit()\" when done:" << std::endl;
 	while (input != "exit()")
 	{
 		try {
@@ -97,7 +98,7 @@ void Settings_Manager::remove_keywords() {
 std::vector<std::string> Settings_Manager::add_extensions() {
 	std::vector<std::string> new_ex;
 	std::string input = "";
-	std::cout << "Add new keywords to filter files and/ or directories on, type \"exit()\" when done:" << std::endl;
+	std::cout << "Add new extensions to filter on, type \"exit()\" when done:" << std::endl;
 	while (input != "exit()")
 	{
 		try {
@@ -116,17 +117,18 @@ std::vector<std::string> Settings_Manager::add_extensions() {
 };
 void Settings_Manager::remove_extensions() {};
 
-void Settings_Manager::update_settings() {
+void Settings_Manager::update_settings(json& j) {
 	try {
-		setting_out.open("settings.json", std::ios::app);
+		setting_out.open("settings.json");
 		setting_out << std::setw(4) << j_object << std::endl;
+		setting_out.close();
 	}
 	catch (std::exception e) {
-
+		std::cout << "Not able to update settings" << std::endl;
 	}
 };
 
-void Settings_Manager::show_settings(json j) {
+void Settings_Manager::show_settings(json& j) {
 	std::cout << j.dump(4) << std::endl;
 };
 
@@ -161,16 +163,18 @@ Settings_Manager::Settings_Manager()
 			setting_in.close();
 		}
 		catch (std::exception e) {
-			std::cout << "Could not open settings, exiting...." << std::endl;
+			std::cout << "Could not open settings, exiting" << std::endl;
+			exit(1);
 			//this -> ~Settings_Manager();
 		}
 	}
 	else {
 		std::cout << "Couldn't find settings.json, creating new settings file" << std::endl;
 		setting_out.open("settings.json");
-		j_object = {};
+		j_object = { {} };
 		std::cout << j_object << std::endl;
 		setting_out << std::setw(4) << j_object << std::endl;
+		setting_out.close();
 	}
 
 }

@@ -46,8 +46,8 @@ namespace sm {
 		std::vector<std::string> add_extensions();
 		void remove_extensions();
 
-		void update_settings();
-		void show_settings(json j);
+		void update_settings(json& j);
+		void show_settings(json& j);
 
 	private:
 
