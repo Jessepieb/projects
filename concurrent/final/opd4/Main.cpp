@@ -19,13 +19,21 @@ int main() {
 
 	Settings_Manager sm;
 
-	FileHandler fh;
+	//FileHandler fh;
 	//fh.write_file("sandbox/text.txt");
 	//fh.copy_file("sandbox/text.txt", "sandbox/text2.txt");
 	//fh.copy_file("Pictures/test_picture.jpg", "Pictures/copied_picture.jpg");
 	//static_cast<void>(std::system("tree"));
 
 	int counter = 0;
+
+	std::vector<std::thread> threads;
+
+	for (size_t i = 0; i < 2; i++)
+	{
+		FileHandler fh = FileHandler();
+		threads.push_back(std::thread(&FileHandler::start_loop, std::ref(fh), i));
+	}
 
 	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4"))
 	{
@@ -46,7 +54,25 @@ int main() {
 		//	counter++;
 		//}	
 	}
-	std::cout << "amount of files in directory: " << counter << std::endl << std::endl;
 
-	sm.create_loc();
+	std::vector<Entry> entries;
+
+	std::cout << "amount of files in directory: " << counter << std::endl << std::endl;
+	for (auto it = sm.j_object.begin(); it != sm.j_object.end(); ++it) {
+		//std::cout << *it << std::endl;
+		Entry e;
+		e.from_json(std::ref(*it), std::ref(e));
+
+		std::cout << e.loc_name << std::endl;
+	}
+
+
+	for (auto& th: threads)
+	{
+		if (th.joinable()) {
+			th.join();
+		}
+	}
+
+	//sm.create_loc();
 }

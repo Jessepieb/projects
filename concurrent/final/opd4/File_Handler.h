@@ -5,12 +5,18 @@
 #include <fstream>
 #include <filesystem>
 #include <iostream>
+#include "Settings_Manager.h"
 
 namespace fs = std::filesystem;
+using namespace sm;
 namespace fh {
 	class FileHandler
 	{
 	public:
+
+		FileHandler();
+		FileHandler(Entry e);
+		~FileHandler();
 
 		std::ifstream src;
 		std::ofstream dest;
@@ -19,6 +25,8 @@ namespace fh {
 		void copy_file(std::string src_url, std::string dst_url);
 
 		void find_keywords();
+
+		void start_loop(int id);
 
 	private:
 

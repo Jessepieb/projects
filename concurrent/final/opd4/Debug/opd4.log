@@ -1,2 +1,6 @@
-﻿  Settings_Manager.cpp
-  opd4.vcxproj -> D:\GitHub\projects\concurrent\final\opd4\Debug\opd4.exe
+﻿  File_Handler.cpp
+  Main.cpp
+  Settings_Manager.cpp
+  Generating Code...
+Main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Entry::from_json(class nlohmann::basic_json<class std::map,class std::vector,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,__int64,unsigned __int64,double,class std::allocator,struct nlohmann::adl_serializer,class std::vector<unsigned char,class std::allocator<unsigned char> > > &,struct Entry)" (?from_json@Entry@@QAEXAAV?$basic_json@Vmap@std@@Vvector@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@_N_J_KNVallocator@2@Uadl_serializer@nlohmann@@V?$vector@EV?$allocator@E@std@@@2@@nlohmann@@U1@@Z) referenced in function _main
+D:\GitHub\projects\concurrent\final\opd4\Debug\opd4.exe : fatal error LNK1120: 1 unresolved externals

@@ -24,3 +24,18 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 void FileHandler::find_keywords() {
 
 }
+std::mutex prnt_mtx;
+void FileHandler::start_loop(int id) {
+	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
+	std::cout << "message from thread " << id << std::endl;
+}
+
+FileHandler::FileHandler() {};
+
+FileHandler::FileHandler(Entry e) {
+
+}
+
+FileHandler::~FileHandler() {
+
+}

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <mutex>
 
 #include "json.hpp"
 using json = nlohmann::json;
@@ -40,10 +41,10 @@ namespace sm {
 		void create_loc();
 		void remove_loc();
 
-		std::vector<std::string> add_keywords();
+		void create_keywords(std::vector<std::string>& cur_kw);
 		void remove_keywords();
 
-		std::vector<std::string> add_extensions();
+		void create_extensions(std::vector<std::string>& cur_ex);
 		void remove_extensions();
 
 		void update_settings(json& j);

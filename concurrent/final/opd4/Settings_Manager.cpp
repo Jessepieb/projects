@@ -47,8 +47,10 @@ void Settings_Manager::create_loc() {
 	e.src_directory = src_dir;
 	e.dst_directory = dest_dir;
 
-	std::vector<std::string>new_keywords = add_keywords();
-	std::vector<std::string>new_extensions = add_extensions();  //std::vector<std::string>()
+	std::vector<std::string>new_keywords;
+	create_keywords(std::ref(new_keywords));
+	std::vector<std::string>new_extensions; 
+	create_extensions(std::ref(new_extensions));
 
 	e.keywords = new_keywords;
 	e.extensions = new_extensions;
@@ -71,7 +73,7 @@ void Settings_Manager::remove_loc() {};
 
 
 
-std::vector<std::string> Settings_Manager::add_keywords() {
+void Settings_Manager::create_keywords(std::vector<std::string>& cur_kw) {
 	std::vector<std::string> new_kw;
 	std::string input = "";
 	std::cout << "Add new keywords to filter files and/or directories on, type \"exit()\" when done:" << std::endl;
@@ -89,13 +91,13 @@ std::vector<std::string> Settings_Manager::add_keywords() {
 		}
 	}
 
-	return new_kw;
+	cur_kw.insert(cur_kw.end(), new_kw.begin(), new_kw.end());
 };
 void Settings_Manager::remove_keywords() {
 
 };
 
-std::vector<std::string> Settings_Manager::add_extensions() {
+void Settings_Manager::create_extensions(std::vector<std::string>& cur_ex) {
 	std::vector<std::string> new_ex;
 	std::string input = "";
 	std::cout << "Add new extensions to filter on, type \"exit()\" when done:" << std::endl;
@@ -113,7 +115,8 @@ std::vector<std::string> Settings_Manager::add_extensions() {
 		}
 	}
 
-	return new_ex;
+	cur_ex.insert(cur_ex.end(), new_ex.begin(), new_ex.end());
+
 };
 void Settings_Manager::remove_extensions() {};
 
@@ -128,7 +131,9 @@ void Settings_Manager::update_settings(json& j) {
 	}
 };
 
+std::mutex mtx;
 void Settings_Manager::show_settings(json& j) {
+	std::lock_guard<std::mutex> set_lk(mtx);
 	std::cout << j.dump(4) << std::endl;
 };
 
