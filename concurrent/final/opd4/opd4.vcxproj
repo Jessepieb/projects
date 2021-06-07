@@ -141,11 +141,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entry.cpp" />
     <ClCompile Include="File_Handler.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Settings_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entry.h" />
     <ClInclude Include="File_Handler.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Main.h" />

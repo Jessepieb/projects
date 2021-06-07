@@ -59,9 +59,8 @@ int main() {
 
 	std::cout << "amount of files in directory: " << counter << std::endl << std::endl;
 	for (auto it = sm.j_object.begin(); it != sm.j_object.end(); ++it) {
-		//std::cout << *it << std::endl;
-		Entry e;
-		e.from_json(std::ref(*it), std::ref(e));
+		std::cout << *it<<"\v" << std::endl;
+		Entry e = from_json();
 
 		std::cout << e.loc_name << std::endl;
 	}

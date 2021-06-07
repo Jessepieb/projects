@@ -7,24 +7,11 @@
 #include <string>
 #include <vector>
 #include <mutex>
+#include "Entry.h"
 
 #include "json.hpp"
 using json = nlohmann::json;
 namespace fs = std::filesystem;
-
-struct Entry {
-	std::string loc_name;
-	std::string src_directory;
-	std::string dst_directory;
-	std::vector<std::string> keywords;
-	std::vector<std::string> extensions;
-	bool sort_files;
-	bool sort_dir;
-
-	void to_json(json& j, const Entry e);
-	void from_json(json& j, const Entry e);
-
-};
 
 namespace sm {
 	class Settings_Manager

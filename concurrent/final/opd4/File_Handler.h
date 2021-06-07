@@ -5,10 +5,10 @@
 #include <fstream>
 #include <filesystem>
 #include <iostream>
-#include "Settings_Manager.h"
+#include <mutex>
+#include "Entry.h"
 
 namespace fs = std::filesystem;
-using namespace sm;
 namespace fh {
 	class FileHandler
 	{

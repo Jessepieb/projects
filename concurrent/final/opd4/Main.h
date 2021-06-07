@@ -13,6 +13,7 @@
 #include <thread>
 
 #include "json.hpp"
+#include "Entry.h"
 
 #endif
 

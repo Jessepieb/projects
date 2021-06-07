@@ -2,27 +2,6 @@
 
 
 using namespace sm;
-void to_json(json& j, const Entry& e) {
-	j = json{ "Entry", 
-		{ {"loc_name", e.loc_name},
-		{"src_dir", e.src_directory},
-		{"dst_dir", e.dst_directory},
-		{"keywords", e.keywords},
-		{"extensions", e.extensions},
-		{"sort_files", e.sort_files},
-		{"sort_dir", e.sort_dir} }
-	};
-}
-
-void from_json(json& j, Entry& e) {
-	j.at("loc_name").get_to(e.loc_name);
-	j.at("src_dir").get_to(e.src_directory);
-	j.at("dst_dir").get_to(e.dst_directory);
-	j.at("keywords").get_to(e.keywords);
-	j.at("extensions").get_to(e.extensions);
-	j.at("sort_files").get_to(e.sort_files);
-	j.at("sort_dir").get_to(e.sort_dir);
-};
 
 
 void Settings_Manager::create_loc() {
@@ -61,7 +40,7 @@ void Settings_Manager::create_loc() {
 	e.sort_files = sort_on_files;
 	e.sort_dir = sort_on_dir;
 
-	to_json(new_entry, e);
+	to_json(new_entry,e);
 
 	j_object.insert(j_object.end(),new_entry.begin(),new_entry.end());
 
