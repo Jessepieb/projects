@@ -5,32 +5,34 @@
 #include <fstream>
 #include <filesystem>
 #include <iostream>
+#include <chrono>
 #include <mutex>
 #include "Entry.h"
 
 namespace fs = std::filesystem;
-namespace fh {
-	class FileHandler
-	{
-	public:
+class FileHandler
+{
+public:
 
-		FileHandler();
-		FileHandler(Entry e);
-		~FileHandler();
 
-		std::ifstream src;
-		std::ofstream dest;
+	FileHandler(Entry new_entry);
+	FileHandler(std::vector<Entry> new_entries);
+	~FileHandler();
 
-		void write_file(std::string file_url);
-		void copy_file(std::string src_url, std::string dst_url);
+	std::ifstream src;
+	std::ofstream dest;
 
-		void find_keywords();
+	void write_file(std::string file_url);
+	void copy_file(std::string src_url, std::string dst_url);
 
-		void start_loop(int id);
+	std::vector<fs::path> find_directories(fs::path p, std::string keyword);
 
-	private:
+	void find_keywords(std::vector<std::string> kw);
 
-	};
-}
+
+private:
+	std::mutex prnt_mtx;
+	std::vector<Entry> entries;
+};
 
 #endif

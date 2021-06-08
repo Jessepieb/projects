@@ -1,7 +1,7 @@
 #include "Entry.h"
 
 void to_json(json& j, const Entry& e) {
-	j = json{  "Entry",
+	j = json{ {
 	{ {"loc_name", e.loc_name},
 	{"src_dir", e.src_directory},
 	{"dst_dir", e.dst_directory},
@@ -9,6 +9,7 @@ void to_json(json& j, const Entry& e) {
 	{"extensions", e.extensions},
 	{"sort_files", e.sort_files},
 	{"sort_dir", e.sort_dir} }
+	}
 };
 }
 

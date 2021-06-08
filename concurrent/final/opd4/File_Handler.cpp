@@ -1,5 +1,4 @@
 #include "File_Handler.h"
-using namespace fh;
 
 void FileHandler::write_file(std::string url) {
 	dest.open(url);
@@ -21,21 +20,27 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 	}
 }
 
-void FileHandler::find_keywords() {
-
-}
-std::mutex prnt_mtx;
-void FileHandler::start_loop(int id) {
-	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
-	std::cout << "message from thread " << id << std::endl;
+std::vector<fs::path> FileHandler::find_directories(fs::path p, std::string keyword) {
+	std::vector<fs::path> matched_directories;
 }
 
-FileHandler::FileHandler() {};
+void FileHandler::find_keywords(std::vector<std::string> kw) {
 
-FileHandler::FileHandler(Entry e) {
+}
 
+
+FileHandler::FileHandler(Entry new_entry) {
+	entries.push_back(new_entry);
+}
+
+FileHandler::FileHandler(std::vector<Entry> new_entries) {
+	for (Entry e : new_entries) {
+		entries.push_back(e);
+	}
 }
 
 FileHandler::~FileHandler() {
+	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
+	std::cout << "message from thread " << std::endl;
 
 }

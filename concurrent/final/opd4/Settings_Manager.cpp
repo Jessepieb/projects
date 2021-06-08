@@ -1,8 +1,6 @@
 #include "Settings_Manager.h"
 
 
-using namespace sm;
-
 
 void Settings_Manager::create_loc() {
 	std::cout << j_object.dump(4) << std::endl;
@@ -28,7 +26,7 @@ void Settings_Manager::create_loc() {
 
 	std::vector<std::string>new_keywords;
 	create_keywords(std::ref(new_keywords));
-	std::vector<std::string>new_extensions; 
+	std::vector<std::string>new_extensions;
 	create_extensions(std::ref(new_extensions));
 
 	e.keywords = new_keywords;
@@ -40,9 +38,9 @@ void Settings_Manager::create_loc() {
 	e.sort_files = sort_on_files;
 	e.sort_dir = sort_on_dir;
 
-	to_json(new_entry,e);
+	to_json(new_entry, e);
 
-	j_object.insert(j_object.end(),new_entry.begin(),new_entry.end());
+	j_object.insert(j_object.end(), new_entry.begin(), new_entry.end());
 
 	update_settings(j_object);
 	show_settings(j_object);
@@ -129,7 +127,7 @@ bool Settings_Manager::set_active(std::string option) {
 		catch (std::exception e) {
 			std::cout << "Please enter a valid character" << std::endl;
 		}
-		if (char(answer) == 'y' || char(answer) ==  'n') {
+		if (char(answer) == 'y' || char(answer) == 'n') {
 			temp = (answer == 'y') ? true : false;
 			isvalid = true;
 		}

@@ -1,5 +1,4 @@
 [
-    "Entry",
     {
         "dst_dir": "l2",
         "extensions": [
@@ -13,7 +12,6 @@
         "sort_files": true,
         "src_dir": "l1"
     },
-    "Entry",
     {
         "dst_dir": "j2",
         "extensions": [
@@ -29,7 +27,6 @@
         "sort_files": true,
         "src_dir": "j1"
     },
-    "Entry",
     {
         "dst_dir": "c2",
         "extensions": [
