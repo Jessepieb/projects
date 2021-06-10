@@ -22,8 +22,15 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 
 std::vector<fs::path> FileHandler::find_directories(fs::path p, std::string keyword) {
 	std::vector<fs::path> matched_directories;
+	return matched_directories;
 }
 
+void FileHandler::start_loop(size_t id){
+	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
+	for (Entry e : entries) {
+		std::cout << "message from Thread handling: " << e.loc_name << std::endl;
+	}
+}
 void FileHandler::find_keywords(std::vector<std::string> kw) {
 
 }
@@ -40,7 +47,9 @@ FileHandler::FileHandler(std::vector<Entry> new_entries) {
 }
 
 FileHandler::~FileHandler() {
-	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
-	std::cout << "message from thread " << std::endl;
+	//std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
+	//for (Entry e : entries) {
+	//	std::cout << "message from thread handling " << e.loc_name << std::endl;
+	//}
 
 }

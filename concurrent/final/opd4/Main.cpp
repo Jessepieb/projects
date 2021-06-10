@@ -65,20 +65,34 @@ int main() {
 
 
 	int thread_count = 0;
+	int spare = 0 , entries_per_thread = 0;
 	if (max_threads != 0) {
 		if (entries.size() < max_threads) {
 			thread_count = entries.size();
+			entries_per_thread = 1;
 		}
 		else {
-
+			thread_count = max_threads;
+			spare = entries.size() % max_threads;
+			entries_per_thread = entries.size() / max_threads;
 		}
 	}
 
 	std::vector<std::thread> threads(thread_count);
-
-	for (size_t i = 0; i < 2; i++)
+	int block = 0;
+	for (size_t i = 0; i < thread_count; i++)
 	{
-		FileHandler fh = FileHandler(i);
+		//FileHandler* fh;
+		//if (entries_per_thread > 1) {
+		//	std::vector<Entry> entry_block(entries_per_thread);
+		//	std::copy(entries[block], entries[block + entries_per_thread-1],std::back_inserter(entry_block));
+		//	fh = new FileHandler(entry_block);
+		//	block = block + entries_per_thread;
+		//}
+		//else {
+		FileHandler fh =  FileHandler(entries[i]);
+		//}
+		//
 		threads.push_back(std::thread(&FileHandler::start_loop, std::ref(fh), i));
 	}
 

@@ -29,6 +29,8 @@ public:
 
 	void find_keywords(std::vector<std::string> kw);
 
+	void start_loop(size_t id);
+
 
 private:
 	std::mutex prnt_mtx;
