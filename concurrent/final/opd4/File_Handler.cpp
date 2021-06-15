@@ -47,9 +47,9 @@ FileHandler::FileHandler(std::vector<Entry> new_entries) {
 }
 
 FileHandler::~FileHandler() {
-	//std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
-	//for (Entry e : entries) {
-	//	std::cout << "message from thread handling " << e.loc_name << std::endl;
-	//}
+	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
+	for (Entry e : entries) {
+		std::cout << "closing the thread handling " << e.loc_name << std::endl;
+	}
 
 }

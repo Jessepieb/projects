@@ -82,24 +82,24 @@ int main() {
 	int block = 0;
 	for (size_t i = 0; i < thread_count; i++)
 	{
-		//FileHandler* fh;
-		//if (entries_per_thread > 1) {
-		//	std::vector<Entry> entry_block(entries_per_thread);
-		//	std::copy(entries[block], entries[block + entries_per_thread-1],std::back_inserter(entry_block));
-		//	fh = new FileHandler(entry_block);
-		//	block = block + entries_per_thread;
-		//}
-		//else {
-		FileHandler fh =  FileHandler(entries[i]);
-		//}
-		//
-		threads.push_back(std::thread(&FileHandler::start_loop, std::ref(fh), i));
+		FileHandler* fh;
+		if (entries_per_thread > 1) {
+			std::vector<Entry> entry_block;
+			//std::copy(entries[block], entries[block + entries_per_thread-1],std::back_inserter(entry_block));
+			fh = new FileHandler(entry_block);
+			block = block + entries_per_thread;
+		}
+		else {
+		 fh = new FileHandler(entries[i]);
+		}
+		
+		threads.push_back(std::thread(&FileHandler::start_loop, fh, i));
 	}
 
 	int dir_counter = 0, file_counter = 0;
 	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4"))
 	{
-		std::cout << i.path() << std::endl;
+		//std::cout << i.path() << std::endl;
 
 
 		if (i.is_directory()) {
