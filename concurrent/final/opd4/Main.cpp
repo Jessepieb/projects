@@ -3,15 +3,6 @@
 #include "Settings_Manager.h"
 namespace fs = std::filesystem;
 
-//using json = nlohmann::json;
-
-std::string tolowerString(std::string text) {
-	std::string newString;
-	std::transform(text.begin(), text.end(), std::back_inserter(newString), (int(*)(int))std::tolower);
-	std::cout << newString << std::endl;
-	return newString;
-}
-
 //create thread_guard to make sure that all threads are properly closed
 class thread_guard
 {
@@ -95,34 +86,6 @@ int main() {
 		
 		threads.push_back(std::thread(&FileHandler::start_loop, fh, i));
 	}
-
-	int dir_counter = 0, file_counter = 0;
-	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4"))
-	{
-		//std::cout << i.path() << std::endl;
-
-
-		if (i.is_directory()) {
-			dir_counter++;
-		}
-		else if (i.is_regular_file()) {
-			file_counter++;
-		}
-		//if (i.is_regular_file()) {
-		//	//std::cout << i.path().filename() << std::endl;
-		//	std::string::size_type pos = i.path().string().find(tolowerString("TeXt"));
-		//	if (pos != std::string::npos) {
-		//		std::cout << "Contains keyword!\n";
-		//	}
-		//	counter++;
-		//}	
-	}
-
-
-
-	std::cout << "amount of directories in directory: " << dir_counter << std::endl;
-	std::cout << "amount of files in directory: " << file_counter << std::endl;
-
 
 	for (auto& th : threads)
 	{

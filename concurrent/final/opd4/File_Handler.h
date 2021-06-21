@@ -25,9 +25,9 @@ public:
 	void write_file(std::string file_url);
 	void copy_file(std::string src_url, std::string dst_url);
 
-	std::vector<fs::path> find_directories(fs::path p, std::string keyword);
+	//std::vector<fs::path> find_directories(fs::path p, std::string keyword);
 
-	void find_keywords(std::vector<std::string> kw);
+	void find_keywords();
 
 	void start_loop(size_t id);
 

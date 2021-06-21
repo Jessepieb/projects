@@ -20,10 +20,10 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 	}
 }
 
-std::vector<fs::path> FileHandler::find_directories(fs::path p, std::string keyword) {
-	std::vector<fs::path> matched_directories;
-	return matched_directories;
-}
+//std::vector<fs::path> FileHandler::find_directories(fs::path p, std::string keyword) {
+//	std::vector<fs::path> matched_directories;
+//	return matched_directories;
+//}
 
 void FileHandler::start_loop(size_t id){
 	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
@@ -31,8 +31,14 @@ void FileHandler::start_loop(size_t id){
 		std::cout << "message from Thread handling: " << e.loc_name << std::endl;
 	}
 }
-void FileHandler::find_keywords(std::vector<std::string> kw) {
+void FileHandler::find_keywords() {
+	for (Entry e : entries) {
+		for (auto keyword : e.keywords) {
+			for (auto path : fs::directory_iterator(e.src_directory)) {
 
+			}
+		}
+	}
 }
 
 
@@ -45,8 +51,43 @@ FileHandler::FileHandler(std::vector<Entry> new_entries) {
 		entries.push_back(e);
 	}
 }
+template <typename T>
+std::string tolowerString(T text) {
+	std::string newString;
+	std::transform(text.begin(), text.end(), std::back_inserter(newString), (int(*)(int))std::tolower);
+	std::cout << newString << std::endl;
+	return newString;
+}
 
 FileHandler::~FileHandler() {
+
+	int dir_counter = 0, file_counter = 0;
+	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4/sandbox"))
+	{
+		//std::cout << i.path() << std::endl;
+
+
+		if (i.is_directory()) {
+			dir_counter++;
+		}
+		else if (i.is_regular_file()) {
+			file_counter++;
+		}
+		if (i.is_regular_file()) {
+			//std::cout << i.path().filename() << std::endl;
+			std::string::size_type pos = i.path().string().find(tolowerString("TeXt"));
+			if (pos != std::string::npos) {
+				std::cout << "Contains keyword!\n";
+			}
+			file_counter++;
+		}	
+	}
+
+
+
+	std::cout << "amount of directories in directory: " << dir_counter << std::endl;
+	std::cout << "amount of files in directory: " << file_counter << std::endl;
+
 	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
 	for (Entry e : entries) {
 		std::cout << "closing the thread handling " << e.loc_name << std::endl;
