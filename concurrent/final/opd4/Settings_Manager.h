@@ -34,12 +34,12 @@ public:
 	void create_extensions(std::vector<std::string>& cur_ex);
 	void remove_extensions();
 
-	void update_settings(json& j);
 	void show_settings(json& j);
 
 private:
 
 	bool set_active(std::string option);
+	void update_settings(json& j);
 
 };
 

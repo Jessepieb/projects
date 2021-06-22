@@ -1,5 +1,12 @@
 #include "File_Handler.h"
 
+std::string tolowerString(std::string text) {
+	std::string newString;
+	std::transform(text.begin(), text.end(), std::back_inserter(newString), (int(*)(int))std::tolower);
+	std::cout << newString << std::endl;
+	return newString;
+}
+
 void FileHandler::write_file(std::string url) {
 	dest.open(url);
 	if (dest.is_open()) {
@@ -26,9 +33,28 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 //}
 
 void FileHandler::start_loop(size_t id){
-	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
 	for (Entry e : entries) {
-		std::cout << "message from Thread handling: " << e.loc_name << std::endl;
+		int dir_counter = 0, file_counter = 0;
+		for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4/sandbox"))
+		{
+			//std::cout << i.path() << std::endl;
+
+
+			if (i.is_directory()) {
+				dir_counter++;
+			}
+			if (i.is_regular_file()) {
+				//std::cout << i.path().filename() << std::endl;
+				std::string::size_type pos = i.path().string().find(tolowerString(e.keywords[0]));
+				if (pos != std::string::npos) {
+					//std::cout << "Contains " << e.keywords[0] << std::endl;
+					file_counter++;
+				}
+				
+			}
+		}	
+		std::cout << "amount of directories for " << e.loc_name << " :" << dir_counter << std::endl;
+		std::cout << "amount of files in " << e.loc_name << " :" << file_counter << std::endl;
 	}
 }
 void FileHandler::find_keywords() {
@@ -51,46 +77,7 @@ FileHandler::FileHandler(std::vector<Entry> new_entries) {
 		entries.push_back(e);
 	}
 }
-template <typename T>
-std::string tolowerString(T text) {
-	std::string newString;
-	std::transform(text.begin(), text.end(), std::back_inserter(newString), (int(*)(int))std::tolower);
-	std::cout << newString << std::endl;
-	return newString;
-}
 
 FileHandler::~FileHandler() {
-
-	int dir_counter = 0, file_counter = 0;
-	for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4/sandbox"))
-	{
-		//std::cout << i.path() << std::endl;
-
-
-		if (i.is_directory()) {
-			dir_counter++;
-		}
-		else if (i.is_regular_file()) {
-			file_counter++;
-		}
-		if (i.is_regular_file()) {
-			//std::cout << i.path().filename() << std::endl;
-			std::string::size_type pos = i.path().string().find(tolowerString("TeXt"));
-			if (pos != std::string::npos) {
-				std::cout << "Contains keyword!\n";
-			}
-			file_counter++;
-		}	
-	}
-
-
-
-	std::cout << "amount of directories in directory: " << dir_counter << std::endl;
-	std::cout << "amount of files in directory: " << file_counter << std::endl;
-
-	std::lock_guard<std::mutex> prnt_lk(prnt_mtx);
-	for (Entry e : entries) {
-		std::cout << "closing the thread handling " << e.loc_name << std::endl;
-	}
 
 }
