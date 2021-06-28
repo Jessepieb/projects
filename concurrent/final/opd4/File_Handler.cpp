@@ -27,45 +27,64 @@ void FileHandler::copy_file(std::string src_url, std::string dst_url) {
 	}
 }
 
-//std::vector<fs::path> FileHandler::find_directories(fs::path p, std::string keyword) {
-//	std::vector<fs::path> matched_directories;
-//	return matched_directories;
-//}
-
-void FileHandler::start_loop(size_t id){
-	for (Entry e : entries) {
-		int dir_counter = 0, file_counter = 0;
-		for (auto& i : fs::directory_iterator("D:/Github/projects/concurrent/final/opd4/sandbox"))
-		{
-			//std::cout << i.path() << std::endl;
-
-
-			if (i.is_directory()) {
-				dir_counter++;
-			}
-			if (i.is_regular_file()) {
-				//std::cout << i.path().filename() << std::endl;
-				std::string::size_type pos = i.path().string().find(tolowerString(e.keywords[0]));
-				if (pos != std::string::npos) {
-					//std::cout << "Contains " << e.keywords[0] << std::endl;
-					file_counter++;
-				}
-				
-			}
-		}	
-		std::cout << "amount of directories for " << e.loc_name << " :" << dir_counter << std::endl;
-		std::cout << "amount of files in " << e.loc_name << " :" << file_counter << std::endl;
-	}
-}
-void FileHandler::find_keywords() {
-	for (Entry e : entries) {
-		for (auto keyword : e.keywords) {
-			for (auto path : fs::directory_iterator(e.src_directory)) {
-
+std::vector<fs::path> FileHandler::find_directories(Entry e) {
+	std::vector<fs::path> matched_directories;
+	for (auto& i : fs::directory_iterator(e.src_directory))
+	{
+		if (i.is_directory()) {
+			if (find_keywords(tolowerString(i.path().filename().string()), e.keywords)) {
+				matched_directories.push_back(i.path());
 			}
 		}
 	}
+	return matched_directories;
 }
+
+std::vector<fs::path> FileHandler::find_files(Entry e) {
+	std::vector<fs::path> matched_files;
+	for (auto& i : fs::directory_iterator(e.src_directory)) {
+		if (i.is_regular_file() &&
+			(std::find(e.keywords.begin(), e.keywords.end(), i.path().extension()) != e.keywords.end())) {
+			if ( find_keywords(tolowerString(i.path().filename().string()), e.keywords)) {
+				matched_files.push_back(i.path());
+			}
+		}
+	}
+	return matched_files;
+}
+
+bool FileHandler::find_keywords(std::string file_name, std::vector<std::string> keywords) {
+	for (auto keyword : keywords) {
+		if (std::regex_match(file_name, std::regex((keyword)+"(.*)"))) {
+			std::cout << "Matched " << file_name << " on: " << keyword << std::endl;
+			return true;
+		}
+	}
+	return false;
+}
+
+void FileHandler::start_loop(size_t id) {
+	for (Entry e : entries) {
+		std::vector<fs::path> matches;
+		std::cout << "Finding matches for" << e.loc_name << std::endl;
+		if (e.sort_dir) {
+			std::vector<fs::path> results = find_directories(e);
+			matches.insert(matches.end(), results.begin(), results.end());
+		}
+		if (e.sort_files)
+		{
+			std::vector<fs::path> results = find_files(e);
+			matches.insert(matches.end(), results.begin(), results.end());
+		}
+
+				////std::cout << i.path().filename() << std::endl;
+				//std::string::size_type pos = i.path().string().find(tolowerString(e.keywords[0]));
+				//if (pos != std::string::npos) {
+				//	//std::cout << "Contains " << e.keywords[0] << std::endl;
+				//	file_counter++;
+
+		}
+	}
 
 
 FileHandler::FileHandler(Entry new_entry) {

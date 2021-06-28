@@ -28,7 +28,6 @@ int main() {
 
 	//get hardware core count to avoid oversubscription
 	const auto max_threads = std::thread::hardware_concurrency();
-	std::cout << max_threads << std::endl;
 
 	//create a setting manager object to load, edit and save settings
 	Settings_Manager setting_m;
@@ -69,7 +68,7 @@ int main() {
 		}
 	}
 
-	std::vector<std::thread> threads(thread_count);
+	std::vector<std::thread> threads;
 	int block = 0;
 	for (size_t i = 0; i < thread_count; i++)
 	{
@@ -86,7 +85,7 @@ int main() {
 		
 		threads.push_back(std::thread(&FileHandler::start_loop, fh, i));
 	}
-
+	std::cout << "Created " << threads.size() << " Threads" << std::endl;
 	for (auto& th : threads)
 	{
 		if (th.joinable()) {

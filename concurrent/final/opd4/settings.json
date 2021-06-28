@@ -1,47 +1,49 @@
 [
-    {
-        "dst_dir": "l2",
-        "extensions": [
-            ".pdf"
-        ],
-        "keywords": [
-            "python"
-        ],
-        "loc_name": "Python",
-        "sort_dir": false,
-        "sort_files": true,
-        "src_dir": "l1"
-    },
-    {
-        "dst_dir": "j2",
-        "extensions": [
-            ".pdf",
-            ".mkv",
-            ".mp4"
-        ],
-        "keywords": [
-            "java"
-        ],
-        "loc_name": "java",
-        "sort_dir": true,
-        "sort_files": true,
-        "src_dir": "j1"
-    },
-    {
-        "dst_dir": "c2",
-        "extensions": [
-            ".pdf",
-            ".mkv",
-            ".mp4"
-        ],
-        "keywords": [
-            "cpp",
-            "cplusplus",
-            "c++"
-        ],
-        "loc_name": "C++",
-        "sort_dir": false,
-        "sort_files": true,
-        "src_dir": "c1"
-    }
+  {
+    "dst_dir": "l2",
+    "extensions": [
+      ".pdf"
+    ],
+    "keywords": [
+      "python"
+    ],
+    "loc_name": "Python",
+    "sort_dir": true,
+    "sort_files": false,
+    "src_dir": "l1"
+  },
+  {
+    "dst_dir": "j2",
+    "extensions": [
+      ".pdf",
+      ".mkv",
+      ".mp4",
+      ".txt"
+    ],
+    "keywords": [
+      "java"
+    ],
+    "loc_name": "java",
+    "sort_dir": true,
+    "sort_files": true,
+    "src_dir": "j1"
+  },
+  {
+    "dst_dir": "c2",
+    "extensions": [
+      ".pdf",
+      ".mkv",
+      ".mp4",
+      ".txt"
+    ],
+    "keywords": [
+      "cpp",
+      "cplusplus",
+      "c++"
+    ],
+    "loc_name": "C++",
+    "sort_dir": false,
+    "sort_files": true,
+    "src_dir": "c1"
+  }
 ]

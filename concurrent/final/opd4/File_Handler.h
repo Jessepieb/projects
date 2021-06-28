@@ -7,6 +7,7 @@
 #include <iostream>
 #include <chrono>
 #include <mutex>
+#include <regex>
 #include "Entry.h"
 
 namespace fs = std::filesystem;
@@ -25,9 +26,11 @@ public:
 	void write_file(std::string file_url);
 	void copy_file(std::string src_url, std::string dst_url);
 
-	//std::vector<fs::path> find_directories(fs::path p, std::string keyword);
+	std::vector<fs::path> find_directories(Entry e);
+	std::vector<fs::path> find_files(Entry e);
 
-	void find_keywords();
+
+	bool find_keywords(std::string file_name, std::vector<std::string> keywords);
 
 	void start_loop(size_t id);
 
