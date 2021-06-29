@@ -10,7 +10,7 @@
     "loc_name": "Python",
     "sort_dir": true,
     "sort_files": false,
-    "src_dir": "l1"
+    "src_dir": "D:/Github/projects/concurrent/final/opd4/sandbox"
   },
   {
     "dst_dir": "j2",
@@ -26,7 +26,7 @@
     "loc_name": "java",
     "sort_dir": true,
     "sort_files": true,
-    "src_dir": "j1"
+    "src_dir": "D:/Github/projects/concurrent/final/opd4/sandbox"
   },
   {
     "dst_dir": "c2",
@@ -44,6 +44,6 @@
     "loc_name": "C++",
     "sort_dir": false,
     "sort_files": true,
-    "src_dir": "c1"
+    "src_dir": "D:/Github/projects/concurrent/final/opd4/sandbox"
   }
 ]
