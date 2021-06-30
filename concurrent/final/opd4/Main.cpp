@@ -50,48 +50,49 @@ int main() {
 
 	for (size_t i = 0; i < entries.size(); i++)
 	{
-		std::cout << entries[i].loc_name << std::endl;
+		FileHandler f(entries[i]);
+		f.start_loop(i);
 	}
+	
 
+	//int thread_count = 0;
+	//int spare = 0 , entries_per_thread = 0;
+	//if (max_threads != 0) {
+	//	if (entries.size() < max_threads) {
+	//		thread_count = entries.size();
+	//		entries_per_thread = 1;
+	//	}
+	//	else {
+	//		thread_count = max_threads;
+	//		spare = entries.size() % max_threads;
+	//		entries_per_thread = entries.size() / max_threads;
+	//	}
+	//}
 
-	int thread_count = 0;
-	int spare = 0 , entries_per_thread = 0;
-	if (max_threads != 0) {
-		if (entries.size() < max_threads) {
-			thread_count = entries.size();
-			entries_per_thread = 1;
-		}
-		else {
-			thread_count = max_threads;
-			spare = entries.size() % max_threads;
-			entries_per_thread = entries.size() / max_threads;
-		}
-	}
-
-	std::vector<std::thread> threads;
-	int block = 0;
-	for (size_t i = 0; i < thread_count; i++)
-	{
-		FileHandler* fh;
-		if (entries_per_thread > 1) {
-			std::vector<Entry> entry_block;
-			//std::copy(entries[block], entries[block + entries_per_thread-1],std::back_inserter(entry_block));
-			fh = new FileHandler(entry_block);
-			block = block + entries_per_thread;
-		}
-		else {
-		 fh = new FileHandler(entries[i]);
-		}
-		
-		threads.push_back(std::thread(&FileHandler::start_loop, fh, i));
-	}
-	std::cout << "Created " << threads.size() << " Threads" << std::endl;
-	for (auto& th : threads)
-	{
-		if (th.joinable()) {
-			th.join();
-		}
-	}
+	//std::vector<std::thread> threads;
+	//int block = 0;
+	//for (size_t i = 0; i < thread_count; i++)
+	//{
+	//	FileHandler* fh;
+	//	if (entries_per_thread > 1) {
+	//		std::vector<Entry> entry_block;
+	//		//std::copy(entries[block], entries[block + entries_per_thread-1],std::back_inserter(entry_block));
+	//		fh = new FileHandler(entry_block);
+	//		block = block + entries_per_thread;
+	//	}
+	//	else {
+	//	 fh = new FileHandler(entries[i]);
+	//	}
+	//	
+	//	threads.push_back(std::thread(&FileHandler::start_loop, fh, i));
+	//}
+	//std::cout << "Created " << threads.size() << " Threads" << std::endl;
+	//for (auto& th : threads)
+	//{
+	//	if (th.joinable()) {
+	//		th.join();
+	//	}
+	//}
 
 	//sm.create_loc();
 }

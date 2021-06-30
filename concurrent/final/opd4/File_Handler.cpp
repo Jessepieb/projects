@@ -42,9 +42,9 @@ std::vector<fs::path> FileHandler::find_directories(Entry e) {
 
 std::vector<fs::path> FileHandler::find_files(Entry e) {
 	std::vector<fs::path> matched_files;
+	std::cout << "For " << e.src_directory << " finding: " << std::endl;
 	for (auto& i : fs::directory_iterator(e.src_directory)) {
-		if (i.is_regular_file() &&
-			(std::find(e.keywords.begin(), e.keywords.end(), i.path().extension()) != e.keywords.end())) {
+		if (i.is_regular_file()) {
 			if ( find_keywords(tolowerString(i.path().filename().string()), e.keywords)) {
 				matched_files.push_back(i.path());
 			}
@@ -56,13 +56,15 @@ std::vector<fs::path> FileHandler::find_files(Entry e) {
 bool FileHandler::find_keywords(std::string file_name, std::vector<std::string> keywords) {
 	for (auto keyword : keywords) {
 
-		std::string::size_type pos = file_name.find(keyword);
+	/*	std::string::size_type pos = file_name.find(keyword);
 		if (pos != std::string::npos) {
 			std::cout << "Contains " << keyword << std::endl;
-
-		//if (std::regex_match(file_name, std::regex((keyword)+"(.*)"))) {
-		//	std::cout << "Matched " << file_name << " on: " << keyword << std::endl;
-		//	return true;
+			return true;*/
+		std::regex rgx (keyword);
+		std::smatch sm;
+		if (std::regex_search(file_name,sm, rgx) != NULL) {
+			std::cout << "Matched " << file_name << " on: " << keyword << std::endl;
+			return true;
 		}
 	}
 	return false;
@@ -74,11 +76,13 @@ void FileHandler::start_loop(size_t id) {
 		//std::cout << "Finding matches for" << e.loc_name << std::endl;
 		if (e.sort_dir) {
 			std::vector<fs::path> results = find_directories(e);
+			std::cout << "for " << e.loc_name << " got " << results.size() << " results." << std::endl;
 			matches.insert(matches.end(), results.begin(), results.end());
 		}
 		if (e.sort_files)
 		{
 			std::vector<fs::path> results = find_files(e);
+			std::cout << "for " << e.loc_name << " got " << results.size() << " results." << std::endl;
 			matches.insert(matches.end(), results.begin(), results.end());
 		}
 
